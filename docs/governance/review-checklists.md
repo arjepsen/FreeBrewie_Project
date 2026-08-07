@@ -13,15 +13,26 @@ inapplicable with a reason.
 
 ## Provenance review
 
-- [ ] Pass / fail: Does each evidence-backed claim identify its exact source and source location?
-- [ ] Pass / fail: Does each record identify its extraction date, extractor, and dependent decisions?
-- [ ] Pass / fail: Is every evidence item labelled direct or inferred, with independent confirmation and conflicts recorded where applicable?
+- [ ] Pass / fail: Does every hardware-fact, observable-behaviour,
+  historical-observation, and asset-review record identify its source and source
+  location?
+- [ ] Pass / fail: Does every such record identify its extraction date,
+  extractor, and dependent decisions? If no decision depends on it, does the
+  field state none and explain why rather than remain blank?
+- [ ] Pass / fail / inapplicable with reason: Where the evidence class makes a
+  factual claim whose basis may be direct or inferred, are that distinction,
+  independent confirmation, and conflicts recorded? Mark this question
+  inapplicable only when those evidence-class-specific concepts genuinely do not
+  apply.
 
 ## Assumption review
 
 - [ ] Pass / fail: Does every assumption state the cheapest available check?
 - [ ] Pass / fail: Does every assumption state confidence and a verification action?
-- [ ] Pass / fail: Are consequential decisions blocked until their material assumptions are verified?
+- [ ] Pass / fail: Is provisional use limited to facts with recorded high
+  confidence, time-consuming verification, and progress-impeding delay?
+- [ ] Pass / fail: Are all safety-critical, consequential, and hard-to-reverse
+  decisions blocked until their material assumptions are verified?
 
 ## Independent-decision review
 

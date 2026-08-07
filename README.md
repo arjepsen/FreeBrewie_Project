@@ -2,12 +2,13 @@
 
 FreeBrewie is a clean-slate whole-system project to create a maintainable, efficient, extensible, independently designed replacement for the existing hardware.
 
-## Current milestone
+## Current milestone status
 
-Milestone 000, project foundation, is complete. Milestone 001, hardware
-baseline, is proposed and is not authorised until a separate brainstorming and
-approval cycle is complete. No technical subsystem is being designed or
-implemented.
+The [project charter's current-authority section](PROJECT.md#current-authority)
+is the canonical source for current work authority. Milestone 000, project
+foundation, is complete. No milestone or implementation work is active.
+Milestone 001, hardware baseline, remains proposed and unauthorised until its
+separate brainstorming and approval cycle is complete.
 
 ## Start here
 

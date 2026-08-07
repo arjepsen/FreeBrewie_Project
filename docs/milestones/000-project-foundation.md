@@ -7,7 +7,9 @@
 
 ## Entry criteria
 
-Project-foundation work is the only work authorised by the [project charter](../../PROJECT.md).
+Project-foundation work was authorised by the [project
+charter](../../PROJECT.md) for this milestone. Its completion does not authorise
+later work.
 
 ## Authorised work
 
@@ -84,10 +86,13 @@ governance foundation and its review gates.
 
 ## Approval
 
-- Approved by and date: Project owner; project-foundation authorisation recorded in the project charter.
+- Approved by and date: Project owner; 2026-08-07.
+- Authoritative approved design: [FreeBrewie Project Foundation
+  Design](../superpowers/specs/2026-08-06-project-foundation-design.md)
 - Scope expansion approval by owner and date: No scope expansion occurred.
 
 ## Next milestone
 
-[001: Hardware baseline](001-hardware-baseline.md) remains proposed and may not
-begin until its separate brainstorming and approval cycle is complete.
+No milestone is active. [001: Hardware baseline](001-hardware-baseline.md)
+remains proposed and unauthorised and may not begin until its separate
+brainstorming and approval cycle is complete.

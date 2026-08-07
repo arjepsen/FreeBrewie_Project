@@ -2,7 +2,11 @@
 
 ## Before starting work
 
-Read [PROJECT.md](PROJECT.md), find the [active milestone](docs/milestones/000-project-foundation.md), confirm scope, and stop on mismatch.
+Read the canonical [current-authority section](PROJECT.md#current-authority),
+then confirm that an approved, active milestone authorises the proposed work.
+No milestone or implementation work is currently active; [milestone
+001](docs/milestones/001-hardware-baseline.md) remains proposed and
+unauthorised. Stop on any status or scope mismatch.
 
 ## Before inspecting reference material
 

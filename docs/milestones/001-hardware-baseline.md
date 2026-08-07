@@ -17,8 +17,10 @@ Once separately approved, identify and verify:
 - the exact SOM and revision;
 - the exact MCU and revision;
 - the carrier board and revision;
-- storage, memory, display, and input hardware;
-- buses and connections among the SOM, MCU, and attached devices; and
+- the identities and revisions, where applicable, of relevant peripherals,
+  including storage, memory, display, input hardware, and attached devices;
+- all material buses and connections among the SOM, MCU, carrier board, and
+  relevant peripherals; and
 - the source, confidence, status, conflicts, and assumptions for each material fact.
 
 ## Explicit exclusions
@@ -44,28 +46,43 @@ evidence classes, approver, and approval date before inspection.
 
 ## Deliverables
 
-- Verified hardware-fact records for each material hardware item and connection.
+- Verified hardware-fact records for each material SOM, MCU, carrier-board, and
+  relevant peripheral identity and each material connection.
 - A baseline summary that links each material fact to its evidence record.
 - A record of conflicts, assumptions, confidence, verification status, and
   dependent decisions for every material fact.
+- A record of every baseline item removed as unnecessary, including the owner's
+  explicit approval and the reason for removal.
 
 ## Measurable completion criteria
 
-- The SOM, MCU, carrier board, storage, memory, display, and input hardware have
-  exact identified revisions or explicitly recorded unresolved status.
-- Connections among the SOM, MCU, and attached devices are recorded with their
-  supporting hardware facts.
-- Every material fact identifies its source, confidence, status, conflicts, and
-  assumptions.
+- The material SOM, MCU, and carrier-board identities and revisions are
+  verified.
+- The identities and applicable revisions of all relevant peripherals,
+  including storage, memory, display, input hardware, and attached devices, are
+  verified.
+- All material connections among the SOM, MCU, carrier board, and relevant
+  peripherals are verified in supporting hardware-fact records.
+- A baseline item is removed only when the owner explicitly approves its
+  removal and the milestone records why the item is unnecessary.
+- Every material fact completes the mandatory provenance fields and identifies
+  its confidence, status, conflicts, and assumptions.
 - Material facts affecting consequential decisions are verified or keep those
   decisions blocked.
 - Required reviews pass or are explicitly marked inapplicable with a reason.
 
+Any unresolved material baseline fact that has not been removed under the
+owner-approved exception keeps the milestone active or blocked; the milestone
+cannot be marked complete.
+
 ## Assumptions
 
-Before approval, no hardware assumption is accepted. Any later assumption must
-state confidence, the cheapest available check, a verification action, and the
-consequential decisions blocked until verification.
+Before approval, no hardware assumption is accepted. After approval, provisional
+use requires recorded high confidence, time-consuming verification, and a delay
+that would impede progress. The record must state why those conditions are met,
+the cheapest available check, the verification action, and every
+safety-critical, consequential, or hard-to-reverse decision blocked until
+verification.
 
 ## Dependent decisions
 

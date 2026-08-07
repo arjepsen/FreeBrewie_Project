@@ -22,7 +22,13 @@ Direct versus inferred evidence, independent confirmation, status, confidence, c
 
 ## Assumptions
 
-Apply the exact assumption constraint in Global Constraints; require verification action and blocked-decision fields.
+A fact may be used provisionally only when all three conditions are recorded:
+confidence is high, verification is time-consuming, and delaying use would
+impede progress. The record must explain why verification is time-consuming,
+how delay would impede progress, and the next verification action. Even when
+all three conditions are met, an unverified fact cannot support a
+safety-critical, consequential, or hard-to-reverse decision. Those decisions
+must be identified and remain blocked until the fact is verified.
 
 ## Historical comparison
 

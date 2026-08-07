@@ -18,8 +18,17 @@ Efficiency, responsiveness, maintainability, extensibility, and verifiability ar
 
 ## Current authority
 
-Only governance-foundation work is authorised.
+This section is the canonical source for current work authority. Milestone 000,
+project foundation, is complete. No milestone or implementation work is active.
+[Milestone 001, hardware baseline](docs/milestones/001-hardware-baseline.md), is
+proposed and unauthorised; no work or reference inspection under it may begin
+until a separate brainstorming and approval cycle is complete and its milestone
+record is approved and marked active.
 
 ## Out of scope
 
-This milestone excludes legacy inspection, hardware investigation, and every technical area in the Global Constraints: Linux technologies or image design, the SOM application, MCU firmware, communication protocols, brewing logic, UI technology, and implementation skeletons.
+Until another milestone is approved and active, all implementation, reference
+inspection, hardware investigation, and technical product design are out of
+scope. This includes Linux technologies or image design, the SOM application,
+MCU firmware, communication protocols, brewing logic, UI technology, and
+implementation skeletons.
