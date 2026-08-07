@@ -4,7 +4,10 @@ FreeBrewie is a clean-slate whole-system project to create a maintainable, effic
 
 ## Current milestone
 
-Only project-foundation work is authorised; no technical subsystem is being designed or implemented.
+Milestone 000, project foundation, is complete. Milestone 001, hardware
+baseline, is proposed and is not authorised until a separate brainstorming and
+approval cycle is complete. No technical subsystem is being designed or
+implemented.
 
 ## Start here
 
@@ -13,7 +16,8 @@ Only project-foundation work is authorised; no technical subsystem is being desi
 - [Clean-slate policy](docs/governance/clean-slate-policy.md)
 - [Reference-material policy](docs/governance/reference-material-policy.md)
 - [Roadmap](docs/roadmap.md)
-- [Active milestone: project foundation](docs/milestones/project-foundation.md)
+- [Milestone 000: project foundation (complete)](docs/milestones/000-project-foundation.md)
+- [Milestone 001: hardware baseline (proposed)](docs/milestones/001-hardware-baseline.md)
 
 ## Clean-slate summary
 
