@@ -9,6 +9,12 @@ Inspection is authorised by active milestone 001, `docs/milestones/001-hardware-
 
 `FreeBrewie-MCU/Documentation/BrewieMCU.kicad_sch` is selected as non-authoritative, inferred reverse-engineering evidence. Repositories were accessed read-only and were not cloned. An inventory entry records an evidence-selection decision; it does not validate the item's contents or establish a hardware fact.
 
+### Boundary incident and owner disposition
+
+During the original Task 2 execution, a web opener automatically rendered part of the out-of-bound `FreeBrewie-SOM` repository-root README while the default branch was being resolved. No information from that render was selected, extracted, or used. On 2026-08-08, the project owner approved retaining this transparent disclosure on condition that a fresh agent independently audit Task 2 using only approved paths pinned to the already-recorded full commit SHAs.
+
+That independent audit completed on 2026-08-08. It accessed no repository landing or root page and used only commit-pinned GitHub contents API or raw URLs for `FreeBrewie-MCU/Documentation`, `FreeBrewie-SOM/Docs`, the sole inventoried `Docs/UI_Design` subdirectory, the selected documents, and `Documentation/BrewieMCU.kicad_sch`. It reproduced both repository pins, the complete 9-entry MCU and 15-entry SOM inventories, every selection label and title, and all schematic structural/readability results. The audit corrected one presentation error in the readability report: the schematic is UTF-8 text, not strictly ASCII. No hardware fact was extracted and no design was produced during the audit.
+
 ## Pinned repositories
 
 | Repository | Default branch | Immutable commit | Retrieved |
@@ -76,7 +82,7 @@ The schematic also contains the legacy datasheet placeholder `~`; this is not a 
 
 ## Excluded sources and paths
 
-No source-code directory, repository clone, historical repository, other repository path, or moving-branch content URL is approved. Excluded inventory files were not opened, and no contents/raw API endpoint outside `FreeBrewie-MCU/Documentation`, `FreeBrewie-SOM/Docs`, or a directly referenced supporting artifact was intentionally used. A GitHub repository landing page used during default-branch resolution automatically rendered part of the SOM root README; that out-of-bound content was not selected, extracted, or used, and the access deviation is retained in the Task 2 execution report.
+No source-code directory, repository clone, historical repository, other repository path, or moving-branch content URL is approved. Excluded inventory files were not opened, and no contents/raw API endpoint outside `FreeBrewie-MCU/Documentation`, `FreeBrewie-SOM/Docs`, or a directly referenced supporting artifact was intentionally used. A GitHub repository landing page used during the original default-branch resolution automatically rendered part of the SOM root README; that out-of-bound content was not selected, extracted, or used. The deviation, owner disposition, and clean independent audit are retained here and in the Task 2 execution and boundary-audit reports.
 
 ## Boundary-expansion requests
 

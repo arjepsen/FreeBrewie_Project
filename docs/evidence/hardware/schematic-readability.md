@@ -15,7 +15,7 @@ This report assesses file structure and parser suitability only. It does not tur
 
 ## Format and completeness
 
-The artifact is an ASCII KiCad S-expression schematic with CRLF line endings. Its root form is `kicad_sch`, its file-format version marker is `20250114`, and its generator markers are `eeschema` and `9.0`.
+The artifact is a UTF-8 KiCad S-expression schematic without a byte-order mark and with CRLF line endings. Strict UTF-8 decoding succeeds; strict ASCII decoding fails because the file contains six micro-sign (`U+00B5`) characters. Its root form is `kicad_sch`, its file-format version marker is `20250114`, and its generator markers are `eeschema` and `9.0`.
 
 GitHub's pinned contents metadata reports 789,976 bytes and blob `59cd121791764a0f68dce8ca8aed58621468527a`. The immutable raw download is exactly 789,976 bytes; `git hash-object --no-filters` produces the same blob identifier, and the raw bytes compare equal to GitHub's base64 content response.
 
