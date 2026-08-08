@@ -1,14 +1,28 @@
 # Milestone: Hardware baseline
 
 - Milestone ID: 001
-- Status: proposed
+- Status: active
 - Owner: Project owner
 - Purpose: Establish verified hardware facts for the existing device before later requirements work.
 
-## Entry criteria
+## Approval and authorised source boundary
 
-A separate brainstorming and approval cycle must define and approve this
-milestone before any work or reference inspection begins.
+This milestone is authorised by the approved
+[hardware-baseline design](../superpowers/specs/2026-08-08-hardware-baseline-design.md).
+Selective reference inspection may begin only after this activation commit.
+
+The exact read-only repository boundary is:
+
+- `https://github.com/arjepsen/FreeBrewie-MCU`, limited to hardware-relevant
+  documents in `Documentation/`, directly referenced schematics, images,
+  diagrams, and datasheets, and `Documentation/BrewieMCU.kicad_sch`; and
+- `https://github.com/arjepsen/FreeBrewie-SOM`, limited to hardware-relevant
+  documents in `Docs/` and directly referenced schematics, images, diagrams,
+  and datasheets.
+
+`Documentation/BrewieMCU.kicad_sch` is explicitly permitted as non-authoritative
+inferred reverse-engineering evidence. No other repository path or historical
+repository is authorised.
 
 ## Authorised work
 
@@ -39,10 +53,9 @@ assumptions. Historical repositories remain external, read-only, and unimported.
 
 ## Reference-inspection authority
 
-No inspection is authorised by this proposed record. After a separate approval,
-historical repositories may be inspected only for hardware facts needed for this
-milestone. The approved record must name the purpose, source boundary, permitted
-evidence classes, approver, and approval date before inspection.
+Inspection is limited to the approved source boundary above and only for hardware
+facts needed for this milestone. Historical repositories remain unauthorised
+except for the two permitted repository paths above.
 
 ## Deliverables
 
@@ -102,7 +115,7 @@ planning may depend only on verified material hardware facts.
 
 ## Approval
 
-- Approved by and date: Not approved; separate brainstorming and approval required.
+- Approved by and date: Project owner, 2026-08-08.
 - Scope expansion approval by owner and date: No scope expansion is authorised.
 
 ## Next milestone

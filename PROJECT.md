@@ -19,11 +19,10 @@ Efficiency, responsiveness, maintainability, extensibility, and verifiability ar
 ## Current authority
 
 This section is the canonical source for current work authority. Milestone 000,
-project foundation, is complete. No milestone or implementation work is active.
-[Milestone 001, hardware baseline](docs/milestones/001-hardware-baseline.md), is
-proposed and unauthorised; no work or reference inspection under it may begin
-until a separate brainstorming and approval cycle is complete and its milestone
-record is approved and marked active.
+project foundation, is complete. [Milestone 001, hardware baseline, is active](docs/milestones/001-hardware-baseline.md). Only the factual discovery,
+verification, and documentation authorized by its approved design and milestone
+record may proceed. Product implementation and technical subsystem design remain
+unauthorized.
 
 ## Out of scope
 

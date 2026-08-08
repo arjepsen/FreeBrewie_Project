@@ -23,3 +23,13 @@ Run required [reviews](docs/governance/review-checklists.md); consequential deci
 ## Scope changes
 
 Require owner approval and an updated [milestone](docs/templates/milestone.md) before expanding scope.
+
+## Automatic pushes
+
+- Commit frequently during work.
+- Do not push intermediate worktree commits merely because they exist.
+- Push approved specifications and implementation plans after committing them.
+- After reviewed work is merged into main and fresh verification passes, push main automatically.
+- Never force-push.
+- Stop and report authentication failure, rejection, or remote divergence instead of rewriting history.
+- Do not push experimental, incomplete, or blocked work unless the project owner requests it.
