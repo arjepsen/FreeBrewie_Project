@@ -18,11 +18,7 @@ Efficiency, responsiveness, maintainability, extensibility, and verifiability ar
 
 ## Current authority
 
-This section is the canonical source for current work authority. Milestone 000,
-project foundation, is complete. [Milestone 001, hardware baseline, is active](docs/milestones/001-hardware-baseline.md). Only the factual discovery,
-verification, and documentation authorized by its approved design and milestone
-record may proceed. Product implementation and technical subsystem design remain
-unauthorized.
+This section is the canonical source for current work authority. Milestone 000, project foundation, is complete. [Milestone 001](docs/milestones/001-hardware-baseline.md), hardware baseline, is active. Only the factual discovery, verification, and documentation authorized by its approved design and milestone record may proceed. Product implementation and technical subsystem design remain unauthorized.
 
 ## Out of scope
 
