@@ -32,6 +32,7 @@
 ## Planned file map and record contract
 
 - PROJECT.md: canonical current-authority status.
+- CONTRIBUTING.md: contributor workflow, including the approved automatic-push policy.
 - docs/milestones/001-hardware-baseline.md: active milestone scope, approvals, and final status.
 - docs/evidence/hardware/sources.md: pinned source inventory and selection decisions.
 - docs/evidence/hardware/schematic-readability.md: native KiCad structural-readability result.
@@ -52,6 +53,7 @@ Assign fact IDs sequentially in discovery order as HW-001, HW-002, and so on. Th
 
 **Files:**
 - Modify: PROJECT.md
+- Modify: CONTRIBUTING.md
 - Modify: docs/milestones/001-hardware-baseline.md
 
 **Interfaces:**
@@ -91,7 +93,19 @@ In PROJECT.md, replace the inactive-status paragraph with:
 
 Link “Milestone 001” to docs/milestones/001-hardware-baseline.md.
 
-- [ ] **Step 4: Validate activation**
+- [ ] **Step 4: Record the automatic-push policy**
+
+Add an Automatic pushes section to CONTRIBUTING.md with these binding rules:
+
+- Commit frequently during work.
+- Do not push intermediate worktree commits merely because they exist.
+- Push approved specifications and implementation plans after committing them.
+- After reviewed work is merged into main and fresh verification passes, push main automatically.
+- Never force-push.
+- Stop and report authentication failure, rejection, or remote divergence instead of rewriting history.
+- Do not push experimental, incomplete, or blocked work unless the project owner requests it.
+
+- [ ] **Step 5: Validate activation and push policy**
 
 Run:
 
@@ -99,15 +113,17 @@ Run:
     grep -Fq "Project owner, 2026-08-08" docs/milestones/001-hardware-baseline.md
     grep -Fq "BrewieMCU.kicad_sch" docs/milestones/001-hardware-baseline.md
     grep -Fq "Milestone 001, hardware baseline, is active" PROJECT.md
+    grep -Fq "## Automatic pushes" CONTRIBUTING.md
+    grep -Fq "Never force-push" CONTRIBUTING.md
     git diff --check
 
 Expected: all commands exit 0 and the formatting check emits nothing.
 
-- [ ] **Step 5: Commit activation**
+- [ ] **Step 6: Commit activation and workflow policy**
 
 Run:
 
-    git add PROJECT.md docs/milestones/001-hardware-baseline.md
+    git add PROJECT.md CONTRIBUTING.md docs/milestones/001-hardware-baseline.md
     git commit -m "docs: activate hardware baseline milestone"
 
 Expected: commit succeeds. Do not inspect reference material before this commit exists.
