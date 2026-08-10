@@ -18,7 +18,16 @@ Efficiency, responsiveness, maintainability, extensibility, and verifiability ar
 
 ## Current authority
 
-This section is the canonical source for current work authority. Milestone 000, project foundation, is complete. [Milestone 001](docs/milestones/001-hardware-baseline.md), hardware baseline, is active. Only the factual discovery, verification, and documentation authorized by its approved design and milestone record may proceed. Product implementation and technical subsystem design remain unauthorized.
+This section is the canonical source for current work authority. Milestone 000,
+project foundation, is complete. [Milestone 001](docs/milestones/001-hardware-baseline.md),
+hardware baseline, remains active after its 2026-08-10 completion review. Eight
+of 95 indexed facts are verified; 87 remain disputed, including 82 in-scope
+material facts. Owner approval of the exact read-only evidence paths requested
+in the source ledger can enable further verification, so the milestone is not
+blocked. Only factual discovery, verification, and documentation authorised by
+the approved design and milestone record may proceed. Product implementation
+and technical subsystem design remain unauthorised. Linux-image requirements
+and design remains proposed and inactive.
 
 ## Out of scope
 
