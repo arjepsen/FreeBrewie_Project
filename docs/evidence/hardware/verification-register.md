@@ -1,18 +1,49 @@
 # Hardware verification register
 
+## Verified facts
+
+- [HW-002](facts/HW-002.md) verifies only that the pinned project artifacts nominate an ATmega2560-16A in a 100-lead TQFP package; Microchip/Atmel ordering information independently confirms that candidate/package option. It does not verify the physically fitted device.
+- [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md) verify the published flash, SRAM, and EEPROM capacities of that documented ATmega2560 candidate. Applying those capacities to the physical machine remains blocked on a fitted-device marking and board-revision check.
+
 ## Disputed facts
 
-No [indexed facts](fact-index.md) currently carry disputed status.
+All records below preserve disputed status because the approved evidence does not independently establish the complete machine-specific claim:
+
+- Compute/platform: [HW-001](facts/HW-001.md), [HW-004](facts/HW-004.md), [HW-005](facts/HW-005.md), [HW-006](facts/HW-006.md), [HW-007](facts/HW-007.md), [HW-008](facts/HW-008.md), [HW-009](facts/HW-009.md), [HW-010](facts/HW-010.md), [HW-011](facts/HW-011.md), [HW-012](facts/HW-012.md), [HW-013](facts/HW-013.md), [HW-014](facts/HW-014.md), [HW-017](facts/HW-017.md), and [HW-018](facts/HW-018.md).
+- Device/interconnect set 1: [HW-019](facts/HW-019.md), [HW-020](facts/HW-020.md), [HW-021](facts/HW-021.md), [HW-022](facts/HW-022.md), [HW-023](facts/HW-023.md), [HW-024](facts/HW-024.md), [HW-025](facts/HW-025.md), [HW-026](facts/HW-026.md), [HW-027](facts/HW-027.md), [HW-028](facts/HW-028.md), [HW-029](facts/HW-029.md), [HW-030](facts/HW-030.md), [HW-031](facts/HW-031.md), [HW-032](facts/HW-032.md), and [HW-033](facts/HW-033.md).
+- Device/interconnect set 2: [HW-034](facts/HW-034.md), [HW-035](facts/HW-035.md), [HW-036](facts/HW-036.md), [HW-037](facts/HW-037.md), [HW-038](facts/HW-038.md), [HW-039](facts/HW-039.md), [HW-040](facts/HW-040.md), [HW-041](facts/HW-041.md), [HW-042](facts/HW-042.md), [HW-043](facts/HW-043.md), [HW-044](facts/HW-044.md), [HW-045](facts/HW-045.md), [HW-046](facts/HW-046.md), [HW-047](facts/HW-047.md), and [HW-048](facts/HW-048.md).
+- Device/interconnect set 3: [HW-049](facts/HW-049.md), [HW-050](facts/HW-050.md), [HW-051](facts/HW-051.md), [HW-052](facts/HW-052.md), [HW-053](facts/HW-053.md), [HW-054](facts/HW-054.md), [HW-055](facts/HW-055.md), [HW-056](facts/HW-056.md), [HW-057](facts/HW-057.md), [HW-058](facts/HW-058.md), [HW-059](facts/HW-059.md), [HW-060](facts/HW-060.md), [HW-061](facts/HW-061.md), [HW-062](facts/HW-062.md), and [HW-063](facts/HW-063.md).
+- Device/interconnect set 4: [HW-064](facts/HW-064.md), [HW-065](facts/HW-065.md), [HW-066](facts/HW-066.md), [HW-067](facts/HW-067.md), [HW-068](facts/HW-068.md), [HW-069](facts/HW-069.md), [HW-070](facts/HW-070.md), [HW-071](facts/HW-071.md), [HW-072](facts/HW-072.md), [HW-073](facts/HW-073.md), [HW-074](facts/HW-074.md), [HW-075](facts/HW-075.md), [HW-076](facts/HW-076.md), [HW-077](facts/HW-077.md), and [HW-078](facts/HW-078.md).
+- Device/interconnect set 5: [HW-079](facts/HW-079.md), [HW-080](facts/HW-080.md), [HW-081](facts/HW-081.md), [HW-082](facts/HW-082.md), [HW-083](facts/HW-083.md), [HW-084](facts/HW-084.md), [HW-085](facts/HW-085.md), [HW-086](facts/HW-086.md), [HW-087](facts/HW-087.md), [HW-088](facts/HW-088.md), [HW-089](facts/HW-089.md), [HW-090](facts/HW-090.md), [HW-091](facts/HW-091.md), [HW-092](facts/HW-092.md), and [HW-093](facts/HW-093.md).
+
+## Documentary verification performed
+
+| Authoritative document | Exact location | Result and affected records |
+| --- | --- | --- |
+| Microchip/Atmel, [*ATmega640/V-1280/V-1281/V-2560/V-2561/V Datasheet*](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf), revision 2549Q-AVR-02/2014 | Features, page 1; Figure 1-1, page 2; section 35.4, page 410 | Independently confirms the documented candidate/package and candidate memory capacities in HW-002, HW-003, HW-015, and HW-016. It also confirms the generic ATmega2560 pin numbers and published GPIO, interrupt, timer/PWM, SPI, TWI, USART, and ADC functions referenced by HW-011 through HW-014, HW-019 through HW-025, HW-027 through HW-060, HW-073, HW-074, and HW-084 through HW-091. Those machine endpoint mappings and current firmware allocations remain disputed because a component datasheet cannot confirm board wiring or build state. |
+| Olimex, [*A13-SOM-256 and A13-SOM-512 User's Manual*](https://www.olimex.com/Products/SOM/A13/A13-SOM-512/resources/A13-SOM-um.pdf), revision B, 17 March 2015 | Sections 1.4-1.5, page 7; sections 6.4.1-6.5, pages 27-28; sections 8.1-8.2, page 32 | Confirms that Olimex published two A13-SOM variants and documents generic connector exposure for PB2, PB3, PB4, PB10, PB15, PB16, PC7, PE9, HPOUTL/HPCOM, PWM0, and the LCD interface. This is partial support for HW-001, HW-005, HW-006, HW-009, HW-010, HW-069, HW-072, HW-075 through HW-079, HW-082, HW-083, HW-092, and HW-093, but it cannot identify the fitted SOM/carrier or confirm Brewie routing and current Linux state. |
+
+These documents are genuinely independent of the prior project-document lineage. Multiple files within either pinned FreeBrewie repository remain one lineage and were not counted as independent confirmation.
 
 ## Provisional assumptions
 
-No proposed candidate in the [fact index](fact-index.md) has been accepted for provisional use.
+No candidate in the [fact index](fact-index.md) has been accepted for provisional use. No unverified fact demonstrates all three binding-assumption conditions, so none was promoted merely to avoid delay.
+
+## Active owner evidence request
+
+One request is active; no general photo inventory is requested:
+
+- For [HW-001](facts/HW-001.md), with the machine unplugged and dry, provide one straight-on, in-focus photograph of the top of the fitted SOM in which both its product identifier and PCB revision silkscreen are readable. This single view would distinguish the published A13-SOM variant/revision and unblock revision-specific Linux, image, and device-tree research. Do not power, disconnect, probe, or wet the machine for this request.
+
+## Measurement gate
+
+No continuity or powered measurement is requested or approved. Documentary checks and the single targeted visual request above have not yet resolved or exhausted the safer alternatives. Measurement language retained in individual records describes future verification debt only; before any owner measurement is requested, a separate proposal must state the fact ID and question, exact points, equipment/settings, machine state, expected range, risks, stop conditions, and safer alternatives attempted, and must receive separate approval.
 
 ## Verification debt
 
 - Resolve the exact SOM identifier and revision and the carrier identity and revision; the current SOM candidate is [HW-001](facts/HW-001.md), and missing evidence is covered by the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
 - Obtain authoritative SOM RAM, boot-hardware, boot-media, persistent-storage, and networking-hardware evidence only after approval of the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
-- Resolve the exact MCU and its separate flash, SRAM, and EEPROM capacities from manufacturer evidence after checking [HW-002](facts/HW-002.md), [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md).
+- Candidate identity/package and candidate capacities are verified in [HW-002](facts/HW-002.md), [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md); resolve the physically fitted MCU marking, board revision, and silicon errata before treating those capabilities as machine limits.
 - Resolve carrier-level UART connectivity for [HW-004](facts/HW-004.md) separately from the Linux traffic observation in [HW-017](facts/HW-017.md).
 - Resolve the PE9-to-reset mapping in [HW-005](facts/HW-005.md) separately from the observed gpio137 reset behavior in [HW-018](facts/HW-018.md).
 - Identify the display part and wiring for [HW-006](facts/HW-006.md).
@@ -37,8 +68,8 @@ No proposed candidate in the [fact index](fact-index.md) has been accepted for p
 | --- | --- |
 | SOM identity and revision | Candidate identity [HW-001](facts/HW-001.md); exact identity and revision pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
 | Carrier-board identity and revision | No approved-source candidate; pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
-| MCU identity and revision | Candidate identity [HW-002](facts/HW-002.md); board revision pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
-| Memory and storage | MCU flash, SRAM, and EEPROM candidates [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md); SOM RAM and storage pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
+| MCU identity and revision | Documented candidate/package verified in [HW-002](facts/HW-002.md); physically fitted identity and board revision pending the targeted owner sequence and [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
+| Memory and storage | Published capacities of the documented MCU candidate verified in [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md); applying them to the machine awaits fitted identity, and SOM RAM/storage remain pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
 | Boot hardware | No approved-source hardware candidate; pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
 | Display and input | [HW-006](facts/HW-006.md), [HW-007](facts/HW-007.md), [HW-008](facts/HW-008.md), [HW-009](facts/HW-009.md), and [HW-010](facts/HW-010.md) |
 | Networking | No approved-source hardware candidate; pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
@@ -64,7 +95,7 @@ No proposed candidate in the [fact index](fact-index.md) has been accepted for p
 ## Blocked downstream decisions
 
 - Linux image, kernel, boot-media, storage, networking, and device-tree selection remain blocked on [HW-001](facts/HW-001.md), [HW-006](facts/HW-006.md), [HW-007](facts/HW-007.md), [HW-008](facts/HW-008.md), [HW-009](facts/HW-009.md), [HW-010](facts/HW-010.md), and the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
-- MCU build targeting and memory budgets remain blocked on [HW-002](facts/HW-002.md), [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md); boot-hardware questions remain blocked on the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
+- MCU build targeting and physical-machine memory budgets remain blocked on confirming that the fitted device and revision match the documented candidate in [HW-002](facts/HW-002.md); the candidate capacities themselves are verified in [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md). Boot-hardware questions remain blocked on the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
 - Control-system integration decisions involving UART, reset, display enables, or power-control candidates remain blocked on [HW-004](facts/HW-004.md), [HW-005](facts/HW-005.md), [HW-009](facts/HW-009.md) through [HW-014](facts/HW-014.md), [HW-017](facts/HW-017.md), and [HW-018](facts/HW-018.md).
 - Hardware-facing integration for heaters, pumps, mass/pressure/temperature sensing, buttons, valves, solenoids, fan, ADC measurements, indicators, audio, and legacy/current GPIO reconciliation remains blocked on [HW-019](facts/HW-019.md) through [HW-093](facts/HW-093.md) and the [pending Task 4 boundary request](sources.md#pending-task-4-device-and-interconnect-evidence-request); this register does not select behavior, policy, or architecture.
 
