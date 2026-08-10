@@ -8,7 +8,7 @@ The carrier's audio-amplifier IC position is presently absent/unpopulated; the c
 
 ## Current physical and safety context
 
-For the current inspection work, the project owner reported the target machine positioned upside down on a table and the placement providing access to the MCU board, SOM and carrier board, pumps, pressure sensor, and wiring. [HW-096](facts/HW-096.md) [HW-097](facts/HW-097.md) The physical observations were made with the machine unplugged. [HW-098](facts/HW-098.md) Both physical heater loads and both physical pump loads are currently disconnected. [HW-099](facts/HW-099.md) [HW-100](facts/HW-100.md)
+For the current inspection work, the project owner reported the target machine positioned upside down on a table and the placement providing access to the MCU board, SOM and carrier board, pumps, pressure sensor, and wiring. [HW-096](facts/HW-096.md) [HW-097](facts/HW-097.md) At the time of the owner's physical observation, the target machine was unplugged from mains power. [HW-098](facts/HW-098.md) Both physical heater loads and both physical pump loads are currently disconnected. [HW-099](facts/HW-099.md) [HW-100](facts/HW-100.md)
 
 > **Warning:** The current state is not evidence of original factory assembly, wiring, device identity, or endpoint mapping. The disconnected state does not resolve any electrical identity or connection and does not authorize energizing, probing, continuity measurement, or reassembly.
 
