@@ -86,9 +86,15 @@ No source-code directory, repository clone, historical repository, other reposit
 
 ## Boundary-expansion requests
 
+### Task 5 authoritative external document pin
+
+The manufacturer document used to verify the fitted SOM product variant's nominal capacity is Olimex, *A13-SOM-256 and A13-SOM-512 User's Manual*, revision B, March 2015, URL `https://www.olimex.com/Products/SOM/A13/A13-SOM-512/resources/A13-SOM-um.pdf`, downloaded artifact SHA-256 `f0544df121fad9b8e0a5ae1b039e123569e1d51c7f9a6411e4c967eb8795fc2d`. Sections 1.3-1.5, page 7, define the `-256` and `-512` suffixes as RAM-indicating product variants and specify the latter as 512 MB DDR3. The owner's direct fitted-module marking reads `Olimex A13-SOM (512)`, PCB revision `G`; Olimex's official A13-SOM documentation at `https://www.olimex.com/wiki/A13-SOM` explicitly uses `A13-SOM-512 revision G` nomenclature. Together these sources establish nominal installed capacity only, not exact DDR3 vendor, part, timings, runtime availability, or current health.
+
+On 2026-08-10 the owner removed exact DDR3 package identity from milestone scope because the package faces the carrier and viewing it would require separating fragile small connectors, creating more damage risk than evidentiary value. Connector separation must not be requested for this purpose.
+
 ### Pending Task 3 compute-platform evidence request
 
-The selected approved documents do not establish the exact SOM revision, carrier-board identity or revision, MCU board identity or revision, SOM RAM configuration, boot hardware or boot-media identity, persistent-storage identity or capacity, or networking hardware. To close those required evidence categories, the project owner must provide or approve exact read-only paths for authoritative SOM, carrier, and MCU board markings, schematics, BOM or assembly records, and part-specific boot, storage, and networking documentation. No additional repository path, root content, source code, or supporting artifact may be inspected until that approval is recorded against milestone 001.
+The originally selected project documents did not establish the exact SOM revision, carrier-board identity or revision, MCU board identity or revision, SOM RAM configuration, boot hardware or boot-media identity, persistent-storage identity or capacity, or networking hardware. Subsequent owner observations and Task 5 authoritative documentation now establish the fitted SOM and carrier markings, fitted MCU model marking, and nominal 512 MB SOM capacity in HW-001, HW-002, HW-094, and HW-095. Exact DDR3 package identity is an owner-approved removal. To close the remaining required evidence categories, the project owner must provide or approve exact read-only paths for authoritative carrier and MCU board schematics, BOM or assembly records, and part-specific boot, storage, and networking documentation. No additional repository path, root content, source code, or supporting artifact may be inspected until that approval is recorded against milestone 001.
 
 Any later need to inspect another path outside the approved boundary, resolve footprint-library content, or use a historical repository likewise requires project-owner approval recorded against milestone 001 before inspection.
 
