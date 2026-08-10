@@ -91,8 +91,8 @@ cannot be marked complete.
 
 ## Current completion-review status
 
-Milestone 001 remains active. The current baseline contains 95 indexed records:
-8 verified and 87 disputed, with no proposed or provisionally accepted facts.
+Milestone 001 remains active. The current baseline contains 100 indexed records:
+13 verified and 87 disputed, with no proposed or provisionally accepted facts.
 The [baseline's disputed-fact table](../evidence/hardware/baseline.md#all-disputed-facts-and-blocked-decisions)
 records every disputed fact and its blocked or bounded decision.
 
@@ -154,11 +154,11 @@ planning may depend only on verified material hardware facts.
 - Scope review: pass on 2026-08-10; every deliverable is authorised by this
   milestone, all explicit exclusions remained excluded, and no source-boundary
   expansion occurred without owner approval.
-- Provenance review: pass on 2026-08-10 for all 95 fact records; each record
+- Provenance review: pass on 2026-08-10 for all 100 fact records; each record
   identifies its source and location, extraction date, extractor, dependent
   decisions, direct or inferred basis, independent confirmation, conflicts,
   and limitations.
-- Assumption review: pass on 2026-08-10 for all 95 fact records; every record
+- Assumption review: pass on 2026-08-10 for all 100 fact records; every record
   states confidence, cheapest useful check, verification action, and blocked
   decisions. No fact is provisionally accepted, and consequential use of every
   unverified in-scope fact remains blocked.

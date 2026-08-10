@@ -31,6 +31,8 @@ This inventory is a view over hardware fact records. Unless a row says **verifie
 
 ## Heaters and power-support outputs
 
+The project owner reports that both physical heater loads are currently disconnected. This dated state does not identify either heater, connect either load to a candidate row below, or establish original factory wiring, connector mapping, electrical limits, or later state. [HW-099](facts/HW-099.md)
+
 | Device or endpoint | MCU endpoint | Hardware drive fact | Electrical/current-state limits | Status |
 | --- | --- | --- | --- | --- |
 | Mash heater 2 | PG5/pin 1 candidate. | GPIO/timer-output mapping; separately described as active in current code. [HW-019](facts/HW-019.md) [HW-084](facts/HW-084.md) | Drive stage, voltage, polarity, timer channel, load rating, safe limit, exact firmware, and initialization state unknown. | disputed |
@@ -44,6 +46,8 @@ This inventory is a view over hardware fact records. Unless a row says **verifie
 | Legacy power-related endpoint | A13 PC7 candidate. | Direction and function are not established. [HW-078](facts/HW-078.md) | Destination, voltage, polarity, and current capability unknown. | disputed |
 
 ## Pumps and pump DAC
+
+The project owner reports that both physical pump loads are currently disconnected. This dated state does not identify either pump, connect either load to a candidate row below, or establish original factory wiring, connector, enable, tachometer, DAC mapping, electrical limits, or later state. [HW-100](facts/HW-100.md)
 
 | Device or endpoint | MCU endpoint | Hardware interface or drive fact | Electrical/current-state limits | Status |
 | --- | --- | --- | --- | --- |

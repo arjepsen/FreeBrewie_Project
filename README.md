@@ -7,7 +7,7 @@ FreeBrewie is a clean-slate whole-system project to create a maintainable, effic
 The [project charter's current-authority section](PROJECT.md#current-authority)
 is the canonical source for current work authority. Milestone 000, project
 foundation, is complete. Milestone 001, hardware baseline, remains active after
-its completion review found 8 verified and 87 disputed facts. Only its approved
+its completion review found 13 verified and 87 disputed facts. Only its approved
 factual discovery, verification, and documentation may proceed; implementation
 and technical subsystem design remain unauthorised. Linux-image requirements
 and design remains proposed and inactive.

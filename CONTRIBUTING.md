@@ -3,10 +3,10 @@
 ## Before starting work
 
 Read the canonical [current-authority section](PROJECT.md#current-authority),
-then confirm that an approved, active milestone authorises the proposed work.
-No milestone or implementation work is currently active; [milestone
-001](docs/milestones/001-hardware-baseline.md) remains proposed and
-unauthorised. Stop on any status or scope mismatch.
+which is the source of truth for current milestone status and work authority.
+Confirm that an approved, active milestone authorises the requested work. Stop
+when the request is not authorised or when its status or scope conflicts with
+that canonical authority.
 
 ## Before inspecting reference material
 

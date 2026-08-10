@@ -6,6 +6,12 @@ The target is the currently inspected machine with fitted SOM marked `Olimex A13
 
 The carrier's audio-amplifier IC position is presently absent/unpopulated; the cause and wider circuit condition are not established. [HW-071](facts/HW-071.md)
 
+## Current physical and safety context
+
+For the current inspection work, the project owner reported the target machine positioned upside down on a table and the placement providing access to the MCU board, SOM and carrier board, pumps, pressure sensor, and wiring. [HW-096](facts/HW-096.md) [HW-097](facts/HW-097.md) The physical observations were made with the machine unplugged. [HW-098](facts/HW-098.md) Both physical heater loads and both physical pump loads are currently disconnected. [HW-099](facts/HW-099.md) [HW-100](facts/HW-100.md)
+
+> **Warning:** The current state is not evidence of original factory assembly, wiring, device identity, or endpoint mapping. The disconnected state does not resolve any electrical identity or connection and does not authorize energizing, probing, continuity measurement, or reassembly.
+
 Evidence and status records:
 
 - [Source boundary and inventory](sources.md)
@@ -36,7 +42,7 @@ These summaries are views over the linked fact records, not independent evidence
 | MCU EEPROM | 4 KiB nominal EEPROM for the fitted marked model; wear, contents, protection, and layout are unresolved. [HW-016](facts/HW-016.md) | verified |
 | Audio population | Audio-amplifier IC position is absent/unpopulated on the fitted carrier; cause, circuit condition, and behavior are outside the verified claim. [HW-071](facts/HW-071.md) | verified |
 
-The [fact index](fact-index.md) contains 8 verified and 87 disputed records. There are no proposed or provisionally accepted records. No disputed record below is accepted as a baseline conclusion.
+The [fact index](fact-index.md) contains 13 verified and 87 disputed records. There are no proposed or provisionally accepted records. No disputed record below is accepted as a baseline conclusion.
 
 ## All disputed facts and blocked decisions
 
