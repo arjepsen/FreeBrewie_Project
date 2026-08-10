@@ -2,14 +2,16 @@
 
 ## Verified facts
 
+- [HW-001](facts/HW-001.md) verifies the bounded owner-observed marking claim that the fitted SOM reads `Olimex A13-SOM (512)`, PCB revision `G`. Olimex independently documents the A13-SOM-512 product and revision-G nomenclature; neither source is used to infer carrier wiring, the fitted RAM part, boot hardware, or electrical behavior.
 - [HW-002](facts/HW-002.md) verifies only that the pinned project artifacts nominate an ATmega2560-16A in a 100-lead TQFP package; Microchip/Atmel ordering information independently confirms that candidate/package option. It does not verify the physically fitted device.
 - [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md) verify the published flash, SRAM, and EEPROM capacities of that documented ATmega2560 candidate. Applying those capacities to the physical machine remains blocked on a fitted-device marking and board-revision check.
+- [HW-094](facts/HW-094.md) verifies only the direct owner-observed carrier silkscreen strings `Brewie ARM board` and `V1p2`. No photograph or revision-controlled carrier artifact was inspected, and no population, connectivity, or electrical behavior is inferred.
 
 ## Disputed facts
 
 All records below preserve disputed status because the approved evidence does not independently establish the complete machine-specific claim:
 
-- Compute/platform: [HW-001](facts/HW-001.md), [HW-004](facts/HW-004.md), [HW-005](facts/HW-005.md), [HW-006](facts/HW-006.md), [HW-007](facts/HW-007.md), [HW-008](facts/HW-008.md), [HW-009](facts/HW-009.md), [HW-010](facts/HW-010.md), [HW-011](facts/HW-011.md), [HW-012](facts/HW-012.md), [HW-013](facts/HW-013.md), [HW-014](facts/HW-014.md), [HW-017](facts/HW-017.md), and [HW-018](facts/HW-018.md).
+- Compute/platform: [HW-004](facts/HW-004.md), [HW-005](facts/HW-005.md), [HW-006](facts/HW-006.md), [HW-007](facts/HW-007.md), [HW-008](facts/HW-008.md), [HW-009](facts/HW-009.md), [HW-010](facts/HW-010.md), [HW-011](facts/HW-011.md), [HW-012](facts/HW-012.md), [HW-013](facts/HW-013.md), [HW-014](facts/HW-014.md), [HW-017](facts/HW-017.md), and [HW-018](facts/HW-018.md).
 - Device/interconnect set 1: [HW-019](facts/HW-019.md), [HW-020](facts/HW-020.md), [HW-021](facts/HW-021.md), [HW-022](facts/HW-022.md), [HW-023](facts/HW-023.md), [HW-024](facts/HW-024.md), [HW-025](facts/HW-025.md), [HW-026](facts/HW-026.md), [HW-027](facts/HW-027.md), [HW-028](facts/HW-028.md), [HW-029](facts/HW-029.md), [HW-030](facts/HW-030.md), [HW-031](facts/HW-031.md), [HW-032](facts/HW-032.md), and [HW-033](facts/HW-033.md).
 - Device/interconnect set 2: [HW-034](facts/HW-034.md), [HW-035](facts/HW-035.md), [HW-036](facts/HW-036.md), [HW-037](facts/HW-037.md), [HW-038](facts/HW-038.md), [HW-039](facts/HW-039.md), [HW-040](facts/HW-040.md), [HW-041](facts/HW-041.md), [HW-042](facts/HW-042.md), [HW-043](facts/HW-043.md), [HW-044](facts/HW-044.md), [HW-045](facts/HW-045.md), [HW-046](facts/HW-046.md), [HW-047](facts/HW-047.md), and [HW-048](facts/HW-048.md).
 - Device/interconnect set 3: [HW-049](facts/HW-049.md), [HW-050](facts/HW-050.md), [HW-051](facts/HW-051.md), [HW-052](facts/HW-052.md), [HW-053](facts/HW-053.md), [HW-054](facts/HW-054.md), [HW-055](facts/HW-055.md), [HW-056](facts/HW-056.md), [HW-057](facts/HW-057.md), [HW-058](facts/HW-058.md), [HW-059](facts/HW-059.md), [HW-060](facts/HW-060.md), [HW-061](facts/HW-061.md), [HW-062](facts/HW-062.md), and [HW-063](facts/HW-063.md).
@@ -21,7 +23,7 @@ All records below preserve disputed status because the approved evidence does no
 | Authoritative document | Exact location | Result and affected records |
 | --- | --- | --- |
 | Microchip/Atmel, [*ATmega640/V-1280/V-1281/V-2560/V-2561/V Datasheet*](https://ww1.microchip.com/downloads/en/devicedoc/atmel-2549-8-bit-avr-microcontroller-atmega640-1280-1281-2560-2561_datasheet.pdf), revision 2549Q-AVR-02/2014 | Features, page 1; Figure 1-1, page 2; section 35.4, page 410 | Independently confirms the documented candidate/package and candidate memory capacities in HW-002, HW-003, HW-015, and HW-016. It also confirms the generic ATmega2560 pin numbers and published GPIO, interrupt, timer/PWM, SPI, TWI, USART, and ADC functions referenced by HW-011 through HW-014, HW-019 through HW-025, HW-027 through HW-060, HW-073, HW-074, and HW-084 through HW-091. Those machine endpoint mappings and current firmware allocations remain disputed because a component datasheet cannot confirm board wiring or build state. |
-| Olimex, [*A13-SOM-256 and A13-SOM-512 User's Manual*](https://www.olimex.com/Products/SOM/A13/A13-SOM-512/resources/A13-SOM-um.pdf), revision B, 17 March 2015 | Sections 1.4-1.5, page 7; sections 6.4.1-6.5, pages 27-28; sections 8.1-8.2, page 32 | Confirms that Olimex published two A13-SOM variants and documents generic connector exposure for PB2, PB3, PB4, PB10, PB15, PB16, PC7, PE9, HPOUTL/HPCOM, PWM0, and the LCD interface. This is partial support for HW-001, HW-005, HW-006, HW-009, HW-010, HW-069, HW-072, HW-075 through HW-079, HW-082, HW-083, HW-092, and HW-093, but it cannot identify the fitted SOM/carrier or confirm Brewie routing and current Linux state. |
+| Olimex, [*A13-SOM-256 and A13-SOM-512 User's Manual*](https://www.olimex.com/Products/SOM/A13/A13-SOM-512/resources/A13-SOM-um.pdf), revision B, 17 March 2015; [A13 SOM catalog](https://www.olimex.com/Products/SOM/A13/); and [official A13-SOM documentation](https://www.olimex.com/wiki/A13-SOM) | Manual sections 1.4-1.5, page 7; sections 6.4.1-6.5, pages 27-28; sections 8.1-8.2, page 32; catalog A13-SOM-512 entry; official documentation A13-SOM-512 revision-G note | The catalog and official documentation independently confirm the manufacturer product/revision nomenclature used by the owner-observed HW-001 markings. The manual documents generic connector exposure for PB2, PB3, PB4, PB10, PB15, PB16, PC7, PE9, HPOUTL/HPCOM, PWM0, and the LCD interface. This remains only partial support for HW-005, HW-006, HW-009, HW-010, HW-069, HW-072, HW-075 through HW-079, HW-082, HW-083, HW-092, and HW-093; none of these sources confirms Brewie carrier routing or current Linux state. |
 
 These documents are genuinely independent of the prior project-document lineage. Multiple files within either pinned FreeBrewie repository remain one lineage and were not counted as independent confirmation.
 
@@ -29,19 +31,23 @@ These documents are genuinely independent of the prior project-document lineage.
 
 No candidate in the [fact index](fact-index.md) has been accepted for provisional use. No unverified fact demonstrates all three binding-assumption conditions, so none was promoted merely to avoid delay.
 
-## Active owner evidence request
+## Owner evidence sequence
 
-One request is active; no general photo inventory is requested:
+Completed on 2026-08-10:
 
-- For [HW-001](facts/HW-001.md), with the machine unplugged and dry, provide one straight-on, in-focus photograph of the top of the fitted SOM in which both its product identifier and PCB revision silkscreen are readable. This single view would distinguish the published A13-SOM variant/revision and unblock revision-specific Linux, image, and device-tree research. Do not power, disconnect, probe, or wet the machine for this request.
+- The owner directly read the fitted SOM and carrier silkscreens while the machine was unplugged: `Olimex A13-SOM (512)`, PCB revision `G`; and `Brewie ARM board`, revision `V1p2`. This was a direct marking transcription, not a photograph. It verified the bounded marking claims in [HW-001](facts/HW-001.md) and [HW-094](facts/HW-094.md), not any undocumented behavior.
+
+One next request is active; no general photo inventory is requested:
+
+- To resolve the physical-device limitation retained by [HW-002](facts/HW-002.md), with the machine unplugged and dry, what is the complete text printed on top of the fitted 100-pin MCU at U1? Please transcribe every line exactly; do not disconnect or probe the board.
 
 ## Measurement gate
 
-No continuity or powered measurement is requested or approved. Documentary checks and the single targeted visual request above have not yet resolved or exhausted the safer alternatives. Measurement language retained in individual records describes future verification debt only; before any owner measurement is requested, a separate proposal must state the fact ID and question, exact points, equipment/settings, machine state, expected range, risks, stop conditions, and safer alternatives attempted, and must receive separate approval.
+No continuity or powered measurement is requested or approved. Documentary checks and the targeted marking sequence above have not yet resolved or exhausted the safer alternatives. Measurement language retained in individual records describes future verification debt only; before any owner measurement is requested, a separate proposal must state the fact ID and question, exact points, equipment/settings, machine state, expected range, risks, stop conditions, and safer alternatives attempted, and must receive separate approval.
 
 ## Verification debt
 
-- Resolve the exact SOM identifier and revision and the carrier identity and revision; the current SOM candidate is [HW-001](facts/HW-001.md), and missing evidence is covered by the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
+- The visible SOM and carrier markings are resolved in [HW-001](facts/HW-001.md) and [HW-094](facts/HW-094.md). Obtain revision-matched authoritative evidence for `Brewie ARM board` revision `V1p2` and confirm the fitted revision-G RAM part only if a downstream decision depends on it; the remaining evidence is covered by the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
 - Obtain authoritative SOM RAM, boot-hardware, boot-media, persistent-storage, and networking-hardware evidence only after approval of the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
 - Candidate identity/package and candidate capacities are verified in [HW-002](facts/HW-002.md), [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md); resolve the physically fitted MCU marking, board revision, and silicon errata before treating those capabilities as machine limits.
 - Resolve carrier-level UART connectivity for [HW-004](facts/HW-004.md) separately from the Linux traffic observation in [HW-017](facts/HW-017.md).
@@ -66,8 +72,8 @@ No continuity or powered measurement is requested or approved. Documentary check
 
 | Required category | Indexed candidate or bounded outcome |
 | --- | --- |
-| SOM identity and revision | Candidate identity [HW-001](facts/HW-001.md); exact identity and revision pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
-| Carrier-board identity and revision | No approved-source candidate; pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
+| SOM identity and revision | Fitted visible marking verified as `Olimex A13-SOM (512)`, PCB revision `G`, in [HW-001](facts/HW-001.md); fitted RAM part and electrical behavior remain outside that claim |
+| Carrier-board identity and revision | Fitted visible marking verified as `Brewie ARM board`, revision `V1p2`, in [HW-094](facts/HW-094.md); schematic correspondence, population, connectivity, and behavior remain pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
 | MCU identity and revision | Documented candidate/package verified in [HW-002](facts/HW-002.md); physically fitted identity and board revision pending the targeted owner sequence and [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
 | Memory and storage | Published capacities of the documented MCU candidate verified in [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md); applying them to the machine awaits fitted identity, and SOM RAM/storage remain pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
 | Boot hardware | No approved-source hardware candidate; pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request) |
@@ -94,7 +100,7 @@ No continuity or powered measurement is requested or approved. Documentary check
 
 ## Blocked downstream decisions
 
-- Linux image, kernel, boot-media, storage, networking, and device-tree selection remain blocked on [HW-001](facts/HW-001.md), [HW-006](facts/HW-006.md), [HW-007](facts/HW-007.md), [HW-008](facts/HW-008.md), [HW-009](facts/HW-009.md), [HW-010](facts/HW-010.md), and the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
+- The exact visible SOM and carrier markings no longer block revision-specific research, but consequential Linux image, kernel, boot-media, storage, networking, and device-tree selection remains blocked on [HW-006](facts/HW-006.md), [HW-007](facts/HW-007.md), [HW-008](facts/HW-008.md), [HW-009](facts/HW-009.md), [HW-010](facts/HW-010.md), revision-matched carrier evidence for [HW-094](facts/HW-094.md), and the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
 - MCU build targeting and physical-machine memory budgets remain blocked on confirming that the fitted device and revision match the documented candidate in [HW-002](facts/HW-002.md); the candidate capacities themselves are verified in [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md). Boot-hardware questions remain blocked on the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
 - Control-system integration decisions involving UART, reset, display enables, or power-control candidates remain blocked on [HW-004](facts/HW-004.md), [HW-005](facts/HW-005.md), [HW-009](facts/HW-009.md) through [HW-014](facts/HW-014.md), [HW-017](facts/HW-017.md), and [HW-018](facts/HW-018.md).
 - Hardware-facing integration for heaters, pumps, mass/pressure/temperature sensing, buttons, valves, solenoids, fan, ADC measurements, indicators, audio, and legacy/current GPIO reconciliation remains blocked on [HW-019](facts/HW-019.md) through [HW-093](facts/HW-093.md) and the [pending Task 4 boundary request](sources.md#pending-task-4-device-and-interconnect-evidence-request); this register does not select behavior, policy, or architecture.

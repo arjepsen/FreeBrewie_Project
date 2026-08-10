@@ -2,7 +2,7 @@
 
 | ID | Claim summary | Category | Status | Primary source | Record |
 | --- | --- | --- | --- | --- | --- |
-| HW-001 | Current target SOM candidate is an Olimex A13 platform. | SOM identity | disputed | [SOM platform notes, lines 11-16](https://github.com/arjepsen/FreeBrewie-SOM/blob/1f83897f73530abc02f598f07b8e61454768a26d/Docs/Brewie_SOM_Platform_Notes_2026-08-04.md#L11-L16) | [record](facts/HW-001.md) |
+| HW-001 | Fitted SOM marking is Olimex A13-SOM (512), PCB revision G. | SOM identity | verified | Owner-observed unplugged silkscreen reading, 2026-08-10 | [record](facts/HW-001.md) |
 | HW-002 | Project artifacts nominate ATmega2560-16A in TQFP-100; fitted identity remains unverified. | MCU identity | verified | [MCU schematic, U1 lines 29228-29255](https://github.com/arjepsen/FreeBrewie-MCU/blob/31efc798a4eff7208e3ed538215ef2ddfcc02884/Documentation/BrewieMCU.kicad_sch#L29228-L29255) | [record](facts/HW-002.md) |
 | HW-003 | Documented ATmega2560 candidate has 256 KiB flash. | MCU flash | verified | [MCU schematic, U1 lines 29228-29274](https://github.com/arjepsen/FreeBrewie-MCU/blob/31efc798a4eff7208e3ed538215ef2ddfcc02884/Documentation/BrewieMCU.kicad_sch#L29228-L29274) | [record](facts/HW-003.md) |
 | HW-004 | SOM and MCU have a candidate physical UART connection. | Compute bus | disputed | [SOM integration notes, lines 44-50](https://github.com/arjepsen/FreeBrewie-SOM/blob/1f83897f73530abc02f598f07b8e61454768a26d/Docs/Brewie_SOM_MCU_Integration_Notes_2026-08-01.md#L44-L50) | [record](facts/HW-004.md) |
@@ -95,3 +95,4 @@
 | HW-091 | PF3 is no longer the active power-LED pin in current project notes. | Current mapping status | disputed | [MCU pin map, line 26](https://github.com/arjepsen/FreeBrewie-MCU/blob/31efc798a4eff7208e3ed538215ef2ddfcc02884/Documentation/Brewie_MCU_Pin_Map_Updated_2026-08-01.md#L26) | [record](facts/HW-091.md) |
 | HW-092 | Current pwm-0 has a reported 50 µs period. | Display PWM | disputed | [SOM platform notes, line 174](https://github.com/arjepsen/FreeBrewie-SOM/blob/1f83897f73530abc02f598f07b8e61454768a26d/Docs/Brewie_SOM_Platform_Notes_2026-08-04.md#L174) | [record](facts/HW-092.md) |
 | HW-093 | Current pwm-0 has reported inverse polarity. | Display PWM | disputed | [SOM platform notes, lines 174-175](https://github.com/arjepsen/FreeBrewie-SOM/blob/1f83897f73530abc02f598f07b8e61454768a26d/Docs/Brewie_SOM_Platform_Notes_2026-08-04.md#L174-L175) | [record](facts/HW-093.md) |
+| HW-094 | Fitted carrier marking is Brewie ARM board, revision V1p2. | Carrier identity | verified | Owner-observed unplugged silkscreen reading, 2026-08-10 | [record](facts/HW-094.md) |
