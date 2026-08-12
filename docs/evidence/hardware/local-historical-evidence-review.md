@@ -50,6 +50,50 @@ The folder contains three materially different kinds of evidence:
 - The captured FEX text declares USB Wi-Fi enabled and SDIO Wi-Fi disabled. The
   runtime log alone does not identify the fitted USB Wi-Fi model.
 
+### Fresh ReBrewie legacy-platform boot
+
+The owner booted the community-edited ReBrewie image with heaters and pumps
+still disconnected and captured the requested read-only commands in
+`ReBrewieLegacyRuntimeInfo.txt`. The login banner identifies ReBrewie
+`v4.1.0-rc0`; the owner states that its application/userspace was edited by
+other users while retaining the older Linux image. It must not be described as
+an untouched factory image.
+
+- `uname` and `dmesg` identify the same `Linux 3.4.90-Brewie #5` kernel build
+  and timestamp as the archived original-image kernel and log. This strongly
+  corroborates that the archive represents the same legacy platform lineage,
+  while not proving that every userspace file is original.
+- `/etc/os-release` identifies Buildroot
+  `2014.02-git-g3b4bd90-dirty`, with the display name `Brewie 2014.02-git`.
+- The running system reports an ARMv7 Cortex-A8-class CPU, Allwinner A13
+  revision B, 512 MB physical RAM at boot, and 397,524 KiB currently exposed as
+  `MemTotal` after legacy reservations.
+- The installed SD card exposes 15,558,144 one-kilobyte blocks and three
+  partitions: a 16 MiB first partition, approximately 383 MiB root partition,
+  and approximately 7.0 GiB third partition. Root and `/home/brewie` are
+  writable EXT3 filesystems. These are observations of this installed card,
+  not a clean-slate partitioning requirement.
+- The legacy command line boots from `/dev/mmcblk0p2`, uses `ttyS0` at 115200,
+  waits for root, requests quiet boot, and contains an empty `loglevel=` value
+  that the kernel reports as malformed.
+- No model string was returned by `/proc/device-tree/model`. Combined with the
+  legacy sunxi configuration behavior, this means the absence must not be
+  mistaken for an unidentified physical SOM or treated like the modern DT
+  model property.
+- The boot enumerates `ttyS0` at `0x01c28400` and `ttyS1` at `0x01c28c00`, a
+  PCF8563 RTC on I2C0 at `0x51`, and a Goodix touchscreen on I2C2 at `0x14`.
+  The Goodix backport creates the capacitive touchscreen input successfully.
+- The RTC supplies the initial system clock, but the log contains an unusually
+  large burst of repeated RTC reads around 61 seconds. This is a historical
+  behavior worth avoiding or diagnosing later, not a design to inherit.
+- The NAND driver fails to find a NAND physical architecture, while the system
+  boots successfully from SD/MMC. This supports SD/MMC as the active storage
+  path for this boot but does not prove that no NAND footprint exists anywhere
+  in the hardware.
+- The `rtl8192cu` driver is present and `wlan0` becomes ready, but this capture
+  does not expose the adapter's USB vendor/product ID. The later Debian capture
+  identifies its then-fitted adapter separately.
+
 ### Later clean-image experiment
 
 - The fresh capture identifies the running system as Linux
