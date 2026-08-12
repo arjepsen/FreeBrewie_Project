@@ -18,6 +18,37 @@ symlink/submodule targets, moving branches, and hardware conclusions remain
 outside this approval. Candidate content paths must be presented to and approved
 by the project owner before inspection.
 
+#### Filename-only inventory result
+
+The approved metadata inventory completed on 2026-08-12 against the two pinned
+commits. GitHub reported complete, non-truncated trees containing 65 paths/object
+types for FreeBrewie-MCU and 5,405 for FreeBrewie-SOM. Only repository-relative
+paths and Git object types were retained; no newly exposed blob content was read.
+
+The path names expose no candidate BOM, assembly record, native netlist,
+revision-matched carrier schematic, device-tree source or blob, boot-media or
+persistent-storage record, networking-hardware record, connector/harness
+drawing, or complete characterization report. The SOM tree is dominated by the
+previous application and its vendored UI dependency, neither of which is an
+authoritative hardware source.
+
+The following previously excluded paths are the only newly inventoried names
+that plausibly contain narrowly scoped hardware-configuration observations:
+
+- FreeBrewie-MCU `boards/brewie_atmega2560.json`;
+- FreeBrewie-MCU `platformio.ini`;
+- FreeBrewie-MCU `src/Board.h`;
+- FreeBrewie-SOM `Deploy/Admin/flash_mcu_from_som.sh`;
+- FreeBrewie-SOM `Deploy/Admin/probe_buzzer_gpio.sh`;
+- FreeBrewie-SOM `Apps/BrewieApp/src/Platform/Display.c`; and
+- FreeBrewie-SOM `Apps/CalibrationApp/src/main.c`.
+
+These names do not establish relevance, correctness, or hardware facts. Their
+contents remain unapproved and unread. Audio/buzzer evidence is non-blocking,
+and application/calibration source risks exposing historical implementation
+logic, so those candidates should be opened only for a specific unresolved fact
+that cannot be addressed by a more authoritative source.
+
 ### Boundary incident and owner disposition
 
 During the original Task 2 execution, a web opener automatically rendered part of the out-of-bound `FreeBrewie-SOM` repository-root README while the default branch was being resolved. No information from that render was selected, extracted, or used. On 2026-08-08, the project owner approved retaining this transparent disclosure on condition that a fresh agent independently audit Task 2 using only approved paths pinned to the already-recorded full commit SHAs.
