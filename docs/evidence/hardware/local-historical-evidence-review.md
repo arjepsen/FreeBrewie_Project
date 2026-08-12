@@ -18,9 +18,10 @@ The folder contains three materially different kinds of evidence:
    root-filesystem fragments, and original-image `dmesg`. These are strong
    evidence of what one historical installation was configured to do, but do
    not independently prove every physical net.
-2. **Later direct runtime observations** — the Linux 5.10 `dmesg` and 2026
-   bring-up notes. These show what worked on the inspected machine during that
-   later experiment, subject to the accuracy and completeness of the capture.
+2. **Later direct runtime observations** — two Linux 5.10 boot logs, including
+   the fresh four-command capture `NewOlimexDebianInfo.txt`, and 2026 bring-up
+   notes. These show what worked on the inspected machine during that later
+   experiment, subject to the accuracy and completeness of each capture.
 3. **Reconstructions and tracing notes** — overlays, FEX text, cable maps, and
    handwritten investigation records. These are useful candidate evidence and
    corroboration, but retain their recorded uncertainty and are not promoted to
@@ -51,20 +52,44 @@ The folder contains three materially different kinds of evidence:
 
 ### Later clean-image experiment
 
-- The later runtime capture identifies an Olimex A13-SOM-512 running Linux
-  5.10.180 with approximately 512 MB physical RAM and an SD card as storage.
+- The fresh capture identifies the running system as Linux
+  `5.10.180-olimex #140856`, built 2026-01-28, on `armv7l`; both
+  `/proc/device-tree/model` and `dmesg` report `Olimex A13-SOM-512`.
+- It reports 521,216 KiB total physical memory to Linux, with 96 MiB reserved
+  for CMA, and a 59.5 GiB SDXC card containing a single visible partition.
+- The kernel command line selects the root filesystem by PARTUUID, waits for
+  it, uses `ttyS0` at 115200 as console, sets `panic=10`, and uses log level 4.
+  These are observations of this experimental image, not clean-slate choices.
 - It records a Realtek USB adapter with USB ID `0bda:8176`, advertised as an
-  802.11n WLAN adapter. This is a dated fitted-device observation, not proof of
-  the original factory adapter or a requirement for the new design.
+  802.11n WLAN adapter; the `rtl8192cu` driver associates successfully. This is
+  a dated fitted-device observation, not proof of the original factory adapter
+  or a requirement for the new design.
+- It enumerates `ttyS0` at `0x1c28400` and `ttyS1` at `0x1c28c00`, and enables
+  the A13 watchdog with a 16-second timeout. Enumeration does not itself prove
+  which external endpoint is wired to `ttyS1`.
+- It identifies the touch controller as Goodix ID 911, version 1060, on I2C2
+  at `0x14`, and creates a capacitive-touch input device. Its optional
+  `goodix_911_cfg.bin` load fails and the driver falls back.
 - The 2026 notes record working `/dev/ttyS1` passive MCU telemetry at 115200
   8N1, a working Goodix GT911 path at I2C2 address `0x14`, and a working
   480×272, 32-bpp framebuffer. Together they materially corroborate the
   corresponding historical configuration candidates.
-- The later overlay assigns PB3 to backlight enable, PG11 to touchscreen IRQ,
+- The owner clarified that `brewie.dts` was probably made specifically for this
+  experimental image. That later overlay assigns PB3 to backlight enable, PG11
+  to touchscreen IRQ,
   PC3 to touchscreen reset, and UART3/PG pins to the MCU link, but explicitly
   labels these assignments as assumptions. Successful system-level operation
   supports the configuration as a set; it does not isolate every individual
   pin claim.
+- The fresh log records missing regulator descriptions for several pin banks,
+  backlight, panel, and Goodix supplies; a missing panel `connector_type`; a
+  malformed or unsigned wireless regulatory database; and a late initialisation
+  of the kernel random-number generator. These are concrete maintainability and
+  integration observations to investigate later, not architecture decisions.
+- `first dmesg.txt` is a different boot/build (`#123712`, built 2024-09-19)
+  from the fresh capture (`#140856`, built 2026-01-28), despite both identifying
+  their kernel release as 5.10.180-olimex. They must not be treated as duplicate
+  copies of one boot.
 
 ### Physical investigation notes
 

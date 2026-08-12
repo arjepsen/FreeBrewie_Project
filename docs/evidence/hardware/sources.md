@@ -83,6 +83,7 @@ The first substantive pass selected the following narrowly scoped artifacts:
 | --- | --- | --- |
 | `brewie.dts` | `06d56de96b826e13d2c95070aea218021bf755ff00f3023ff81a6a5a2a345f7f` | Later experimental overlay; its own comments label key pin assignments as assumptions. |
 | `first dmesg.txt` | `69c037bbcced1863148f702fff04366e368223fc3ea7ac47c228eeb8252bfef8` | Later runtime capture from Linux 5.10.180; not an original-image log. |
+| `NewOlimexDebianInfo.txt` | `1abc86106395e27b3cd6e1a80f13692a03cc77625f609cd53fd6730baeb86933` | Owner-requested fresh capture of `uname -a`, `/proc/cmdline`, `/proc/device-tree/model`, and complete `dmesg` from the later Olimex/Debian experiment. |
 | `oldImage/Gamle Brewie software/uboot partition/boot.scr` | `375397d0cce1618a43479d3cb9508653289868377e79a6ae00bf5c31a1b72a78` | Captured legacy U-Boot script; historical boot configuration. |
 | `oldImage/Gamle Brewie software/uboot partition/script.bin` | `f134c3f515df2343112d7fe4b493350f2b90794214f5fa4a78eb8480b4ebfeec` | Captured legacy Allwinner configuration binary; not decoded during this pass. |
 | `oldImage/Gamle Brewie software/uboot partition/uEnv.txt` | `5c64ab9828e26e0525983192af9361c85aac3f79039280095ac2f1ff7744d3c7` | Captured legacy U-Boot environment fragment; it contains only a comment. |
@@ -96,6 +97,12 @@ notes directly under `oldImage`, and the hardware/runtime sections of
 `Brewie_A13_linux_setup_guide_working_updated20V0.5.md`. These are prior
 investigations or configuration reconstructions, not factory records. Exact
 line citations and source hashes must accompany any facts extracted from them.
+
+The project owner clarified on 2026-08-12 that top-level `brewie.dts` was
+probably created specifically for the later Olimex/Debian-image experiment.
+It is therefore classified as an owner-created experimental configuration, not
+an original Brewie artifact, factory device tree, or authoritative wiring
+record. Its comments explicitly call its key pin assignments assumptions.
 
 The legacy GUI executables and source, recipes, brewing state, MCU firmware
 images/source, protocol-oriented material, and old application startup and
