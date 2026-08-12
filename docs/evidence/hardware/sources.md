@@ -9,6 +9,15 @@ Inspection is authorised by active milestone 001, `docs/milestones/001-hardware-
 
 `FreeBrewie-MCU/Documentation/BrewieMCU.kicad_sch` is selected as non-authoritative, inferred reverse-engineering evidence. Repositories were accessed read-only and were not cloned. An inventory entry records an evidence-selection decision; it does not validate the item's contents or establish a hardware fact.
 
+### Approved filename-only expansion
+
+On 2026-08-12, the project owner approved listing repository-relative path names
+and Git object types across the two already pinned repositories solely to locate
+candidate evidence for the pending Task 3 and Task 4 requests. File contents,
+symlink/submodule targets, moving branches, and hardware conclusions remain
+outside this approval. Candidate content paths must be presented to and approved
+by the project owner before inspection.
+
 ### Boundary incident and owner disposition
 
 During the original Task 2 execution, a web opener automatically rendered part of the out-of-bound `FreeBrewie-SOM` repository-root README while the default branch was being resolved. No information from that render was selected, extracted, or used. On 2026-08-08, the project owner approved retaining this transparent disclosure on condition that a fresh agent independently audit Task 2 using only approved paths pinned to the already-recorded full commit SHAs.
