@@ -9,6 +9,108 @@ Inspection is authorised by active milestone 001, `docs/milestones/001-hardware-
 
 `FreeBrewie-MCU/Documentation/BrewieMCU.kicad_sch` is selected as non-authoritative, inferred reverse-engineering evidence. Repositories were accessed read-only and were not cloned. An inventory entry records an evidence-selection decision; it does not validate the item's contents or establish a hardware fact.
 
+### Approved filename-only expansion
+
+On 2026-08-12, the project owner approved listing repository-relative path names
+and Git object types across the two already pinned repositories solely to locate
+candidate evidence for the pending Task 3 and Task 4 requests. File contents,
+symlink/submodule targets, moving branches, and hardware conclusions remain
+outside this approval. Candidate content paths must be presented to and approved
+by the project owner before inspection.
+
+#### Filename-only inventory result
+
+The approved metadata inventory completed on 2026-08-12 against the two pinned
+commits. GitHub reported complete, non-truncated trees containing 65 paths/object
+types for FreeBrewie-MCU and 5,405 for FreeBrewie-SOM. Only repository-relative
+paths and Git object types were retained; no newly exposed blob content was read.
+
+The path names expose no candidate BOM, assembly record, native netlist,
+revision-matched carrier schematic, device-tree source or blob, boot-media or
+persistent-storage record, networking-hardware record, connector/harness
+drawing, or complete characterization report. The SOM tree is dominated by the
+previous application and its vendored UI dependency, neither of which is an
+authoritative hardware source.
+
+The following previously excluded paths are the only newly inventoried names
+that plausibly contain narrowly scoped hardware-configuration observations:
+
+- FreeBrewie-MCU `boards/brewie_atmega2560.json`;
+- FreeBrewie-MCU `platformio.ini`;
+- FreeBrewie-MCU `src/Board.h`;
+- FreeBrewie-SOM `Deploy/Admin/flash_mcu_from_som.sh`;
+- FreeBrewie-SOM `Deploy/Admin/probe_buzzer_gpio.sh`;
+- FreeBrewie-SOM `Apps/BrewieApp/src/Platform/Display.c`; and
+- FreeBrewie-SOM `Apps/CalibrationApp/src/main.c`.
+
+These names do not establish relevance, correctness, or hardware facts. Their
+contents remain unapproved and unread. Audio/buzzer evidence is non-blocking,
+and application/calibration source risks exposing historical implementation
+logic, so those candidates should be opened only for a specific unresolved fact
+that cannot be addressed by a more authoritative source.
+
+### Approved local historical evidence
+
+On 2026-08-12, the project owner approved thorough read-only inspection of the
+external folder `/home/anders/Documents/OldStuff` for hardware facts,
+historical Linux-image facts, boot/kernel/device-tree observations, and prior
+physical-investigation records. The initial path inventory identified:
+
+- `brewie.dts` and `first dmesg.txt`;
+- `old dts - collected them into one/`;
+- `oldImage/`, including device-tree, interrupt, GPIO, MCU-pinout,
+  pressure-sensor, cable-PCB, and valve-PCB material; and
+- the historical repository directories `ReBrewie-main/` and
+  `reb20-develop/`.
+
+Inspection must select and cite evidence by exact local path. Encountered
+legacy application architecture, module structure, brewing/control logic,
+state machines, communication-protocol design, and implementation source are
+not reusable and must not become requirements or design inputs. The folder
+remains external, read-only, unimported, and outside all builds.
+
+#### Local evidence inventory and provenance
+
+The 2026-08-12 inventory contains 1,231 entries. Its top-level groups are
+`reb20-develop` (693 entries), `oldImage` (512), `ReBrewie-main` (19),
+`old dts - collected them into one` (4), plus `brewie.dts` and
+`first dmesg.txt`. Entry counts describe the captured folder only; they do not
+make any file authoritative.
+
+The first substantive pass selected the following narrowly scoped artifacts:
+
+| Exact local path | SHA-256 | Evidence role |
+| --- | --- | --- |
+| `brewie.dts` | `06d56de96b826e13d2c95070aea218021bf755ff00f3023ff81a6a5a2a345f7f` | Later experimental overlay; its own comments label key pin assignments as assumptions. |
+| `first dmesg.txt` | `69c037bbcced1863148f702fff04366e368223fc3ea7ac47c228eeb8252bfef8` | Later runtime capture from Linux 5.10.180; not an original-image log. |
+| `NewOlimexDebianInfo.txt` | `1abc86106395e27b3cd6e1a80f13692a03cc77625f609cd53fd6730baeb86933` | Owner-requested fresh capture of `uname -a`, `/proc/cmdline`, `/proc/device-tree/model`, and complete `dmesg` from the later Olimex/Debian experiment. |
+| `ReBrewieLegacyRuntimeInfo.txt` | `e734165cae681b785ecfb373a73c38178fc44a3f216510115961c402bb242d78` | Owner-requested fresh read-only runtime capture from the community-edited ReBrewie image. The owner identifies it as modified application/userspace content on the older Brewie Linux image, not an untouched factory image. |
+| `oldImage/Gamle Brewie software/uboot partition/boot.scr` | `375397d0cce1618a43479d3cb9508653289868377e79a6ae00bf5c31a1b72a78` | Captured legacy U-Boot script; historical boot configuration. |
+| `oldImage/Gamle Brewie software/uboot partition/script.bin` | `f134c3f515df2343112d7fe4b493350f2b90794214f5fa4a78eb8480b4ebfeec` | Captured legacy Allwinner configuration binary; not decoded during this pass. |
+| `oldImage/Gamle Brewie software/uboot partition/uEnv.txt` | `5c64ab9828e26e0525983192af9361c85aac3f79039280095ac2f1ff7744d3c7` | Captured legacy U-Boot environment fragment; it contains only a comment. |
+| `oldImage/Gamle Brewie software/uboot partition/uImage` | `225637cdcd41e6d2df7a8a11f1294fb4f63e722abbdd2e377b9bf7248801af5a` | Captured legacy kernel image identified by its U-Boot header as `Linux-3.4.90-Brewie`. |
+| `oldImage/Gamle Brewie software/usr/share/brewie/dmesg.txt` | `8c0712889e9adde309107317217702e76b588cdb7acaeb997b405da2892f92d8` | Runtime log from the captured original image; historical operational evidence. |
+
+Also selected were `oldImage/gamle filer/script.fex.txt`, the DTS/DTSI files
+under `oldImage/dts filer fra kernel image filer`, the small physical tracing
+notes directly under `oldImage`, and the hardware/runtime sections of
+`reb20-develop/Documentation/archived/HardwareMap_A13SOM_V0.md` and
+`Brewie_A13_linux_setup_guide_working_updated20V0.5.md`. These are prior
+investigations or configuration reconstructions, not factory records. Exact
+line citations and source hashes must accompany any facts extracted from them.
+
+The project owner clarified on 2026-08-12 that top-level `brewie.dts` was
+probably created specifically for the later Olimex/Debian-image experiment.
+It is therefore classified as an owner-created experimental configuration, not
+an original Brewie artifact, factory device tree, or authoritative wiring
+record. Its comments explicitly call its key pin assignments assumptions.
+
+The legacy GUI executables and source, recipes, brewing state, MCU firmware
+images/source, protocol-oriented material, and old application startup and
+control-flow analyses were inventoried but excluded from substantive review.
+They remain available only under a future, explicitly approved reference task
+whose purpose is compatible with the clean-slate policy.
+
 ### Boundary incident and owner disposition
 
 During the original Task 2 execution, a web opener automatically rendered part of the out-of-bound `FreeBrewie-SOM` repository-root README while the default branch was being resolved. No information from that render was selected, extracted, or used. On 2026-08-08, the project owner approved retaining this transparent disclosure on condition that a fresh agent independently audit Task 2 using only approved paths pinned to the already-recorded full commit SHAs.

@@ -25,6 +25,34 @@ The exact read-only repository boundary is:
 inferred reverse-engineering evidence. No other repository path or historical
 repository is authorised.
 
+### Filename-only inventory expansion
+
+On 2026-08-12, the project owner approved a metadata-only expansion for the two
+pinned previous-work repositories. The project may list repository-relative
+path names and Git object types at commits
+`31efc798a4eff7208e3ed538215ef2ddfcc02884` (FreeBrewie-MCU) and
+`1f83897f73530abc02f598f07b8e61454768a26d` (FreeBrewie-SOM) solely to identify
+candidate evidence paths for a later approval request.
+
+This expansion does not authorise reading file contents, following symlinks or
+submodules, resolving moving branches, or using path names as hardware evidence.
+Every candidate file still requires explicit project-owner approval before its
+contents may be inspected.
+
+### Local historical evidence expansion
+
+On 2026-08-12, the project owner approved thorough read-only inspection of
+`/home/anders/Documents/OldStuff`. Permitted evidence classes are verified or
+candidate hardware facts, historical Linux-image facts, boot/kernel/device-tree
+observations, and prior physical-investigation records.
+
+Legacy application architecture, module structure, brewing/control logic,
+state machines, communication-protocol design, and implementation source remain
+non-reusable. When they are encountered incidentally, they must not become
+requirements or design inputs. The local folder remains external to this
+repository and none of its contents may be imported wholesale or used as a
+build dependency.
+
 ## Authorised work
 
 Once separately approved, identify and verify:
