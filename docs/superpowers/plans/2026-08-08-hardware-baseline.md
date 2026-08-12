@@ -112,7 +112,7 @@ Run:
     grep -Fq "Status: active" docs/milestones/001-hardware-baseline.md
     grep -Fq "Project owner, 2026-08-08" docs/milestones/001-hardware-baseline.md
     grep -Fq "BrewieMCU.kicad_sch" docs/milestones/001-hardware-baseline.md
-    grep -Fq "Milestone 001, hardware baseline, is active" PROJECT.md
+    grep -Fq "[Milestone 001](docs/milestones/001-hardware-baseline.md), hardware baseline, is active" PROJECT.md
     grep -Fq "## Automatic pushes" CONTRIBUTING.md
     grep -Fq "Never force-push" CONTRIBUTING.md
     git diff --check

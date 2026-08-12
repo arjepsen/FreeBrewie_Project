@@ -6,9 +6,11 @@ FreeBrewie is a clean-slate whole-system project to create a maintainable, effic
 
 The [project charter's current-authority section](PROJECT.md#current-authority)
 is the canonical source for current work authority. Milestone 000, project
-foundation, is complete. No milestone or implementation work is active.
-Milestone 001, hardware baseline, remains proposed and unauthorised until its
-separate brainstorming and approval cycle is complete.
+foundation, is complete. Milestone 001, hardware baseline, remains active after
+its completion review found 13 verified and 87 disputed facts. Only its approved
+factual discovery, verification, and documentation may proceed; implementation
+and technical subsystem design remain unauthorised. Linux-image requirements
+and design remains proposed and inactive.
 
 ## Start here
 
@@ -18,7 +20,7 @@ separate brainstorming and approval cycle is complete.
 - [Reference-material policy](docs/governance/reference-material-policy.md)
 - [Roadmap](docs/roadmap.md)
 - [Milestone 000: project foundation (complete)](docs/milestones/000-project-foundation.md)
-- [Milestone 001: hardware baseline (proposed)](docs/milestones/001-hardware-baseline.md)
+- [Milestone 001: hardware baseline (active)](docs/milestones/001-hardware-baseline.md)
 
 ## Clean-slate summary
 

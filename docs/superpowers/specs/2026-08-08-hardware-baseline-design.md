@@ -1,7 +1,7 @@
 # FreeBrewie Hardware Baseline Design
 
 Date: 2026-08-08  
-Status: Approved conversational design; awaiting written-specification review
+Status: Written specification approved by Project owner on 2026-08-08
 
 ## Purpose
 
@@ -176,7 +176,7 @@ Powered operational testing is not intrinsically required. A baseline item may b
 
 ## Activation and review gates
 
-Conversational approval of this design authorizes writing the specification only. The milestone becomes active after:
+The milestone became active after the following required sequence was completed:
 
 1. this written specification is committed;
 2. the owner reviews and approves the written specification;

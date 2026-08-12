@@ -3,10 +3,10 @@
 ## Before starting work
 
 Read the canonical [current-authority section](PROJECT.md#current-authority),
-then confirm that an approved, active milestone authorises the proposed work.
-No milestone or implementation work is currently active; [milestone
-001](docs/milestones/001-hardware-baseline.md) remains proposed and
-unauthorised. Stop on any status or scope mismatch.
+which is the source of truth for current milestone status and work authority.
+Confirm that an approved, active milestone authorises the requested work. Stop
+when the request is not authorised or when its status or scope conflicts with
+that canonical authority.
 
 ## Before inspecting reference material
 
@@ -23,3 +23,13 @@ Run required [reviews](docs/governance/review-checklists.md); consequential deci
 ## Scope changes
 
 Require owner approval and an updated [milestone](docs/templates/milestone.md) before expanding scope.
+
+## Automatic pushes
+
+- Commit frequently during work.
+- Do not push intermediate worktree commits merely because they exist.
+- Push approved specifications and implementation plans after committing them.
+- After reviewed work is merged into main and fresh verification passes, push main automatically.
+- Never force-push.
+- Stop and report authentication failure, rejection, or remote divergence instead of rewriting history.
+- Do not push experimental, incomplete, or blocked work unless the project owner requests it.
