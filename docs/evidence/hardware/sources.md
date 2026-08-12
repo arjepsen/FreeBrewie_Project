@@ -49,6 +49,26 @@ and application/calibration source risks exposing historical implementation
 logic, so those candidates should be opened only for a specific unresolved fact
 that cannot be addressed by a more authoritative source.
 
+### Approved local historical evidence
+
+On 2026-08-12, the project owner approved thorough read-only inspection of the
+external folder `/home/anders/Documents/OldStuff` for hardware facts,
+historical Linux-image facts, boot/kernel/device-tree observations, and prior
+physical-investigation records. The initial path inventory identified:
+
+- `brewie.dts` and `first dmesg.txt`;
+- `old dts - collected them into one/`;
+- `oldImage/`, including device-tree, interrupt, GPIO, MCU-pinout,
+  pressure-sensor, cable-PCB, and valve-PCB material; and
+- the historical repository directories `ReBrewie-main/` and
+  `reb20-develop/`.
+
+Inspection must select and cite evidence by exact local path. Encountered
+legacy application architecture, module structure, brewing/control logic,
+state machines, communication-protocol design, and implementation source are
+not reusable and must not become requirements or design inputs. The folder
+remains external, read-only, unimported, and outside all builds.
+
 ### Boundary incident and owner disposition
 
 During the original Task 2 execution, a web opener automatically rendered part of the out-of-bound `FreeBrewie-SOM` repository-root README while the default branch was being resolved. No information from that render was selected, extracted, or used. On 2026-08-08, the project owner approved retaining this transparent disclosure on condition that a fresh agent independently audit Task 2 using only approved paths pinned to the already-recorded full commit SHAs.

@@ -39,6 +39,20 @@ submodules, resolving moving branches, or using path names as hardware evidence.
 Every candidate file still requires explicit project-owner approval before its
 contents may be inspected.
 
+### Local historical evidence expansion
+
+On 2026-08-12, the project owner approved thorough read-only inspection of
+`/home/anders/Documents/OldStuff`. Permitted evidence classes are verified or
+candidate hardware facts, historical Linux-image facts, boot/kernel/device-tree
+observations, and prior physical-investigation records.
+
+Legacy application architecture, module structure, brewing/control logic,
+state machines, communication-protocol design, and implementation source remain
+non-reusable. When they are encountered incidentally, they must not become
+requirements or design inputs. The local folder remains external to this
+repository and none of its contents may be imported wholesale or used as a
+build dependency.
+
 ## Authorised work
 
 Once separately approved, identify and verify:
