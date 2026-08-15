@@ -84,9 +84,10 @@ it does not imply a forensic acquisition method, untouched factory provenance,
 or independent verification that community-edited ReBrewie userspace is
 unchanged.
 
-The first substantive pass selected the following narrowly scoped artifacts:
+The first substantive pass selected the following narrowly scoped artifacts.
+Every table path is relative to `/home/anders/Documents/OldStuff`:
 
-| Exact local path | SHA-256 | Evidence role |
+| Path relative to `/home/anders/Documents/OldStuff` | SHA-256 | Evidence role |
 | --- | --- | --- |
 | `brewie.dts` | `06d56de96b826e13d2c95070aea218021bf755ff00f3023ff81a6a5a2a345f7f` | Later experimental overlay; its own comments label key pin assignments as assumptions. |
 | `first dmesg.txt` | `69c037bbcced1863148f702fff04366e368223fc3ea7ac47c228eeb8252bfef8` | Later runtime capture from Linux 5.10.180; not an original-image log. |

@@ -9,7 +9,9 @@
 **Tech Stack:** Markdown, Python 3 standard library validator, POSIX shell utilities, Git.
 
 **Execution status (2026-08-15):** Tasks 1-3 and the corrective implementation
-portion of Task 4 are complete. The final scoped branch re-review, PR approval,
+portion of Task 4 were committed as
+`d0cc3f81dc36811520dac320fe74b908c197f390`. Focused provenance-follow-up
+implementation and verification are complete; its local commit, PR approval,
 merge, and post-merge validation in Task 4 Step 5 remain pending.
 
 **Provenance terminology erratum:** The planned-file-map and Task 2 shorthand
@@ -194,8 +196,9 @@ Create:
 - HW-106: the fresh boot enables the A13 watchdog at `0x1c20c90` with a
   16-second timeout and `nowayout=0`; do not infer application use or required
   future policy.
-- HW-107: the fresh boot sees a Realtek USB WLAN adapter `0bda:8176`, loads
-  `rtl8192cu`, and associates; scope it to the fitted device on that date.
+- HW-107: during the fresh boot Linux enumerates a Realtek USB WLAN device
+  `0bda:8176`, loads `rtl8192cu`, and associates; scope this to runtime
+  enumeration/use, not physical fitment or permanent hardware identity.
 - HW-108: both fresh legacy and modern captures enumerate `ttyS0` at
   `0x01c28400` and `ttyS1` at `0x01c28c00`; state that enumeration does not
   prove the physical MCU endpoint or protocol.
@@ -348,11 +351,11 @@ Inspect each hit. Accept only boundary statements, historical labels, or factual
 observations. Reject any new implementation recommendation derived from the old
 systems.
 
-- [ ] **Step 4: Commit corrections if required**
+- [x] **Step 4: Commit corrections if required**
 
-Implementation is complete, but the 2026-08-15 agent could not create the
-worktree index lock because the shared Git metadata is read-only. The controller
-must commit the already-authored changes; this checkbox remains open until then.
+The controller committed the correction wave as
+`d0cc3f81dc36811520dac320fe74b908c197f390` after the implementation agent could
+not create the worktree index lock in the read-only shared Git metadata.
 
 If review found issues, edit only the affected evidence files, rerun Steps 1-3,
 then commit:
