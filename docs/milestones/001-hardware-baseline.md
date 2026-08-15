@@ -4,7 +4,7 @@
 - Status: active
 - Owner: Project owner
 - Purpose: Establish verified hardware facts for the existing device before later requirements work.
-- Last completion review: 2026-08-10
+- Last completion review: 2026-08-12
 
 ## Approval and authorised source boundary
 
@@ -119,23 +119,33 @@ cannot be marked complete.
 
 ## Current completion-review status
 
-Milestone 001 remains active. The current baseline contains 100 indexed records:
-13 verified and 87 disputed, with no proposed or provisionally accepted facts.
+Milestone 001 remains active. The current baseline contains 108 indexed records:
+23 verified and 85 disputed, with no proposed or provisionally accepted facts.
 The [baseline's disputed-fact table](../evidence/hardware/baseline.md#all-disputed-facts-and-blocked-decisions)
 records every disputed fact and its blocked or bounded decision.
 
 Five disputed audio records, HW-068 through HW-070, HW-079, and HW-081, do not
 block completion because the owner removed buzzer/audio availability from this
-milestone on 2026-08-10. The remaining 82 disputed facts are material and keep
+milestone on 2026-08-10. The remaining 80 disputed facts are material and keep
 the milestone active:
 
-- Compute/platform identity, revision, boot, storage, networking, display,
-  input, SOM-MCU link, reset, and power-control evidence remains incomplete.
-  The exact indexed blockers are HW-004 through HW-014 and HW-017 through
-  HW-018, together with the unindexed boot-hardware, persistent-storage,
-  networking-hardware, interrupt, watchdog, and revision-matched carrier/MCU
-  board evidence gaps recorded in the
-  [verification register](../evidence/hardware/verification-register.md#verification-debt).
+- Former category gaps are now bounded by dated runtime evidence: HW-007 and
+  HW-008 identify/enumerate the Goodix touchscreen in the modern boot;
+  HW-101 through HW-104 record the legacy kernel, community-edited Buildroot
+  userspace, active SD/MMC/EXT3 layout, and RTC detection; HW-105 through
+  HW-107 record the modern experimental platform values, watchdog settings,
+  and fitted-on-date Realtek USB WLAN use; and HW-108 records shared Linux UART
+  enumeration. These are historical observations, not physical verification or
+  selected clean-slate requirements.
+- Material compute/platform gaps remain: exact fitted display and touch-part
+  identity; display timing; boot-media and persistent-storage hardware;
+  permanent networking and RTC hardware; revision-matched carrier evidence;
+  physical UART/MCU connectivity and telemetry; interrupt/reset/supply routing;
+  and electrical characteristics. Historical partition sizes, EXT3, kernel
+  versions, Buildroot, the old captured watchdog behavior, and the Realtek
+  adapter do not select a future Linux image, storage layout, watchdog policy,
+  networking design, or other platform requirement. Those choices require
+  later requirements analysis.
 - Brewing-device identities, connections, electrical constraints, limits, and
   present-machine state remain incomplete. The exact indexed blockers are
   HW-019 through HW-067, HW-073 through HW-078, HW-080, and HW-084 through
@@ -143,14 +153,16 @@ the milestone active:
 - Current SOM pin-mux, GPIO-numbering, PWM-consumer, period, and polarity
   evidence remains incomplete in HW-072, HW-082, HW-083, HW-092, and HW-093.
 
-Progress remains possible and the milestone therefore does not meet the policy
-threshold for blocked status. The project owner can enable the next verification
-pass by approving exact read-only evidence paths for the two requests in the
+Productive verification work remains possible, so the milestone stays active
+and does not meet the policy threshold for blocked status. The project owner
+can enable the next verification pass by approving exact read-only evidence
+paths for the two requests in the
 [source ledger](../evidence/hardware/sources.md#boundary-expansion-requests):
 
 1. Revision-matched carrier and MCU board schematics, native netlists, BOMs,
-   assembly records, and part-specific boot, storage, networking, interrupt,
-   and watchdog documentation for the compute-platform gaps.
+   assembly records, and part-specific boot/storage/networking/RTC/interrupt/
+   reset/watchdog documentation for the remaining physical compute-platform
+   gaps.
 2. Revision-matched schematics/netlists, BOMs and assembly records, connector
    drawings and harness pinouts, readable device markings and part-specific
    datasheets, dated machine inspection evidence, complete characterization
@@ -179,14 +191,14 @@ planning may depend only on verified material hardware facts.
 
 ## Required reviews
 
-- Scope review: pass on 2026-08-10; every deliverable is authorised by this
+- Scope review: pass on 2026-08-12; every deliverable is authorised by this
   milestone, all explicit exclusions remained excluded, and no source-boundary
   expansion occurred without owner approval.
-- Provenance review: pass on 2026-08-10 for all 100 fact records; each record
+- Provenance review: pass on 2026-08-12 for all 108 fact records; each record
   identifies its source and location, extraction date, extractor, dependent
   decisions, direct or inferred basis, independent confirmation, conflicts,
   and limitations.
-- Assumption review: pass on 2026-08-10 for all 100 fact records; every record
+- Assumption review: pass on 2026-08-12 for all 108 fact records; every record
   states confidence, cheapest useful check, verification action, and blocked
   decisions. No fact is provisionally accepted, and consequential use of every
   unverified in-scope fact remains blocked.
@@ -194,16 +206,21 @@ planning may depend only on verified material hardware facts.
   hardware discovery introduced no technical decision.
 - Asset review: inapplicable unless an asset is considered; any such review
   requires separate authorised scope, and no asset was considered.
-- Completion review: fail on 2026-08-10. The measurable identity, connection,
-  capability/limit, and complete verified-baseline criteria do not pass while
-  82 in-scope material facts and the unindexed category gaps above remain
-  unresolved. Conflicts, debt, owner-approved removals, and blocked decisions
-  remain visible in the verification register and baseline.
+- Completion review: fail on 2026-08-12. Dated runtime observations now bound
+  the former touch, legacy platform, storage-layout, RTC, modern watchdog/WLAN,
+  and UART-enumeration category gaps, but the measurable identity, physical
+  connection, electrical capability/limit, actuator-verification, and complete
+  verified-baseline criteria do not pass while 80 in-scope material disputed
+  facts and the remaining unindexed physical gaps above are unresolved.
+  Conflicts, debt, owner-approved removals, and blocked decisions remain visible
+  in the verification register and baseline.
 
 ## Approval
 
 - Approved by and date: Project owner, 2026-08-08.
-- Scope expansion approval by owner and date: No scope expansion is authorised.
+- Scope expansion approval by owner and date: Filename-only inventory and local
+  historical-evidence expansions approved by the project owner on 2026-08-12,
+  subject to the boundaries recorded above; no broader expansion is authorised.
 
 ## Next milestone
 

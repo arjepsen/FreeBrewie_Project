@@ -41,8 +41,14 @@ These summaries are views over the linked fact records, not independent evidence
 | MCU SRAM | 8 KiB nominal SRAM for the fitted marked model; runtime availability is unresolved. [HW-015](facts/HW-015.md) | verified |
 | MCU EEPROM | 4 KiB nominal EEPROM for the fitted marked model; wear, contents, protection, and layout are unresolved. [HW-016](facts/HW-016.md) | verified |
 | Audio population | Audio-amplifier IC position is absent/unpopulated on the fitted carrier; cause, circuit condition, and behavior are outside the verified claim. [HW-071](facts/HW-071.md) | verified |
+| Touch runtime identity | During the fresh 2026-08-12 Olimex/Debian boot, Linux identified Goodix ID 911, version 1060. This is a dated runtime observation, not exact fitted-part or physical-interface verification. [HW-007](facts/HW-007.md) | verified |
+| Touch runtime endpoint | During that boot, Linux enumerated the Goodix touchscreen on I2C bus 2 at address `0x14`. Supply, pull-ups, IRQ/reset, and carrier routing remain unresolved. [HW-008](facts/HW-008.md) | verified |
+| Legacy runtime platform | The fresh 2026-08-12 ReBrewie boot records the legacy `Linux 3.4.90-Brewie #5` lineage and Buildroot `2014.02-git-g3b4bd90-dirty` userspace. [HW-101](facts/HW-101.md) [HW-102](facts/HW-102.md) | verified dated observations |
+| Legacy runtime storage and RTC | That boot used the recorded `mmcblk0` partition sizes and EXT3 mounts and detected PCF8563 at I2C0 address `0x51` as `rtc0`. Physical media/RTC identity and wiring are not inferred. [HW-103](facts/HW-103.md) [HW-104](facts/HW-104.md) | verified dated observations |
+| Modern experimental runtime | The fresh 2026-08-12 Olimex/Debian experiment records kernel, architecture, model, Linux memory accounting, an enabled A13 watchdog, and use of a fitted-on-date Realtek USB WLAN adapter. [HW-105](facts/HW-105.md) [HW-106](facts/HW-106.md) [HW-107](facts/HW-107.md) | verified dated observations |
+| UART enumeration | Both fresh captures enumerate `ttyS0` and `ttyS1` at the same MMIO addresses. This corroborates Linux controller enumeration only, not physical MCU connectivity or telemetry. [HW-108](facts/HW-108.md) | verified dated observation |
 
-The [fact index](fact-index.md) contains 13 verified and 87 disputed records. There are no proposed or provisionally accepted records. No disputed record below is accepted as a baseline conclusion.
+The [fact index](fact-index.md) contains 108 records: 23 verified and 85 disputed. There are no proposed or provisionally accepted records. No disputed record below is accepted as a baseline conclusion.
 
 ## All disputed facts and blocked decisions
 
@@ -53,8 +59,6 @@ Every disputed record is retained here individually. “Blocked” means the can
 | [HW-004](facts/HW-004.md) | Candidate physical UART connection between SOM and MCU. | Consequential electrical-interface changes are blocked; only non-destructive observation is bounded as permissible. |
 | [HW-005](facts/HW-005.md) | A13 PE9 as SOM-controlled MCU-reset candidate. | Automated use of this reset mapping is blocked. |
 | [HW-006](facts/HW-006.md) | Reported 480 by 272 RGB565 Linux scanout. | Hard-to-reverse display-mode, panel, or physical-bus decisions are blocked. |
-| [HW-007](facts/HW-007.md) | Goodix-family touch-controller candidate. | Consequential controller replacement or exact-part assumptions are blocked. |
-| [HW-008](facts/HW-008.md) | Touch candidate on I2C bus 2 at address `0x14`. | Touch wiring and electrical-interface changes are blocked. |
 | [HW-009](facts/HW-009.md) | A13 PB3 legacy LCD-backlight candidate. | Automated backlight control is blocked. |
 | [HW-010](facts/HW-010.md) | A13 PB10 legacy LCD-power-enable candidate. | Automated display-power switching is blocked. |
 | [HW-011](facts/HW-011.md) | PB5/pin 24 `PRE_CHARGE` candidate. | Behavior or safety conclusions based on this signal are blocked. |
@@ -140,9 +144,10 @@ Every disputed record is retained here individually. “Blocked” means the can
 
 ## Blocked decision summary
 
-- Consequential image, kernel, boot-media, persistent-storage, networking, display, touch, and device-tree decisions remain blocked by the disputed compute/platform records and by evidence gaps explicitly retained in the verified identity records. [HW-001](facts/HW-001.md) [HW-006](facts/HW-006.md) [HW-007](facts/HW-007.md) [HW-008](facts/HW-008.md) [HW-009](facts/HW-009.md) [HW-010](facts/HW-010.md) [HW-094](facts/HW-094.md)
+- The dated captures now bound legacy kernel/userspace/storage/RTC behavior and modern experimental kernel/memory/watchdog/network behavior, but they do not select a clean-slate Linux image, kernel, Buildroot release, boot medium, partition sizes, EXT3, networking adapter, RTC policy, watchdog policy, or device tree. Those choices remain for later requirements analysis. [HW-101](facts/HW-101.md) [HW-102](facts/HW-102.md) [HW-103](facts/HW-103.md) [HW-104](facts/HW-104.md) [HW-105](facts/HW-105.md) [HW-106](facts/HW-106.md) [HW-107](facts/HW-107.md)
+- Exact fitted display and touch-part identity, display timing, boot/storage hardware identity, permanent networking hardware, physical routing, and electrical limits remain unresolved despite verified runtime observations. [HW-006](facts/HW-006.md) [HW-007](facts/HW-007.md) [HW-008](facts/HW-008.md) [HW-009](facts/HW-009.md) [HW-010](facts/HW-010.md)
 - Consequential MCU programming, exact image layout, runtime allocation, and persistence layout remain blocked despite verified nominal capacities. [HW-002](facts/HW-002.md) [HW-003](facts/HW-003.md) [HW-015](facts/HW-015.md) [HW-016](facts/HW-016.md)
-- Consequential integration of serial, reset, power, heaters, pumps, sensing, buttons, valves, solenoids, fan, indicators, or electrical monitoring remains blocked on the corresponding disputed mappings and limits. [HW-004](facts/HW-004.md) [HW-005](facts/HW-005.md) [HW-011](facts/HW-011.md) [HW-019](facts/HW-019.md) [HW-021](facts/HW-021.md) [HW-024](facts/HW-024.md) [HW-027](facts/HW-027.md) [HW-031](facts/HW-031.md) [HW-046](facts/HW-046.md) [HW-049](facts/HW-049.md)
+- Consequential integration of serial, reset, power, heaters, pumps, sensing, buttons, valves, solenoids, fan, indicators, or electrical monitoring remains blocked on the corresponding disputed mappings and limits. Shared `ttyS0`/`ttyS1` enumeration does not verify an MCU endpoint, wiring, telemetry, or protocol. [HW-004](facts/HW-004.md) [HW-005](facts/HW-005.md) [HW-108](facts/HW-108.md) [HW-011](facts/HW-011.md) [HW-019](facts/HW-019.md) [HW-021](facts/HW-021.md) [HW-024](facts/HW-024.md) [HW-027](facts/HW-027.md) [HW-031](facts/HW-031.md) [HW-046](facts/HW-046.md) [HW-049](facts/HW-049.md)
 - Audio/sounder availability is not a milestone blocker, but all historical audio-path candidates remain disputed and the verified unpopulated amplifier state supports no repair or behavior conclusion. [HW-068](facts/HW-068.md) [HW-069](facts/HW-069.md) [HW-070](facts/HW-070.md) [HW-071](facts/HW-071.md) [HW-079](facts/HW-079.md) [HW-081](facts/HW-081.md)
 
 ## Explicit non-design statement

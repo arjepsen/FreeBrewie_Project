@@ -11,16 +11,28 @@ This summary contains only record-backed limits or explicit unresolved questions
 | MCU SRAM | 8 KiB nominal internal SRAM for the fitted marked ATmega2560. [HW-015](facts/HW-015.md) | Runtime availability after firmware, stack, buffers, and libraries is unresolved. | verified nominal capacity |
 | MCU EEPROM | 4 KiB nominal EEPROM for the fitted marked ATmega2560. [HW-016](facts/HW-016.md) | Contents, wear state, endurance, protection, reserved addresses, ownership, and layout are unresolved. | verified nominal capacity; endurance unresolved |
 
+## Verified runtime observations, not capability selections
+
+| Runtime area | Dated observation | Qualification |
+| --- | --- | --- |
+| Legacy kernel and userspace | The fresh ReBrewie boot reported `Linux 3.4.90-Brewie #5` and Buildroot `2014.02-git-g3b4bd90-dirty`. [HW-101](facts/HW-101.md) [HW-102](facts/HW-102.md) | Historical lineage only; neither version is selected for a clean-slate system. |
+| Legacy storage layout | The same boot used the recorded `mmcblk0` p1/p2/p3 sizes, with EXT3 root on p2 and EXT3 `/home/brewie` on p3. [HW-103](facts/HW-103.md) | Physical medium, total capacity, health, and endurance are unresolved; the partition sizes and EXT3 are not requirements. |
+| Legacy RTC detection | The same boot detected PCF8563 on I2C0 at `0x51` as `rtc0`. [HW-104](facts/HW-104.md) | Physical identity, wiring, electrical limits, battery state, accuracy, and future RTC policy remain unresolved. |
+| Modern experimental platform | The fresh Olimex/Debian boot reported kernel `5.10.180-olimex #140856`, `armv7l`, model `Olimex A13-SOM-512`, and 521,216 KiB to Linux. [HW-105](facts/HW-105.md) | Runtime accounting is not fitted-memory identity and does not select a future kernel or memory configuration. |
+| Modern experimental watchdog | The same boot enabled the A13 watchdog at `0x1c20c90`, timeout 16 seconds, `nowayout=0`. [HW-106](facts/HW-106.md) | This old captured behavior does not establish application use, reset effects, or a future watchdog policy. |
+| Modern experimental WLAN | A fitted-on-date Realtek `0bda:8176` USB adapter loaded `rtl8192cu` and associated. [HW-107](facts/HW-107.md) | Not a permanent hardware, throughput, placement, adapter, or driver requirement. |
+| Shared serial enumeration | Both fresh captures enumerate `ttyS0` and `ttyS1` at matching MMIO addresses. [HW-108](facts/HW-108.md) | Corroborates runtime enumeration only, not physical MCU connectivity, telemetry, levels, or protocol. |
+
 ## Compute, boot, display, and storage limits
 
 | Area | Record-backed limit or question | Status |
 | --- | --- | --- |
-| SOM boot media and persistent storage | The verified fitted-module identity does not establish boot-media identity, persistent-storage device/capacity, interface, or endurance. [HW-001](facts/HW-001.md) | unresolved |
+| SOM boot media and persistent storage | The dated legacy boot supplies an active `mmcblk0`/EXT3 layout observation, but boot-media identity, physical storage device/capacity, health, interface, and endurance remain unresolved. [HW-103](facts/HW-103.md) | runtime layout verified; physical capability unresolved |
 | MCU clock | The verified fitted-U1 record leaves the non-model marking codes uninterpreted and establishes no clock source, frequency, tolerance, fuse, or prescaler state. [HW-002](facts/HW-002.md) | unresolved |
 | Display dimensions/format | A 480 by 272 RGB565 scanout was reported on the current SOM, but panel identity, physical bus, timings, and electrical limits are not established. [HW-006](facts/HW-006.md) | disputed observation, not a verified limit |
 | Backlight PWM | `pwm-0` is a disputed backlight candidate with separately reported 50 µs period and inverse polarity. Electrical pin, voltage, duty cycle, measurement basis, and exact revision are unresolved. [HW-082](facts/HW-082.md) [HW-092](facts/HW-092.md) [HW-093](facts/HW-093.md) | disputed observations, not verified limits |
-| Touch interface | Goodix-family identity and I2C bus 2/address `0x14` are candidates; exact part, voltage, pull-ups, interrupt/reset, and carrier route are unresolved. [HW-007](facts/HW-007.md) [HW-008](facts/HW-008.md) | disputed |
-| Networking | The verified carrier-marking record establishes no networking identity, interface, connector, throughput, or electrical limit. [HW-094](facts/HW-094.md) | unresolved |
+| Touch interface | During the dated modern boot, Linux identified Goodix ID 911/version 1060 and enumerated it on I2C bus 2 at `0x14`. Exact fitted part, supply, voltage, pull-ups, interrupt/reset, carrier route, and electrical limits are unresolved. [HW-007](facts/HW-007.md) [HW-008](facts/HW-008.md) | verified runtime observations; physical capability unresolved |
+| Networking | A dated modern boot used a fitted Realtek `0bda:8176` USB WLAN adapter with `rtl8192cu`, but permanent networking identity, placement, interface limits, throughput, and future suitability are unresolved. [HW-107](facts/HW-107.md) | verified runtime observation; permanent capability unresolved |
 
 ## MCU peripheral and bus limits
 
@@ -31,7 +43,7 @@ This summary contains only record-backed limits or explicit unresolved questions
 | Pump-DAC bus | Clock, data, chip-select, and LDAC candidates exist, while MISO is only N/C-classified. DAC identity, logic voltage, mode/rate, polarity, timing, and safe limits are unknown. [HW-086](facts/HW-086.md) [HW-087](facts/HW-087.md) [HW-088](facts/HW-088.md) [HW-023](facts/HW-023.md) [HW-073](facts/HW-073.md) | disputed |
 | Mass-device buses | Boil SCL/SDA candidates and prepared mash SCL/SDA-like candidates are indexed. Device identity, actual mash interface semantics, address, pull-ups, voltage, calibration, quantity, and limits are unknown. [HW-024](facts/HW-024.md) [HW-089](facts/HW-089.md) [HW-025](facts/HW-025.md) [HW-090](facts/HW-090.md) | disputed |
 | Temperature buses | Mash and boil 1-Wire candidates exist, but device identities, pull-ups, voltage, addressing, range, accuracy, and update rate are unknown. [HW-029](facts/HW-029.md) [HW-030](facts/HW-030.md) | disputed |
-| SOM-MCU link | UART and reset candidates have separate current observations, but endpoint pins, connector route, voltage, thresholds, timing, and current binding are unknown. [HW-004](facts/HW-004.md) [HW-017](facts/HW-017.md) [HW-005](facts/HW-005.md) [HW-018](facts/HW-018.md) | disputed |
+| SOM-MCU link | Shared `ttyS0`/`ttyS1` enumeration is verified, while the UART/reset physical candidates and traffic/reset observations remain separate. Endpoint pins, MCU binding, telemetry, connector route, voltage, thresholds, and timing are unknown. [HW-108](facts/HW-108.md) [HW-004](facts/HW-004.md) [HW-017](facts/HW-017.md) [HW-005](facts/HW-005.md) [HW-018](facts/HW-018.md) | runtime enumeration verified; physical/electrical link disputed |
 
 ## Sensor characteristics
 
@@ -63,4 +75,4 @@ This summary contains only record-backed limits or explicit unresolved questions
 - Structurally observed connectors do not establish pin-to-net connectivity, load ratings, electrical levels, or physical locations. [HW-061](facts/HW-061.md) [HW-062](facts/HW-062.md) [HW-063](facts/HW-063.md) [HW-064](facts/HW-064.md) [HW-065](facts/HW-065.md) [HW-066](facts/HW-066.md) [HW-067](facts/HW-067.md)
 - Original Brewie GPIO aliases were reported absent on the current image, but that does not establish physical disconnection or current pin ownership. [HW-080](facts/HW-080.md)
 
-These limits constrain future evidence gathering only. They do not select an operating system, software architecture, firmware implementation, protocol, brewing behavior, or control policy.
+Historical partition sizes, EXT3, kernel versions, Buildroot, the old captured watchdog behavior, and the fitted-on-date Realtek adapter remain observations rather than selected clean-slate requirements. These limits constrain future evidence gathering only. They do not select an operating system, software architecture, firmware implementation, protocol, brewing behavior, or control policy.
