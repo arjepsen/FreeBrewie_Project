@@ -33,7 +33,7 @@ This is a view over the indexed hardware fact records. It is not independent evi
 | --- | --- | --- |
 | Runtime platform | The fresh 2026-08-12 Olimex/Debian experiment reported kernel `5.10.180-olimex #140856`, `armv7l`, model `Olimex A13-SOM-512`, and 521,216 KiB to Linux. [HW-105](facts/HW-105.md) | Does not identify a RAM package or select a future kernel, memory reservation, or platform configuration. |
 | Watchdog | Linux enabled the A13 watchdog at `0x1c20c90` with a 16-second timeout and `nowayout=0`. [HW-106](facts/HW-106.md) | This old captured behavior does not establish application use, reset routing, or a future timeout/`nowayout` policy. |
-| USB WLAN | A fitted-on-date Realtek `0bda:8176` adapter loaded `rtl8192cu` and associated. [HW-107](facts/HW-107.md) | It does not establish permanent networking hardware, placement, performance, or a future adapter/driver requirement. |
+| USB WLAN | A Realtek `0bda:8176` USB device enumerated, loaded `rtl8192cu`, and associated during the dated runtime capture. [HW-107](facts/HW-107.md) | It does not independently establish physical fitment, permanent networking hardware, placement, performance, or a future adapter/driver requirement. |
 
 ## Display and input
 
@@ -50,7 +50,7 @@ This is a view over the indexed hardware fact records. It is not independent evi
 
 | Area | Record-backed boundary | Status |
 | --- | --- | --- |
-| Networking | A fresh modern experiment enumerated and used a fitted-on-date Realtek `0bda:8176` USB WLAN adapter. Carrier networking hardware, permanent installation, connector/placement, performance, and future selection remain unresolved. [HW-107](facts/HW-107.md) | verified dated runtime observation; permanent hardware unresolved |
+| Networking | A fresh modern experiment enumerated and used a Realtek `0bda:8176` USB WLAN device. Physical fitment, carrier networking hardware, permanent installation, connector/placement, performance, and future selection remain unresolved. [HW-107](facts/HW-107.md) | verified dated runtime observation; physical/permanent hardware unresolved |
 | SOM-MCU serial | Both fresh captures enumerate `ttyS0` and `ttyS1` at matching MMIO addresses. That corroborates Linux serial-controller enumeration, not physical MCU connectivity or telemetry; the physical link and `/dev/ttyS1` traffic claims remain separate. [HW-108](facts/HW-108.md) [HW-004](facts/HW-004.md) [HW-017](facts/HW-017.md) | enumeration verified; physical binding disputed |
 | Touch I2C | Linux enumerated the Goodix device on I2C bus 2 at address `0x14` during the dated modern boot; its physical and electrical realization is not established. [HW-008](facts/HW-008.md) | verified runtime endpoint; physical interface unresolved |
 | RTC | The dated legacy boot detected PCF8563 on I2C0 at `0x51` and registered `rtc0`; exact fitted identity, wiring, supply, battery, and limits are not established. [HW-104](facts/HW-104.md) | verified runtime detection; physical interface unresolved |
@@ -69,4 +69,4 @@ This is a view over the indexed hardware fact records. It is not independent evi
 | Carrier audio population | The audio-amplifier IC position is physically absent/unpopulated on the fitted carrier. This does not establish the rest of the sounder circuit or its behavior. [HW-071](facts/HW-071.md) | verified |
 | Watchdog | The dated modern experiment enabled the A13 watchdog at `0x1c20c90` with a 16-second timeout and `nowayout=0`. Application use, physical reset effects, and future policy remain unresolved. [HW-106](facts/HW-106.md) | verified runtime observation; behavior and policy unresolved |
 
-Historical partition sizes, EXT3 use, kernel versions, Buildroot, the old captured watchdog behavior, and the fitted-on-date Realtek adapter are observations, not selected clean-slate requirements. No row above selects a Linux configuration, firmware architecture, protocol, product behavior, or control policy.
+Historical partition sizes, EXT3 use, kernel versions, Buildroot, the old captured watchdog behavior, and the runtime-enumerated Realtek device are observations, not selected clean-slate requirements. No row above selects a Linux configuration, firmware architecture, protocol, product behavior, or control policy.

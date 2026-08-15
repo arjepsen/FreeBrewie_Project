@@ -43,6 +43,23 @@ actual = [path.stem for path in files]
 if actual != expected:
     fail(f"fact IDs are not contiguous: {actual}")
 index_text = INDEX.read_text()
+index_rows = {}
+for line in index_text.splitlines():
+    if not re.match(r"^\|\s*HW-[0-9]{3}\s*\|", line):
+        continue
+    columns = [column.strip() for column in line.strip().strip("|").split("|")]
+    if len(columns) != 6:
+        fail(f"malformed fact-index row: {line}")
+    row_id, _, _, row_status, _, record_link = columns
+    if row_id in index_rows:
+        fail(f"{row_id}: duplicate fact-index row")
+    if record_link != f"[record](facts/{row_id}.md)":
+        fail(f"{row_id}: index record link does not match row ID")
+    index_rows[row_id] = row_status
+
+if sorted(index_rows) != expected:
+    fail(f"fact-index IDs do not match record IDs: {sorted(index_rows)}")
+
 for path, record_id in zip(files, expected):
     text = path.read_text()
     if re.search(r"<[^>]+>", text):
@@ -55,6 +72,11 @@ for path, record_id in zip(files, expected):
         fail(f"{path}: Record ID does not match filename")
     if data["Status"] not in ALLOWED:
         fail(f"{path}: invalid status {data['Status']}")
+    if index_rows[record_id] != data["Status"]:
+        fail(
+            f"{record_id}: index status {index_rows[record_id]} "
+            f"does not match record status {data['Status']}"
+        )
     link = f"facts/{record_id}.md"
     if index_text.count(link) != 1:
         fail(f"{record_id}: expected exactly one index link")

@@ -1,7 +1,7 @@
 # Historical Evidence Integration Design
 
 Date: 2026-08-12
-Status: approved in conversation; awaiting written-spec review
+Status: approved; implementation and correction wave complete; final branch review and PR approval pending
 
 ## Purpose
 
@@ -38,8 +38,9 @@ Evidence must retain its origin and strength:
    and machine state.
 2. Manufacturer documentation establishes published properties of the
    identified component or product variant.
-3. Captured legacy artifacts establish historical configuration or operation of
-   the captured image.
+3. Retained legacy-image artifacts establish historical configuration or
+   operation described by those artifacts; archive placement does not establish
+   a forensic capture or untouched factory provenance.
 4. The fresh ReBrewie capture establishes runtime behavior of the
    community-edited userspace on the legacy Brewie Linux platform. It is not an
    untouched factory-image claim.

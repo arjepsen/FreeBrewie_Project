@@ -22,8 +22,9 @@ The exact read-only repository boundary is:
   and datasheets.
 
 `Documentation/BrewieMCU.kicad_sch` is explicitly permitted as non-authoritative
-inferred reverse-engineering evidence. No other repository path or historical
-repository is authorised.
+inferred reverse-engineering evidence. No other online repository path or
+historical repository is authorised by this original boundary; the later,
+bounded filename-only and local `OldStuff` exceptions are recorded below.
 
 ### Filename-only inventory expansion
 
@@ -78,13 +79,16 @@ After approval, permitted evidence is hardware facts recorded with the
 [hardware-fact template](../templates/hardware-fact.md), supported by
 authoritative documents and direct hardware observations where available. Each
 material fact must retain its source, confidence, status, conflicts, and
-assumptions. Historical repositories remain external, read-only, and unimported.
+assumptions. Historical repositories remain external, read-only, and unimported;
+only the listed evidence classes in the 2026-08-12 local `OldStuff` exception
+may be inspected, and legacy application implementation remains excluded.
 
 ## Reference-inspection authority
 
 Inspection is limited to the approved source boundary above and only for hardware
 facts needed for this milestone. Historical repositories remain unauthorised
-except for the two permitted repository paths above.
+except for the two pinned online documentation paths and the bounded,
+read-only 2026-08-12 `OldStuff` exception above.
 
 ## Deliverables
 
@@ -134,7 +138,7 @@ the milestone active:
   HW-101 through HW-104 record the legacy kernel, community-edited Buildroot
   userspace, active SD/MMC/EXT3 layout, and RTC detection; HW-105 through
   HW-107 record the modern experimental platform values, watchdog settings,
-  and fitted-on-date Realtek USB WLAN use; and HW-108 records shared Linux UART
+  and runtime-enumerated Realtek USB WLAN use; and HW-108 records shared Linux UART
   enumeration. These are historical observations, not physical verification or
   selected clean-slate requirements.
 - Material compute/platform gaps remain: exact fitted display and touch-part

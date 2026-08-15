@@ -24,6 +24,7 @@ source-ledger reference for each citation.
 | S3 | `/home/anders/Documents/OldStuff/oldImage/gamle filer/script.fex.txt` | `6d076a06f6284f7211c8cc92593aefe957fdc577fec93380304f94cecf1c6667` |
 | S4 | `/home/anders/Documents/OldStuff/oldImage/Gamle Brewie software/uboot partition/boot.scr` | `375397d0cce1618a43479d3cb9508653289868377e79a6ae00bf5c31a1b72a78` |
 | S15 | `/home/anders/Documents/OldStuff/oldImage/Gamle Brewie software/uboot partition/script.bin` | `f134c3f515df2343112d7fe4b493350f2b90794214f5fa4a78eb8480b4ebfeec` |
+| S16 | `/home/anders/Documents/OldStuff/oldImage/Gamle Brewie software/uboot partition/uEnv.txt` | `5c64ab9828e26e0525983192af9361c85aac3f79039280095ac2f1ff7744d3c7` |
 | S5 | `/home/anders/Documents/OldStuff/ReBrewieLegacyRuntimeInfo.txt` | `e734165cae681b785ecfb373a73c38178fc44a3f216510115961c402bb242d78` |
 | S6 | `/home/anders/Documents/OldStuff/NewOlimexDebianInfo.txt` | `1abc86106395e27b3cd6e1a80f13692a03cc77625f609cd53fd6730baeb86933` |
 | S7 | `/home/anders/Documents/OldStuff/first dmesg.txt` | `69c037bbcced1863148f702fff04366e368223fc3ea7ac47c228eeb8252bfef8` |
@@ -40,8 +41,9 @@ source-ledger reference for each citation.
 This is a source-classification policy, not an additional hardware claim.
 
 1. **Legacy-image artifacts retained in the local archive** — S1's legacy U-Boot header (bytes
-   0-63), S2's retained legacy-image log (lines 3-29 and 251-278), and S4's U-Boot
-   script header/payload (bytes 0-63 and offset 72) are archive artifacts.
+   0-63), S2's retained legacy-image log (lines 3-29 and 251-278), S4's U-Boot
+   script header/payload (bytes 0-63 and offset 72), and S16's comment-only
+   environment fragment (line 1) are archive artifacts.
    They establish historical configuration/runtime
    observations only and do not independently prove every physical net.
 2. **Later direct runtime observations** — S5 (lines 1-11 and 108-138), S6
@@ -53,9 +55,10 @@ This is a source-classification policy, not an additional hardware claim.
    remains unverified. S15 is cited only by `file` reporting `data` and
    SHA-256 inspection; it has not been decoded, so this review makes no content
    claim about it. S8 is an experimental overlay
-   (lines 1-95); S9--S12 are short handwritten tracing notes (lines 1-11,
-   1-12, 1-39, and 1-35 respectively); S13 and S14 are archived investigation
-   notes (lines 1-108 and 1-1183 respectively). These sources retain their
+   (lines 1-95); S9--S11 are short handwritten investigation notes (lines
+   1-35, 1-12, and 1-39 respectively), while S12 contains only `GPIO1:` on
+   line 1; S13 and S14 are archived investigation
+   notes (lines 1-109 and 1-1183 respectively). These sources retain their
    recorded uncertainty and are not authoritative schematics or factory
    assembly records.
 
@@ -107,7 +110,7 @@ pin assignments assumptions (S8 lines 7-24).
 - It reports 512 MB at boot, 397,524 KiB `MemTotal`, a 15,558,144-block card,
   three partitions, and writable EXT3 root and `/home/brewie`. These are
   installed-card observations, not partitioning requirements. Provenance: S5
-  lines 31, 72-75, 90-95, and 133-134.
+  lines 31, 72-78, 95, and 133-134.
 - Its command line selects `/dev/mmcblk0p2` and `ttyS0` at 115200; the kernel
   reports the empty `loglevel=` field as malformed. Provenance: S5 lines 14 and
   108-129.
@@ -123,18 +126,19 @@ pin assignments assumptions (S8 lines 7-24).
 - `rtl8192cu` is present and `wlan0` becomes ready, but this capture has no USB
   vendor/product ID. Provenance: S5 lines 232 and 421-423.
 
-### Later clean-image experiment
+### Later Olimex/Debian experiment
 
 - The fresh capture reports Linux `5.10.180-olimex #140856`, `armv7l`, model
   `Olimex A13-SOM-512`, 521,216 KiB to Linux, 96 MiB CMA reserve, and a 59.5
-  GiB card with one visible partition. Provenance: S6 lines 1-11, 36, and
+  GiB card with one visible partition. Provenance: S6 lines 1-13, 36, and
   165-166.
 - Its command line uses a PARTUUID root, `ttyS0` at 115200, `panic=10`, and
   log level 4. These are experimental-image observations, not clean-slate
   choices. Provenance: S6 lines 4 and 31.
 - It records Realtek USB ID `0bda:8176`, `rtl8192cu`, and association. This is
-  a dated fitted-device observation, not original-adapter proof or a future
-  requirement. Provenance: S6 lines 215-218 and 342-357.
+  a dated runtime enumeration/use observation, not independent physical-fitment
+  evidence, original-adapter proof, or a future requirement. Provenance: S6
+  lines 215-218, 342-349, and 358-365.
 - It enumerates `ttyS0` and `ttyS1` and enables the A13 watchdog with a
   16-second timeout. Enumeration does not establish an external `ttyS1`
   endpoint. Provenance: S6 lines 123-138.
@@ -144,7 +148,7 @@ pin assignments assumptions (S8 lines 7-24).
 - The archived 2026 notes record passive `/dev/ttyS1` observation, the Goodix
   path, and 480 by 272 framebuffer observations, but are reconstruction notes
   rather than independent physical verification. Provenance: S13 lines 11-15,
-  50-64, and 85-109; S14 lines 138-148 and 308-320.
+  48-55, 63-64, and 108-109; S14 lines 138-148 and 298-320.
 - S8 assigns PB3, PG11, PC3, and UART3/PG pins in its experimental overlay,
   while explicitly labelling them assumptions; successful operation cannot
   isolate each pin claim. Provenance: S8 lines 7-24, 26-31, 48-87.
@@ -159,19 +163,51 @@ pin assignments assumptions (S8 lines 7-24).
 
 ### Physical investigation notes
 
-- The connector notes record candidate assignments for pumps, valves, buttons,
-  temperature, mass/pressure I2C, rails, grounds, and an LMV324 stage. They are
-  incomplete tracing records and can corroborate newer KiCad tracing only.
-  Provenance: S9 lines 1-11; S10 lines 4-12; S12 lines 1-37.
+- S10 records only these green-cable candidates for the boil-side small
+  valve/pump/sensor PCB: pin 16 ground, pin 15 SDA, pin 9 5 V, and pin 6 SCL.
+  It is an incomplete tracing note, not a connector pinout or physical-to-MCU
+  mapping. Provenance: S10 lines 4-12.
 - The pressure note reports a working green-cable observation and proposed
   pull-ups, but itself questions 3.3 V versus 5 V. It cannot choose voltage or
   resistor values. Provenance: S10 lines 1-12.
 - The servo note records TowerPro MG996R markings and 50 Hz / 740 µs / 1780 µs
   pulse observations. Its undocumented setup and uncertainty leave these as
   characterization candidates only. Provenance: S11 lines 1-17.
-- The GPIO-node note records PB3 backlight, PB10 LCD power, PE9 MCU reset, and
-  button/power/LED candidates. It describes an old-kernel interface, not a
-  required new-image API. Provenance: S12 lines 1-25.
+- S9 records legacy aliases for PB15 button2, PB2 buzzer, PB4 hold-power, PB3
+  backlight, PB10 LCD power, PB16 LED2, PE9 MCU reset, and PC7 power; it also
+  records point-in-time PB3/PB10 sysfs values. It describes an old-kernel
+  interface, not a required new-image API or independent physical trace.
+  Provenance: S9 lines 1-8 and 15-25. S12 contributes no hardware proposition:
+  its only content is `GPIO1:` at line 1.
+
+## Observation-to-fact disposition ledger
+
+This ledger prevents selected observations from silently becoming requirements
+or untracked evidence. A direct, dated runtime capture can verify only its
+narrowly stated runtime proposition. Physical wiring, electrical limits, and
+fitted-part identity still require independent physical or authoritative
+evidence. Same-lineage notes may corroborate a disputed record but do not
+promote it.
+
+| Selected observation | Fact or no-op disposition | Status effect and limitation |
+| --- | --- | --- |
+| S1 legacy U-Boot kernel header | Same-lineage corroboration for [HW-101](facts/HW-101.md). | No physical/platform promotion; archive placement and a header string do not identify fitted hardware. |
+| S2 legacy log: kernel and storage | Same-lineage corroboration for [HW-101](facts/HW-101.md) and [HW-103](facts/HW-103.md). | No status beyond the dated propositions; it is retained archive evidence, not an independent acquisition. |
+| S2/S3 legacy UART, display, and touch configuration/runtime | Corroboration or candidate context for [HW-004](facts/HW-004.md), [HW-006](facts/HW-006.md), [HW-007](facts/HW-007.md), [HW-008](facts/HW-008.md), and [HW-108](facts/HW-108.md). | No physical-wire, fitted-display, or electrical promotion; S3-to-S15 correspondence is unverified. |
+| S3 USB/SDIO Wi-Fi configuration | No new fact. | Configuration does not identify fitted networking hardware; [HW-107](facts/HW-107.md) separately records a dated modern USB device. |
+| S4 legacy boot arguments | No new fact; retained as review-level historical configuration. | Does not select a clean-slate boot path, filesystem, console, or recovery policy. |
+| S15 undecoded `script.bin` | No-op. | `file` reports only `data`; no decode or content proposition exists. |
+| S16 comment-only `uEnv.txt` | No-op. | The single comment establishes no hardware or runtime proposition. |
+| S5 fresh ReBrewie runtime | Direct dated evidence for [HW-101](facts/HW-101.md) through [HW-104](facts/HW-104.md) and [HW-108](facts/HW-108.md); legacy Goodix output is same-lineage corroboration for [HW-007](facts/HW-007.md)/[HW-008](facts/HW-008.md). | Verifies only the scoped runtime observations; not factory-userspace, fitted-part, wiring, or electrical evidence. |
+| S6 fresh Olimex/Debian runtime | Direct dated evidence for [HW-007](facts/HW-007.md), [HW-008](facts/HW-008.md), and [HW-105](facts/HW-105.md) through [HW-108](facts/HW-108.md). | Verifies only the scoped runtime observations; physical identities and future choices remain separate. |
+| S7 older Olimex/Debian log | No new fact; retained to distinguish a different build from S6. | Same release string does not make the boots identical or independently verify hardware. |
+| S8 experimental overlay | Candidate/same-investigation context for [HW-004](facts/HW-004.md), [HW-008](facts/HW-008.md), and [HW-009](facts/HW-009.md). | Its own comments label pin assignments assumptions; no status promotion and no new IRQ/reset fact. |
+| S9 legacy GPIO aliases and PB3/PB10 values | Same-lineage corroboration recorded in [HW-005](facts/HW-005.md), [HW-009](facts/HW-009.md), [HW-010](facts/HW-010.md), and [HW-075](facts/HW-075.md) through [HW-079](facts/HW-079.md). | All remain disputed; the note does not identify board revision, current routing, voltage, or electrical behavior. |
+| S10 green-cable and pressure note | Limited corroboration recorded in [HW-024](facts/HW-024.md) and [HW-089](facts/HW-089.md). | No status promotion: it does not name PD0/PD1, its test setup is absent, and it conflicts internally on 3.3 V versus 5 V and pull-up values. |
+| S11 servo marking and pulse note | No new fact. | Machine endpoint, test setup, load, uncertainty, and revision are absent; the historical values must not become actuator requirements. |
+| S12 `GPIO1:` fragment | No-op. | No mapping, endpoint, state, or other factual proposition is present. |
+| S13 archived runtime map | Same-investigation corroboration for [HW-006](facts/HW-006.md), [HW-007](facts/HW-007.md), [HW-008](facts/HW-008.md), and [HW-017](facts/HW-017.md). | No status promotion; it is an investigation note and its physical endpoint assertions remain unverified. |
+| S14 archived setup guide observations | Same-investigation corroboration for [HW-004](facts/HW-004.md), [HW-006](facts/HW-006.md), [HW-007](facts/HW-007.md), [HW-008](facts/HW-008.md), and [HW-017](facts/HW-017.md). | Only explicitly observed runtime values are retained; embedded setup/design instructions are excluded. |
 
 ## What this evidence changes
 
@@ -180,10 +216,11 @@ bytes 0-63; S2 lines 3-29; S5 lines 108-134; S6 lines 1-36), display/touch
 (S2 lines 300-317; S3 lines 173-228; S5 lines 382-404; S6 lines 334-348),
 storage (S2 lines 251-278; S5 lines 72-95 and 356-381; S6 lines 163-166), and
 networking observations (S3 lines 505-512; S5 lines 232 and 421-423; S6 lines
-215-218 and 342-357). They do not distinguish physical wiring from
-configuration, nor justify inheriting the legacy image architecture. A claim
-becomes verified only when independent evidence verifies the same narrowly
-worded proposition.
+215-218, 342-349, and 358-365). They do not distinguish physical wiring from
+configuration, nor justify inheriting the legacy image architecture. Direct
+dated runtime evidence may verify its own narrowly worded runtime proposition;
+independent physical or authoritative evidence is still required before a
+physical wiring, electrical, or fitted-component proposition becomes verified.
 
 ## Remaining high-value checks
 
