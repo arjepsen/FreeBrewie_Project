@@ -11,8 +11,9 @@
 **Execution status (2026-08-15):** Tasks 1-3 and the corrective implementation
 portion of Task 4 were committed as
 `d0cc3f81dc36811520dac320fe74b908c197f390`. Focused provenance-follow-up
-implementation and verification are complete; its local commit, PR approval,
-merge, and post-merge validation in Task 4 Step 5 remain pending.
+implementation and verification were committed as
+`a549404fd002074c241e3d0a38ea3e86718bd0ff`; PR approval, merge, and post-merge
+validation in Task 4 Step 5 remain pending.
 
 **Provenance terminology erratum:** The planned-file-map and Task 2 shorthand
 originally used “captured” for both fresh runtime reports and retained archive
