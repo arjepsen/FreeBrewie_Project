@@ -40,7 +40,7 @@ source-ledger reference for each citation.
 This is a source-classification policy, not an additional hardware claim.
 
 1. **Legacy-image artifacts retained in the local archive** — S1's legacy U-Boot header (bytes
-   0-63), S2's original-image log (lines 3-29 and 251-278), and S4's U-Boot
+   0-63), S2's retained legacy-image log (lines 3-29 and 251-278), and S4's U-Boot
    script header/payload (bytes 0-63 and offset 72) are archive artifacts.
    They establish historical configuration/runtime
    observations only and do not independently prove every physical net.
@@ -70,7 +70,7 @@ pin assignments assumptions (S8 lines 7-24).
 
 ## High-value findings
 
-### Original Linux installation
+### Retained legacy-image platform
 
 - The legacy U-Boot header identifies an uncompressed ARM `Linux-3.4.90-Brewie`
   kernel built 2018-01-12. Provenance: S1, bytes 0-63 inspected as a legacy
@@ -91,7 +91,7 @@ pin assignments assumptions (S8 lines 7-24).
 - The FEX configuration enables UARTs on PG3/PG4 and PG9/PG10; the log
   enumerates `ttyS0` and `ttyS1`. This remains configuration/runtime evidence,
   not physical endpoint proof. Provenance: S3 lines 123-135; S2 lines 114-120.
-- The original-image log reports Goodix at I2C2 address `0x14`; the FEX text
+- The retained legacy-image log reports Goodix at I2C2 address `0x14`; the FEX text
   declares 480 by 272 LCD geometry and the same Goodix bus/address. Provenance:
   S2 lines 300-317; S3 lines 173-183 and 219-228.
 - The FEX text enables USB Wi-Fi and disables SDIO Wi-Fi. The runtime log alone
