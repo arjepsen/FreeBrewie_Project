@@ -23,6 +23,7 @@ source-ledger reference for each citation.
 | S2 | `/home/anders/Documents/OldStuff/oldImage/Gamle Brewie software/usr/share/brewie/dmesg.txt` | `8c0712889e9adde309107317217702e76b588cdb7acaeb997b405da2892f92d8` |
 | S3 | `/home/anders/Documents/OldStuff/oldImage/gamle filer/script.fex.txt` | `6d076a06f6284f7211c8cc92593aefe957fdc577fec93380304f94cecf1c6667` |
 | S4 | `/home/anders/Documents/OldStuff/oldImage/Gamle Brewie software/uboot partition/boot.scr` | `375397d0cce1618a43479d3cb9508653289868377e79a6ae00bf5c31a1b72a78` |
+| S15 | `/home/anders/Documents/OldStuff/oldImage/Gamle Brewie software/uboot partition/script.bin` | `f134c3f515df2343112d7fe4b493350f2b90794214f5fa4a78eb8480b4ebfeec` |
 | S5 | `/home/anders/Documents/OldStuff/ReBrewieLegacyRuntimeInfo.txt` | `e734165cae681b785ecfb373a73c38178fc44a3f216510115961c402bb242d78` |
 | S6 | `/home/anders/Documents/OldStuff/NewOlimexDebianInfo.txt` | `1abc86106395e27b3cd6e1a80f13692a03cc77625f609cd53fd6730baeb86933` |
 | S7 | `/home/anders/Documents/OldStuff/first dmesg.txt` | `69c037bbcced1863148f702fff04366e368223fc3ea7ac47c228eeb8252bfef8` |
@@ -38,18 +39,20 @@ source-ledger reference for each citation.
 
 This is a source-classification policy, not an additional hardware claim.
 
-1. **Captured original-image artifacts** — S1's legacy U-Boot header (bytes
+1. **Legacy-image artifacts retained in the local archive** — S1's legacy U-Boot header (bytes
    0-63), S2's original-image log (lines 3-29 and 251-278), and S4's U-Boot
-   script header/payload (bytes 0-63 and offset 72) are retained as captured
-   installation artifacts. They establish historical configuration/runtime
+   script header/payload (bytes 0-63 and offset 72) are archive artifacts.
+   They establish historical configuration/runtime
    observations only and do not independently prove every physical net.
 2. **Later direct runtime observations** — S5 (lines 1-11 and 108-138), S6
    (lines 1-11 and 31-36), and S7 (lines 1-31) are dated boot captures; they
    show what ran in their respective experiments, subject to capture accuracy
    and completeness.
 3. **Reconstructions and tracing notes** — S3 is extracted FEX text (lines
-   1-674), not a captured original-image artifact: its correspondence to the
-   captured `script.bin` remains unverified. S8 is an experimental overlay
+   1-674), not a legacy-image artifact: its correspondence to S15 `script.bin`
+   remains unverified. S15 is cited only by `file` identity and SHA-256
+   inspection; it has not been decoded, so this review makes no content claim
+   about it. S8 is an experimental overlay
    (lines 1-95); S9--S12 are short handwritten tracing notes (lines 1-11,
    1-12, 1-39, and 1-35 respectively); S13 and S14 are archived investigation
    notes (lines 1-108 and 1-1183 respectively). These sources retain their
@@ -73,13 +76,13 @@ pin assignments assumptions (S8 lines 7-24).
   kernel built 2018-01-12. Provenance: S1, bytes 0-63 inspected as a legacy
   U-Boot image header (`file` reports name, architecture, compression, and
   timestamp).
-- The captured original-image log reports Linux `3.4.90-Brewie`, A13 revision
+- The archived legacy log reports Linux `3.4.90-Brewie`, A13 revision
   B (`AW1625/sun5i`), 512 MB total RAM, and an SD/MMC root path. Provenance:
   S2 lines 3-29 and 251-262.
 - That log reports a 14.8 GiB SDHC card, three partitions, and EXT3 mounts for
   the root and `/home/brewie` partitions. This is one historical storage setup,
   not a clean-slate requirement. Provenance: S2 lines 251-278.
-- The captured boot script sets `console=ttyS0,115200`,
+- The archived boot script sets `console=ttyS0,115200`,
   `root=/dev/mmcblk0p2`, `rootwait`, quiet boot, `loglevel=0`, and `panic=10`.
   These are historical settings only. Provenance: S4, legacy U-Boot script
   header bytes 0-63 and plaintext `setenv bootargs` payload beginning at byte
@@ -172,7 +175,7 @@ pin assignments assumptions (S8 lines 7-24).
 
 ## What this evidence changes
 
-The cited captured/runtime artifacts bound historical boot and kernel (S1
+The cited legacy/runtime artifacts bound historical boot and kernel (S1
 bytes 0-63; S2 lines 3-29; S5 lines 108-134; S6 lines 1-36), display/touch
 (S2 lines 300-317; S3 lines 173-228; S5 lines 382-404; S6 lines 334-348),
 storage (S2 lines 251-278; S5 lines 72-95 and 356-381; S6 lines 163-166), and
@@ -184,8 +187,9 @@ worded proposition.
 
 ## Remaining high-value checks
 
-- Correlate S3 with the binary `script.bin` before treating the FEX text as an
-  exact decode of that binary.
+- Correlate S3 with S15 `script.bin` before treating the FEX text as an exact
+  decode of that binary. S15's current evidence is only its `file` identity and
+  SHA-256 inspection; no decoded content has been used.
 - Compare historical FEX, the experimental overlay, and traced carrier evidence
   as separate sources.
 - Identify fitted display and Wi-Fi hardware if their identities would
