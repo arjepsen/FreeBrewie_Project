@@ -36,20 +36,34 @@ source-ledger reference for each citation.
 
 ## Evidence strata
 
-1. **Captured original-image artifacts** — S1--S4 and S2 show what one
-   historical installation was configured to do; they do not independently
-   prove every physical net.
-2. **Later direct runtime observations** — S5--S7 are dated boot captures
-   that show what ran in their respective experiments, subject to capture
-   accuracy and completeness.
-3. **Reconstructions and tracing notes** — S8--S14 are configuration or
-   investigation records. They retain their stated uncertainty and are not
-   authoritative schematics or factory assembly records.
+This is a source-classification policy, not an additional hardware claim.
 
-S5 and S6 are owner-requested read-only captures. S5 is a community-edited
-ReBrewie image, not an untouched factory image (S5 lines 1-6 and 98-103).
-S8 is an owner-created experimental configuration whose comments identify its
-pin assignments as assumptions (S8 lines 7-24).
+1. **Captured original-image artifacts** — S1's legacy U-Boot header (bytes
+   0-63), S2's original-image log (lines 3-29 and 251-278), and S4's U-Boot
+   script header/payload (bytes 0-63 and offset 72) are retained as captured
+   installation artifacts. They establish historical configuration/runtime
+   observations only and do not independently prove every physical net.
+2. **Later direct runtime observations** — S5 (lines 1-11 and 108-138), S6
+   (lines 1-11 and 31-36), and S7 (lines 1-31) are dated boot captures; they
+   show what ran in their respective experiments, subject to capture accuracy
+   and completeness.
+3. **Reconstructions and tracing notes** — S3 is extracted FEX text (lines
+   1-674), not a captured original-image artifact: its correspondence to the
+   captured `script.bin` remains unverified. S8 is an experimental overlay
+   (lines 1-95); S9--S12 are short handwritten tracing notes (lines 1-11,
+   1-12, 1-39, and 1-35 respectively); S13 and S14 are archived investigation
+   notes (lines 1-108 and 1-1183 respectively). These sources retain their
+   recorded uncertainty and are not authoritative schematics or factory
+   assembly records.
+
+The owner-requested/read-only status of S5 and S6 is owner-supplied provenance
+recorded on 2026-08-12 in the [local evidence inventory and provenance
+ledger](sources.md#local-evidence-inventory-and-provenance), table rows
+`NewOlimexDebianInfo.txt` and `ReBrewieLegacyRuntimeInfo.txt`; it is not a fact
+proved by either artifact. The same owner-attested row identifies S5 as a
+community-edited ReBrewie image, while its displayed banner and OS-release
+content are artifact facts at S5 lines 1-11 and 98-103. S8's comments call its
+pin assignments assumptions (S8 lines 7-24).
 
 ## High-value findings
 
@@ -158,8 +172,12 @@ pin assignments as assumptions (S8 lines 7-24).
 
 ## What this evidence changes
 
-The local archive bounds historical boot, kernel, display/touch, storage, and
-networking observations. It does not distinguish physical wiring from
+The cited captured/runtime artifacts bound historical boot and kernel (S1
+bytes 0-63; S2 lines 3-29; S5 lines 108-134; S6 lines 1-36), display/touch
+(S2 lines 300-317; S3 lines 173-228; S5 lines 382-404; S6 lines 334-348),
+storage (S2 lines 251-278; S5 lines 72-95 and 356-381; S6 lines 163-166), and
+networking observations (S3 lines 505-512; S5 lines 232 and 421-423; S6 lines
+215-218 and 342-357). They do not distinguish physical wiring from
 configuration, nor justify inheriting the legacy image architecture. A claim
 becomes verified only when independent evidence verifies the same narrowly
 worded proposition.
