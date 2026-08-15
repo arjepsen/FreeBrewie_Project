@@ -8,6 +8,21 @@
 
 **Tech Stack:** Markdown, Python 3 standard library validator, POSIX shell utilities, Git.
 
+**Execution status (2026-08-15):** Tasks 1-3 and the corrective implementation
+portion of Task 4 were committed as
+`d0cc3f81dc36811520dac320fe74b908c197f390`. Focused provenance-follow-up
+implementation and verification were committed as
+`a549404fd002074c241e3d0a38ea3e86718bd0ff`; PR approval, merge, and post-merge
+validation in Task 4 Step 5 remain pending.
+
+**Provenance terminology erratum:** The planned-file-map and Task 2 shorthand
+originally used “captured” for both fresh runtime reports and retained archive
+artifacts. Canonical evidence records control: `NewOlimexDebianInfo.txt` and
+`ReBrewieLegacyRuntimeInfo.txt` are owner-attested fresh runtime captures;
+`uImage` and the older-image `dmesg.txt` are artifacts retained in the supplied
+archive. “Retained” describes archive placement only and makes no forensic,
+factory-acquisition, or untouched-image claim.
+
 ## Global Constraints
 
 - Do not design or implement the Linux image, SOM application, MCU firmware, communication protocol, brewing logic, or UI.
@@ -27,13 +42,13 @@
 
 - `docs/evidence/hardware/facts/HW-007.md`: current runtime touch identity.
 - `docs/evidence/hardware/facts/HW-008.md`: current runtime touch bus/address.
-- `docs/evidence/hardware/facts/HW-101.md`: captured legacy kernel/platform runtime.
-- `docs/evidence/hardware/facts/HW-102.md`: captured legacy Buildroot userspace identity.
-- `docs/evidence/hardware/facts/HW-103.md`: captured legacy active SD/MMC partition and mount layout.
-- `docs/evidence/hardware/facts/HW-104.md`: captured PCF8563 RTC runtime observation.
+- `docs/evidence/hardware/facts/HW-101.md`: fresh ReBrewie kernel/platform runtime, with retained archive corroboration.
+- `docs/evidence/hardware/facts/HW-102.md`: fresh ReBrewie Buildroot userspace identity.
+- `docs/evidence/hardware/facts/HW-103.md`: fresh ReBrewie active SD/MMC partition and mount layout.
+- `docs/evidence/hardware/facts/HW-104.md`: fresh ReBrewie PCF8563 RTC runtime observation.
 - `docs/evidence/hardware/facts/HW-105.md`: fresh Olimex/Debian kernel and SOM-model runtime observation.
 - `docs/evidence/hardware/facts/HW-106.md`: fresh Olimex/Debian watchdog runtime observation.
-- `docs/evidence/hardware/facts/HW-107.md`: fresh fitted USB Wi-Fi runtime identity.
+- `docs/evidence/hardware/facts/HW-107.md`: fresh USB Wi-Fi runtime enumeration/use.
 - `docs/evidence/hardware/facts/HW-108.md`: ttyS0/ttyS1 enumeration shared by legacy and modern captures.
 - `docs/evidence/hardware/fact-index.md`: canonical index of all 108 records.
 - `docs/evidence/hardware/sources.md`: exact provenance and selection ledger.
@@ -58,7 +73,7 @@
 - Consumes: the approved design, hashes already recorded in `sources.md`, and exact lines in `NewOlimexDebianInfo.txt` and `ReBrewieLegacyRuntimeInfo.txt`.
 - Produces: final source classifications and narrowly verified current runtime touch records used by the index and summaries.
 
-- [ ] **Step 1: Confirm source hashes have not changed**
+- [x] **Step 1: Confirm source hashes have not changed**
 
 Run:
 
@@ -72,7 +87,7 @@ Expected hashes:
     e734165cae681b785ecfb373a73c38178fc44a3f216510115961c402bb242d78
     06d56de96b826e13d2c95070aea218021bf755ff00f3023ff81a6a5a2a345f7f
 
-- [ ] **Step 2: Audit the source classifications**
+- [x] **Step 2: Audit the source classifications**
 
 Confirm `sources.md` states all of the following:
 
@@ -84,7 +99,7 @@ Confirm `sources.md` states all of the following:
 
 Do not add application, firmware, recipe, protocol, or control-flow sources.
 
-- [ ] **Step 3: Narrow and verify HW-007**
+- [x] **Step 3: Narrow and verify HW-007**
 
 Change HW-007's claim to the dated runtime proposition:
 
@@ -96,7 +111,7 @@ Set status to `verified`, evidence type to `direct`, and cite
 runtime identification does not verify package marking, supply wiring,
 interrupt/reset pins, or electrical limits.
 
-- [ ] **Step 4: Narrow and verify HW-008**
+- [x] **Step 4: Narrow and verify HW-008**
 
 Change HW-008's claim to:
 
@@ -107,7 +122,7 @@ Set status to `verified`, evidence type to `direct`, cite lines 334-348 and the
 capture hash, and state that Linux bus numbering does not independently verify
 carrier traces, pull-ups, voltage, IRQ, or reset wiring.
 
-- [ ] **Step 5: Validate and commit**
+- [x] **Step 5: Validate and commit**
 
 Run:
 
@@ -140,10 +155,10 @@ Commit:
 - Modify: `docs/evidence/hardware/fact-index.md`
 
 **Interfaces:**
-- Consumes: `docs/templates/hardware-fact.md`, the two fresh captures, the captured legacy `uImage`/`dmesg`, and the evidence-strata rules from Task 1.
+- Consumes: `docs/templates/hardware-fact.md`, the two fresh captures, the retained legacy-image `uImage`/`dmesg`, and the evidence-strata rules from Task 1.
 - Produces: eight independently reviewable atomic records and a complete 108-record index.
 
-- [ ] **Step 1: Confirm the new ID range is unused**
+- [x] **Step 1: Confirm the new ID range is unused**
 
 Run:
 
@@ -153,13 +168,13 @@ Run:
 
 Expected: all commands exit 0.
 
-- [ ] **Step 2: Create verified legacy runtime records**
+- [x] **Step 2: Create verified legacy runtime records**
 
 Use every mandatory field from `docs/templates/hardware-fact.md` and create:
 
 - HW-101: the fresh ReBrewie boot runs exact kernel
-  `Linux 3.4.90-Brewie #5`, corroborated by the captured `uImage` header and
-  archived original-image `dmesg`; limit the claim to platform lineage.
+  `Linux 3.4.90-Brewie #5`, corroborated by the retained `uImage` header and
+  retained older-image `dmesg`; limit the claim to platform lineage.
 - HW-102: `/etc/os-release` on that boot identifies Buildroot
   `2014.02-git-g3b4bd90-dirty`; explicitly classify userspace as
   community-edited ReBrewie rather than factory-original.
@@ -172,7 +187,7 @@ Use every mandatory field from `docs/templates/hardware-fact.md` and create:
 
 Each is `verified` only for its dated runtime proposition.
 
-- [ ] **Step 3: Create verified modern runtime records**
+- [x] **Step 3: Create verified modern runtime records**
 
 Create:
 
@@ -182,21 +197,22 @@ Create:
 - HW-106: the fresh boot enables the A13 watchdog at `0x1c20c90` with a
   16-second timeout and `nowayout=0`; do not infer application use or required
   future policy.
-- HW-107: the fresh boot sees a Realtek USB WLAN adapter `0bda:8176`, loads
-  `rtl8192cu`, and associates; scope it to the fitted device on that date.
+- HW-107: during the fresh boot Linux enumerates a Realtek USB WLAN device
+  `0bda:8176`, loads `rtl8192cu`, and associates; scope this to runtime
+  enumeration/use, not physical fitment or permanent hardware identity.
 - HW-108: both fresh legacy and modern captures enumerate `ttyS0` at
   `0x01c28400` and `ttyS1` at `0x01c28c00`; state that enumeration does not
   prove the physical MCU endpoint or protocol.
 
 Each is `verified` only for its dated runtime proposition.
 
-- [ ] **Step 4: Add the eight records to the canonical index**
+- [x] **Step 4: Add the eight records to the canonical index**
 
 Append HW-101 through HW-108 in numeric order. Use concise claim summaries,
 accurate categories, `verified` status, exact primary-source descriptions, and
 relative record links.
 
-- [ ] **Step 5: Validate and commit**
+- [x] **Step 5: Validate and commit**
 
 Run:
 
@@ -229,7 +245,7 @@ Commit:
 - Consumes: all 108 final fact records and the canonical fact index.
 - Produces: consistent derived summaries, current verification debt, exact counts, and an evidence-based active milestone status.
 
-- [ ] **Step 1: Compute status counts from records**
+- [x] **Step 1: Compute status counts from records**
 
 Run:
 
@@ -242,7 +258,7 @@ Expected after Tasks 1 and 2: 23 verified and 85 disputed, totaling 108. If the
 actual record contents produce different counts, stop and resolve the record or
 plan discrepancy before editing summaries.
 
-- [ ] **Step 2: Update topical summaries**
+- [x] **Step 2: Update topical summaries**
 
 In the relevant summaries:
 
@@ -257,7 +273,7 @@ In the relevant summaries:
 - retain exact fitted-display identity, physical wiring, electrical limits, and
   actuator verification as debt.
 
-- [ ] **Step 3: Update verification debt and blocked decisions**
+- [x] **Step 3: Update verification debt and blocked decisions**
 
 Remove only gaps answered by the new narrowly scoped records. Keep downstream
 Linux-image choices blocked where they require requirements analysis rather than
@@ -268,7 +284,7 @@ Explicitly record that historical partition sizes, EXT3, kernel versions,
 Buildroot, the old watchdog behavior, and the Realtek adapter are observations,
 not selected clean-slate requirements.
 
-- [ ] **Step 4: Update milestone completion review**
+- [x] **Step 4: Update milestone completion review**
 
 Set the review date to 2026-08-12, record the computed counts, and keep milestone
 001 `active`. Explain which former category gaps are now bounded by runtime
@@ -276,7 +292,7 @@ evidence and which material identity/connectivity/electrical gaps still prevent
 completion. Do not mark the milestone blocked because productive verification
 work remains possible.
 
-- [ ] **Step 5: Validate and commit**
+- [x] **Step 5: Validate and commit**
 
 Run:
 
@@ -300,25 +316,25 @@ Commit:
 ### Task 4: Final consistency and clean-slate review
 
 **Files:**
-- Review: all files changed since commit `1ce4b9357d62d37fed7ee12ab19a64440c6384e4`
+- Review: all files changed since integration base `f73751d565009a26f360a5968a5755386bc18147`
 - Modify only: files from Tasks 1-3 when a verified inconsistency is found
 
 **Interfaces:**
 - Consumes: the complete integration diff.
 - Produces: review-ready branch with reproducible validation evidence and no prohibited design leakage.
 
-- [ ] **Step 1: Inspect the complete diff**
+- [x] **Step 1: Inspect the complete diff**
 
 Run:
 
-    git diff --stat 1ce4b9357d62d37fed7ee12ab19a64440c6384e4..HEAD
-    git diff --check 1ce4b9357d62d37fed7ee12ab19a64440c6384e4..HEAD
-    git diff 1ce4b9357d62d37fed7ee12ab19a64440c6384e4..HEAD -- docs/evidence/hardware docs/milestones/001-hardware-baseline.md
+    git diff --stat f73751d565009a26f360a5968a5755386bc18147..HEAD
+    git diff --check f73751d565009a26f360a5968a5755386bc18147..HEAD
+    git diff f73751d565009a26f360a5968a5755386bc18147..HEAD -- docs/evidence/hardware docs/milestones/001-hardware-baseline.md
 
 Read the complete diff. Confirm every status promotion is limited to a directly
 observed proposition and every local-source claim includes exact provenance.
 
-- [ ] **Step 2: Run deterministic validation**
+- [x] **Step 2: Run deterministic validation**
 
 Run:
 
@@ -327,7 +343,7 @@ Run:
 
 Expected: validator exits 0. Working tree is clean after any corrective commit.
 
-- [ ] **Step 3: Audit the clean-slate boundary**
+- [x] **Step 3: Audit the clean-slate boundary**
 
 Run targeted searches across changed files for `architecture`, `state machine`,
 `protocol`, `control logic`, `Arduino`, `Qt`, `LVGL`, and `should use`.
@@ -336,7 +352,11 @@ Inspect each hit. Accept only boundary statements, historical labels, or factual
 observations. Reject any new implementation recommendation derived from the old
 systems.
 
-- [ ] **Step 4: Commit corrections if required**
+- [x] **Step 4: Commit corrections if required**
+
+The controller committed the correction wave as
+`d0cc3f81dc36811520dac320fe74b908c197f390` after the implementation agent could
+not create the worktree index lock in the read-only shared Git metadata.
 
 If review found issues, edit only the affected evidence files, rerun Steps 1-3,
 then commit:

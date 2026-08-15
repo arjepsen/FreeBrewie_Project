@@ -74,28 +74,47 @@ remains external, read-only, unimported, and outside all builds.
 The 2026-08-12 inventory contains 1,231 entries. Its top-level groups are
 `reb20-develop` (693 entries), `oldImage` (512), `ReBrewie-main` (19),
 `old dts - collected them into one` (4), plus `brewie.dts` and
-`first dmesg.txt`. Entry counts describe the captured folder only; they do not
-make any file authoritative.
+`first dmesg.txt`. Entry counts describe the owner-supplied local archive only;
+they do not make any file authoritative.
 
-The first substantive pass selected the following narrowly scoped artifacts:
+The owner supplied `OldStuff` as a local archive containing material from the
+older image. In this ledger, a **legacy-image artifact** is a file retained
+under that archived older-image tree. The term records archive placement only;
+it does not imply a forensic acquisition method, untouched factory provenance,
+or independent verification that community-edited ReBrewie userspace is
+unchanged.
 
-| Exact local path | SHA-256 | Evidence role |
+The first substantive pass selected the following narrowly scoped artifacts.
+Every table path is relative to `/home/anders/Documents/OldStuff`:
+
+| Path relative to `/home/anders/Documents/OldStuff` | SHA-256 | Evidence role |
 | --- | --- | --- |
 | `brewie.dts` | `06d56de96b826e13d2c95070aea218021bf755ff00f3023ff81a6a5a2a345f7f` | Later experimental overlay; its own comments label key pin assignments as assumptions. |
 | `first dmesg.txt` | `69c037bbcced1863148f702fff04366e368223fc3ea7ac47c228eeb8252bfef8` | Later runtime capture from Linux 5.10.180; not an original-image log. |
-| `NewOlimexDebianInfo.txt` | `1abc86106395e27b3cd6e1a80f13692a03cc77625f609cd53fd6730baeb86933` | Owner-requested fresh capture of `uname -a`, `/proc/cmdline`, `/proc/device-tree/model`, and complete `dmesg` from the later Olimex/Debian experiment. |
+| `NewOlimexDebianInfo.txt` | `1abc86106395e27b3cd6e1a80f13692a03cc77625f609cd53fd6730baeb86933` | Owner-requested fresh read-only runtime capture of `uname -a`, `/proc/cmdline`, `/proc/device-tree/model`, and complete `dmesg` from the later Olimex/Debian experiment. |
 | `ReBrewieLegacyRuntimeInfo.txt` | `e734165cae681b785ecfb373a73c38178fc44a3f216510115961c402bb242d78` | Owner-requested fresh read-only runtime capture from the community-edited ReBrewie image. The owner identifies it as modified application/userspace content on the older Brewie Linux image, not an untouched factory image. |
-| `oldImage/Gamle Brewie software/uboot partition/boot.scr` | `375397d0cce1618a43479d3cb9508653289868377e79a6ae00bf5c31a1b72a78` | Captured legacy U-Boot script; historical boot configuration. |
-| `oldImage/Gamle Brewie software/uboot partition/script.bin` | `f134c3f515df2343112d7fe4b493350f2b90794214f5fa4a78eb8480b4ebfeec` | Captured legacy Allwinner configuration binary; not decoded during this pass. |
-| `oldImage/Gamle Brewie software/uboot partition/uEnv.txt` | `5c64ab9828e26e0525983192af9361c85aac3f79039280095ac2f1ff7744d3c7` | Captured legacy U-Boot environment fragment; it contains only a comment. |
-| `oldImage/Gamle Brewie software/uboot partition/uImage` | `225637cdcd41e6d2df7a8a11f1294fb4f63e722abbdd2e377b9bf7248801af5a` | Captured legacy kernel image identified by its U-Boot header as `Linux-3.4.90-Brewie`. |
-| `oldImage/Gamle Brewie software/usr/share/brewie/dmesg.txt` | `8c0712889e9adde309107317217702e76b588cdb7acaeb997b405da2892f92d8` | Runtime log from the captured original image; historical operational evidence. |
+| `oldImage/Gamle Brewie software/uboot partition/boot.scr` | `375397d0cce1618a43479d3cb9508653289868377e79a6ae00bf5c31a1b72a78` | Legacy-image U-Boot script retained in the local archive; its inspected header and payload record historical boot configuration. |
+| `oldImage/Gamle Brewie software/uboot partition/script.bin` | `f134c3f515df2343112d7fe4b493350f2b90794214f5fa4a78eb8480b4ebfeec` | Binary retained in the local archive; undecoded; `file` reports `data`; no content claim is made. |
+| `oldImage/Gamle Brewie software/uboot partition/uEnv.txt` | `5c64ab9828e26e0525983192af9361c85aac3f79039280095ac2f1ff7744d3c7` | Legacy-image U-Boot environment fragment retained in the local archive; it contains only a comment. |
+| `oldImage/Gamle Brewie software/uboot partition/uImage` | `225637cdcd41e6d2df7a8a11f1294fb4f63e722abbdd2e377b9bf7248801af5a` | Legacy-image kernel artifact retained in the local archive; its U-Boot header identifies `Linux-3.4.90-Brewie`. |
+| `oldImage/Gamle Brewie software/usr/share/brewie/dmesg.txt` | `8c0712889e9adde309107317217702e76b588cdb7acaeb997b405da2892f92d8` | Legacy-image runtime log retained in the local archive; its lines provide historical operational evidence. |
+| `oldImage/gamle filer/script.fex.txt` | `6d076a06f6284f7211c8cc92593aefe957fdc577fec93380304f94cecf1c6667` | Extracted configuration text used only for the bounded ranges cited in the local review; correspondence to the retained undecoded `script.bin` is unverified. |
+| `oldImage/hardware info.txt` | `a98389a6f67ee42e64575e909479f3275a6990b2231a93b2c3a2f0d4158d9f6c` | Short historical GPIO investigation note; selected lines are candidate/same-lineage corroboration, not a physical trace. |
+| `oldImage/pressure sensor pullups.txt` | `fc10c54eb14e44856cd22d1a6f6ca8cd9cadcca33524ff05b6c10ee8e2b19c9f` | Short pressure/green-cable investigation note; selected lines retain its unresolved voltage, pull-up, setup, and endpoint uncertainty. |
+| `oldImage/Servoer.txt` | `9bbae080e7fb805000668eade3c68a208de7fdf73139fb427443fa5ea6950878` | Only lines 1-17 were selected as an uncertain marking/pulse observation; later implementation content is excluded. |
+| `oldImage/gpio-s.txt` | `a58862cb3b82c74940e8d0a57494f1ed821de007913b2a11d4f4e6fa2e470b84` | Comment fragment containing only `GPIO1:`; selected for explicit no-op disposition and no hardware proposition. |
+| `reb20-develop/Documentation/archived/HardwareMap_A13SOM_V0.md` | `164eaa9f423440cf353bad794e50d90296acbd7e2307715782db85a4b7fd340b` | Only the hardware/runtime observation ranges cited in the local review were selected; this is an archived investigation, not independent physical evidence. |
+| `reb20-develop/Documentation/archived/Brewie_A13_linux_setup_guide_working_updated20V0.5.md` | `17be955f7071d8c4432c3a9c0095d2e6b06ac33f3c59efccafdcd516354316b1` | Only the bounded runtime/hardware observation ranges cited in the local review were selected; embedded setup and design content is excluded. |
 
-Also selected were `oldImage/gamle filer/script.fex.txt`, the DTS/DTSI files
-under `oldImage/dts filer fra kernel image filer`, the small physical tracing
-notes directly under `oldImage`, and the hardware/runtime sections of
-`reb20-develop/Documentation/archived/HardwareMap_A13SOM_V0.md` and
-`Brewie_A13_linux_setup_guide_working_updated20V0.5.md`. These are prior
+Both fresh named captures are owner-requested read-only runtime captures. They
+establish dated runtime observations only; neither is an authority for physical
+wiring or electrical characteristics.
+
+The exact rows above are the selected configuration, physical-investigation,
+and archived-note artifacts. The DTS/DTSI directory group under
+`oldImage/dts filer fra kernel image filer`, other unlisted physical notes,
+and the remaining archived-document content are inventory candidates only:
+they were not selected or substantively used. The selected rows are prior
 investigations or configuration reconstructions, not factory records. Exact
 line citations and source hashes must accompany any facts extracted from them.
 
@@ -184,7 +203,20 @@ The schematic also contains the legacy datasheet placeholder `~`; this is not a 
 
 ## Excluded sources and paths
 
-No source-code directory, repository clone, historical repository, other repository path, or moving-branch content URL is approved. Excluded inventory files were not opened, and no contents/raw API endpoint outside `FreeBrewie-MCU/Documentation`, `FreeBrewie-SOM/Docs`, or a directly referenced supporting artifact was intentionally used. A GitHub repository landing page used during the original default-branch resolution automatically rendered part of the SOM root README; that out-of-bound content was not selected, extracted, or used. The deviation, owner disposition, and clean independent audit are retained here and in the Task 2 execution and boundary-audit reports.
+Outside the explicit 2026-08-12 read-only `OldStuff` exception above, no
+source-code directory, repository clone, historical repository, other online
+repository path, or moving-branch content URL is approved. The exception
+permits only hardware facts, historical Linux-image facts,
+boot/kernel/device-tree observations, and prior physical-investigation records;
+legacy application implementation remains excluded even when located inside
+`OldStuff`. Excluded online-inventory files were not opened, and no contents/raw
+API endpoint outside `FreeBrewie-MCU/Documentation`, `FreeBrewie-SOM/Docs`, or
+a directly referenced supporting artifact was intentionally used. A GitHub
+repository landing page used during the original default-branch resolution
+automatically rendered part of the SOM root README; that out-of-bound content
+was not selected, extracted, or used. The deviation, owner disposition, and
+clean independent audit are retained here and in the Task 2 execution and
+boundary-audit reports.
 
 ## Boundary-expansion requests
 
@@ -198,7 +230,10 @@ On 2026-08-10 the owner removed exact DDR3 package identity from milestone scope
 
 The originally selected project documents did not establish the exact SOM revision, carrier-board identity or revision, MCU board identity or revision, SOM RAM configuration, boot hardware or boot-media identity, persistent-storage identity or capacity, or networking hardware. Subsequent owner observations and Task 5 authoritative documentation now establish the fitted SOM and carrier markings, fitted MCU model marking, and nominal 512 MB SOM capacity in HW-001, HW-002, HW-094, and HW-095. Exact DDR3 package identity is an owner-approved removal. To close the remaining required evidence categories, the project owner must provide or approve exact read-only paths for authoritative carrier and MCU board schematics, BOM or assembly records, part-specific boot, storage, and networking documentation, and authoritative evidence for compute-side interrupt and watchdog candidates. No additional repository path, root content, source code, or supporting artifact may be inspected until that approval is recorded against milestone 001.
 
-Any later need to inspect another path outside the approved boundary, resolve footprint-library content, or use a historical repository likewise requires project-owner approval recorded against milestone 001 before inspection.
+Any later need to inspect another path outside the approved online boundary,
+resolve footprint-library content, or use a historical repository beyond the
+bounded 2026-08-12 `OldStuff` exception likewise requires project-owner
+approval recorded against milestone 001 before inspection.
 
 ### Pending Task 4 device and interconnect evidence request
 
