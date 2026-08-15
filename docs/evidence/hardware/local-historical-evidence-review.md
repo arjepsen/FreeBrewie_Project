@@ -27,6 +27,16 @@ The folder contains three materially different kinds of evidence:
    corroboration, but retain their recorded uncertainty and are not promoted to
    authoritative schematics or factory assembly records.
 
+The two named fresh captures are owner-requested read-only runtime captures:
+`NewOlimexDebianInfo.txt`
+(`1abc86106395e27b3cd6e1a80f13692a03cc77625f609cd53fd6730baeb86933`) and
+`ReBrewieLegacyRuntimeInfo.txt`
+(`e734165cae681b785ecfb373a73c38178fc44a3f216510115961c402bb242d78`). The
+former is a later Olimex/Debian experiment; the latter is a community-edited
+ReBrewie image, not an untouched factory image. The owner-created experimental
+`brewie.dts` configuration remains a separate, non-authoritative source for
+physical-wiring candidates.
+
 ## High-value findings
 
 ### Original Linux installation

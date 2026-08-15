@@ -83,13 +83,17 @@ The first substantive pass selected the following narrowly scoped artifacts:
 | --- | --- | --- |
 | `brewie.dts` | `06d56de96b826e13d2c95070aea218021bf755ff00f3023ff81a6a5a2a345f7f` | Later experimental overlay; its own comments label key pin assignments as assumptions. |
 | `first dmesg.txt` | `69c037bbcced1863148f702fff04366e368223fc3ea7ac47c228eeb8252bfef8` | Later runtime capture from Linux 5.10.180; not an original-image log. |
-| `NewOlimexDebianInfo.txt` | `1abc86106395e27b3cd6e1a80f13692a03cc77625f609cd53fd6730baeb86933` | Owner-requested fresh capture of `uname -a`, `/proc/cmdline`, `/proc/device-tree/model`, and complete `dmesg` from the later Olimex/Debian experiment. |
+| `NewOlimexDebianInfo.txt` | `1abc86106395e27b3cd6e1a80f13692a03cc77625f609cd53fd6730baeb86933` | Owner-requested fresh read-only runtime capture of `uname -a`, `/proc/cmdline`, `/proc/device-tree/model`, and complete `dmesg` from the later Olimex/Debian experiment. |
 | `ReBrewieLegacyRuntimeInfo.txt` | `e734165cae681b785ecfb373a73c38178fc44a3f216510115961c402bb242d78` | Owner-requested fresh read-only runtime capture from the community-edited ReBrewie image. The owner identifies it as modified application/userspace content on the older Brewie Linux image, not an untouched factory image. |
 | `oldImage/Gamle Brewie software/uboot partition/boot.scr` | `375397d0cce1618a43479d3cb9508653289868377e79a6ae00bf5c31a1b72a78` | Captured legacy U-Boot script; historical boot configuration. |
 | `oldImage/Gamle Brewie software/uboot partition/script.bin` | `f134c3f515df2343112d7fe4b493350f2b90794214f5fa4a78eb8480b4ebfeec` | Captured legacy Allwinner configuration binary; not decoded during this pass. |
 | `oldImage/Gamle Brewie software/uboot partition/uEnv.txt` | `5c64ab9828e26e0525983192af9361c85aac3f79039280095ac2f1ff7744d3c7` | Captured legacy U-Boot environment fragment; it contains only a comment. |
 | `oldImage/Gamle Brewie software/uboot partition/uImage` | `225637cdcd41e6d2df7a8a11f1294fb4f63e722abbdd2e377b9bf7248801af5a` | Captured legacy kernel image identified by its U-Boot header as `Linux-3.4.90-Brewie`. |
 | `oldImage/Gamle Brewie software/usr/share/brewie/dmesg.txt` | `8c0712889e9adde309107317217702e76b588cdb7acaeb997b405da2892f92d8` | Runtime log from the captured original image; historical operational evidence. |
+
+Both fresh named captures are owner-requested read-only runtime captures. They
+establish dated runtime observations only; neither is an authority for physical
+wiring or electrical characteristics.
 
 Also selected were `oldImage/gamle filer/script.fex.txt`, the DTS/DTSI files
 under `oldImage/dts filer fra kernel image filer`, the small physical tracing
