@@ -50,9 +50,9 @@ This is a source-classification policy, not an additional hardware claim.
    and completeness.
 3. **Reconstructions and tracing notes** — S3 is extracted FEX text (lines
    1-674), not a legacy-image artifact: its correspondence to S15 `script.bin`
-   remains unverified. S15 is cited only by `file` identity and SHA-256
-   inspection; it has not been decoded, so this review makes no content claim
-   about it. S8 is an experimental overlay
+   remains unverified. S15 is cited only by `file` reporting `data` and
+   SHA-256 inspection; it has not been decoded, so this review makes no content
+   claim about it. S8 is an experimental overlay
    (lines 1-95); S9--S12 are short handwritten tracing notes (lines 1-11,
    1-12, 1-39, and 1-35 respectively); S13 and S14 are archived investigation
    notes (lines 1-108 and 1-1183 respectively). These sources retain their
@@ -188,8 +188,8 @@ worded proposition.
 ## Remaining high-value checks
 
 - Correlate S3 with S15 `script.bin` before treating the FEX text as an exact
-  decode of that binary. S15's current evidence is only its `file` identity and
-  SHA-256 inspection; no decoded content has been used.
+  decode of that binary. S15's current evidence is only `file` output (`data`)
+  and SHA-256 inspection; no decoded content has been used.
 - Compare historical FEX, the experimental overlay, and traced carrier evidence
   as separate sources.
 - Identify fitted display and Wi-Fi hardware if their identities would
