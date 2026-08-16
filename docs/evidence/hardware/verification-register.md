@@ -4,12 +4,13 @@ The [fact index](fact-index.md) contains 108 records: 23 verified and 85 dispute
 
 The [platform-enablement triage](platform-enablement-triage.md) gives those 80
 material disputed facts one scheduling disposition each: 0 platform blockers,
-10 platform constraints, 10 integration dependencies, 46 brewing-device
-dependencies, 9 non-blocking references, and 5 candidate removals. Disposition
-does not change evidence status. With no `before requirements` blocker,
-Linux-image requirements and independent design may begin; implementation and
-first powered bring-up remain inactive, and all ten platform constraints remain
-mandatory.
+10 platform constraints, 10 integration dependencies, 51 brewing-device
+dependencies, 9 non-blocking references, and 0 candidate removals. Disposition
+does not change evidence status. Requirements remain blocked because the
+canonical fact set lacks complete initial-gate coverage for boot, storage
+preservation, recovery/console, essential carrier behavior, and touchscreen
+wiring. Powered bring-up remains unauthorized and all ten platform constraints
+remain mandatory.
 
 ## Verified facts
 
@@ -133,10 +134,11 @@ No continuity or powered measurement is requested or approved. Documentary check
 
 ## Blocked downstream decisions
 
-The raw disputed-fact count is not the platform gate. The reviewed registry
-controls scheduling: no requirements blocker remains, while its named
-first-bring-up constraints and later dependencies continue to block only their
-specific operations or integrations.
+The raw disputed-fact count is not the platform gate. No classified row is a
+requirements blocker, but missing canonical propositions leave initial-gate
+coverage incomplete. Requirements remain blocked until those gaps are indexed,
+triaged, and the outcome recomputed. Named first-bring-up constraints and later
+dependencies continue to bound their specific operations or integrations.
 
 - The exact visible SOM/carrier markings and dated legacy/modern runtime observations now support targeted compatibility investigation. They do not select a clean-slate Linux image, kernel, Buildroot release, boot medium, partition layout/filesystem, networking adapter/driver, RTC policy, watchdog behavior, or device tree; those choices remain blocked pending later requirements analysis. Exact fitted display/touch identity, physical boot/storage/networking hardware, revision-matched carrier evidence for [HW-094](facts/HW-094.md), and the physical/electrical gaps in [HW-006](facts/HW-006.md) through [HW-010](facts/HW-010.md) remain pending the [boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).
 - The fitted ATmega2560 model and its nominal capacities no longer block MCU architecture targeting, but consequential programming, exact application image size, flash layout, runtime SRAM allocation, and EEPROM allocation remain blocked on bootloader, fuse, programming-state, link-map, and applicable-errata evidence for [HW-002](facts/HW-002.md), [HW-003](facts/HW-003.md), [HW-015](facts/HW-015.md), and [HW-016](facts/HW-016.md). Boot-hardware questions remain blocked on the [pending boundary-expansion request](sources.md#pending-task-3-compute-platform-evidence-request).

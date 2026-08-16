@@ -3,6 +3,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from collections import Counter
 from pathlib import Path
 
 
@@ -22,7 +23,7 @@ class PlatformEnablementTriageValidatorTests(unittest.TestCase):
             "deadline": "before first powered bring-up",
             "isolation_reason": "Isolation permits requirements work.",
             "check": "Review the approved schematic evidence.",
-            "evidence": "documentary / medium / disputed",
+            "evidence": "inferred / medium / disputed",
             "approval": "Not applicable",
         }
         values.update(changes)
@@ -32,7 +33,7 @@ class PlatformEnablementTriageValidatorTests(unittest.TestCase):
             "{check} | {evidence} | {approval} |"
         ).format(**values)
 
-    def run_fixture(self, rows):
+    def run_fixture(self, rows, claims=None, summary=None):
         with tempfile.TemporaryDirectory() as directory:
             fixture = Path(directory)
             tools = fixture / "tools"
@@ -40,11 +41,29 @@ class PlatformEnablementTriageValidatorTests(unittest.TestCase):
             tools.mkdir(parents=True)
             facts.mkdir(parents=True)
             shutil.copy2(VALIDATOR, tools / VALIDATOR.name)
+            claims = claims or {}
             for record_id in ("HW-001", "HW-002", "HW-068"):
                 (facts / f"{record_id}.md").write_text(
-                    f"# {record_id}\n\n- Record ID: {record_id}\n- Status: disputed\n"
+                    f"# {record_id}\n\n- Record ID: {record_id}\n"
+                    "- Status: disputed\n- Evidence type: inferred\n"
+                    "- Confidence: medium\n"
+                    f"- Claim: {claims.get(record_id, 'Fixture claim.')}\n"
                 )
             registry = facts.parent / "platform-enablement-triage.md"
+            counts = Counter(
+                [column.strip() for column in row.strip("|").split("|")][2]
+                for row in rows
+            )
+            if summary is None:
+                summary = (
+                    f"Disposition totals: {len(rows)} rows — "
+                    f"{counts['platform blocker']} `platform blocker`, "
+                    f"{counts['platform constraint']} `platform constraint`, "
+                    f"{counts['integration dependency']} `integration dependency`, "
+                    f"{counts['brewing-device dependency']} `brewing-device dependency`, "
+                    f"{counts['non-blocking reference']} `non-blocking reference`, and "
+                    f"{counts['candidate removal']} `candidate removal`."
+                )
             registry.write_text(
                 "# Platform-enablement triage\n\n"
                 "| ID | Claim | Disposition | Decision or later milestone | "
@@ -53,7 +72,9 @@ class PlatformEnablementTriageValidatorTests(unittest.TestCase):
                 "Evidence/confidence/status | Owner approval |\n"
                 "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n"
                 + "\n".join(rows)
-                + "\n"
+                + f"\n\n{summary}\n\n"
+                "## Owner-removed non-material disputed facts\n\n"
+                "- [HW-068](facts/HW-068.md)\n"
             )
             return subprocess.run(
                 [sys.executable, str(tools / VALIDATOR.name)],
@@ -101,6 +122,51 @@ class PlatformEnablementTriageValidatorTests(unittest.TestCase):
         result = self.run_fixture(rows=[row, self.complete_row("HW-002")])
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("HW-001: blocker requires isolation rationale", result.stderr)
+
+    def test_rejects_evidence_summary_that_differs_from_record(self):
+        rows = [
+            self.complete_row("HW-001", evidence="fabricated / high / verified"),
+            self.complete_row("HW-002"),
+        ]
+        result = self.run_fixture(rows=rows)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("HW-001: evidence/confidence/status does not match record", result.stderr)
+
+    def test_rejects_claim_summary_that_differs_from_record(self):
+        rows = [self.complete_row("HW-001"), self.complete_row("HW-002")]
+        result = self.run_fixture(rows=rows, claims={"HW-001": "Different claim."})
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("HW-001: claim does not match record", result.stderr)
+
+    def test_rejects_integration_dependency_without_named_integration_deadline(self):
+        rows = [
+            self.complete_row(
+                "HW-001",
+                disposition="integration dependency",
+                deadline="before first powered bring-up",
+            ),
+            self.complete_row("HW-002"),
+        ]
+        result = self.run_fixture(rows=rows)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("HW-001: integration dependency requires named-integration deadline", result.stderr)
+
+    def test_allows_contextual_unknown_in_a_concrete_safe_default(self):
+        rows = [
+            self.complete_row(
+                "HW-001",
+                safe_default="Treat connector identity as unknown and leave it untouched.",
+            ),
+            self.complete_row("HW-002"),
+        ]
+        result = self.run_fixture(rows=rows)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_rejects_inaccurate_disposition_summary(self):
+        rows = [self.complete_row("HW-001"), self.complete_row("HW-002")]
+        result = self.run_fixture(rows=rows, summary="Disposition totals: 80 rows — incorrect.")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("disposition summary does not match rows", result.stderr)
 
 
 if __name__ == "__main__":

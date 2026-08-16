@@ -9,7 +9,7 @@ This roadmap orders governance and future discovery work. Later entries are not 
    - Outcome: Verify and record the material hardware facts needed to define the current system boundary.
    - Principal exclusion: No Linux, application, firmware, protocol, brewing-logic, or UI design.
 3. **Linux-image requirements and design**
-   - Activation: May become active when the platform-enablement evidence gate has no unresolved `before requirements` blocker, even while milestone 001 remains active for first-bring-up or later-integration evidence.
+   - Activation: May become active only when the platform-enablement evidence gate records complete initial-gate coverage and explicitly permits requirements work, even while milestone 001 remains active for first-bring-up or later-integration evidence.
    - Outcome: Define and approve the requirements and independent design scope for the Linux image using the gate's verified inputs and mandatory constraints.
    - Principal exclusion: No implementation work or selections beyond what that separately approved milestone authorises.
 4. **Linux-image implementation**

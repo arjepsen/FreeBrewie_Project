@@ -4,7 +4,7 @@
 - Status: active
 - Owner: Project owner
 - Purpose: Establish verified hardware facts for the existing device before later requirements work.
-- Last completion review: 2026-08-12
+- Last completion review: 2026-08-16
 
 ## Approval and authorised source boundary
 
@@ -129,16 +129,17 @@ The [baseline's disputed-fact table](../evidence/hardware/baseline.md#all-disput
 records every disputed fact and its bounded decision. The
 [platform-enablement triage](../evidence/hardware/platform-enablement-triage.md)
 classifies all 80 material disputed facts as 0 platform blockers, 10 platform
-constraints, 10 integration dependencies, 46 brewing-device dependencies, 9
-non-blocking references, and 5 candidate removals.
+constraints, 10 integration dependencies, 51 brewing-device dependencies, 9
+non-blocking references, and 0 candidate removals.
 
 Five disputed audio records, HW-068 through HW-070, HW-079, and HW-081, are
 non-material to this gate because the owner removed buzzer/audio availability
-from the milestone on 2026-08-10. No unresolved `before requirements` platform
-blocker remains, so Linux-image requirements and independent design may begin.
-Milestone 001 stays active because ten first-bring-up constraints and five
-pending candidate-removal decisions remain, alongside later integration and
-brewing-device evidence:
+from the milestone on 2026-08-10. No classified fact row is a requirements
+blocker, but Linux-image requirements remain blocked because the canonical set
+does not cover boot medium/order, storage preservation, recovery/console,
+essential carrier behavior, or touchscreen supply/reset/interrupt wiring.
+Milestone 001 also retains ten first-bring-up constraints and later integration
+and brewing-device evidence:
 
 - Former category gaps are now bounded by dated runtime evidence: HW-007 and
   HW-008 identify/enumerate the Goodix touchscreen in the modern boot;
@@ -158,7 +159,7 @@ brewing-device evidence:
   networking design, or other platform requirement. Those choices require
   later requirements analysis.
 - Brewing-device identities, connections, electrical constraints, limits, and
-  present-machine state remain incomplete. The exact indexed blockers are
+  present-machine state remain incomplete. The exact indexed dependencies are
   HW-019 through HW-067, HW-073 through HW-078, HW-080, and HW-084 through
   HW-091.
 - Current SOM pin-mux, GPIO-numbering, PWM-consumer, period, and polarity
@@ -220,11 +221,11 @@ be treated as verified.
 - Asset review: inapplicable unless an asset is considered; any such review
   requires separate authorised scope, and no asset was considered.
 - Completion review: milestone remains active on 2026-08-16. All 80 material
-  disputed facts now have reviewed dispositions and no requirements blocker
-  remains, but first-bring-up constraints, pending candidate removals, and later
-  integration evidence remain open. Conflicts, debt, removals, safe defaults,
-  and bounded decisions remain visible in the triage, verification register,
-  and baseline.
+  disputed facts now have reviewed dispositions, but required initial-gate
+  coverage is incomplete. First-bring-up constraints and later integration
+  evidence also remain open. Conflicts, debt, removals, safe defaults, and
+  bounded decisions remain visible in the triage, verification register, and
+  baseline.
 
 ## Approval
 
@@ -235,7 +236,8 @@ be treated as verified.
 
 ## Next milestone
 
-[Linux-image requirements and design](../roadmap.md) may now be activated under
-its own approval because the evidence gate has no `before requirements`
-blockers. Linux-image implementation and first powered bring-up remain inactive;
-the latter remains subject to every recorded first-bring-up constraint.
+[Linux-image requirements and design](../roadmap.md) remains inactive until the
+missing initial-gate propositions are indexed and triaged and the evidence gate
+is recomputed. Linux-image implementation and powered bring-up remain
+unauthorized; any future first-bring-up plan remains subject to every recorded
+constraint and separate approval.
