@@ -18,6 +18,7 @@ Evidence and status records:
 - [Schematic readability](schematic-readability.md)
 - [Hardware fact index](fact-index.md)
 - [Verification register](verification-register.md)
+- [Platform-enablement evidence triage](platform-enablement-triage.md)
 
 Detailed status-preserving views:
 
@@ -50,9 +51,28 @@ These summaries are views over the linked fact records, not independent evidence
 
 The [fact index](fact-index.md) contains 108 records: 23 verified and 85 disputed. There are no proposed or provisionally accepted records. No disputed record below is accepted as a baseline conclusion.
 
-## All disputed facts and blocked decisions
+## Platform-enablement gate
 
-Every disputed record is retained here individually. “Blocked” means the candidate may guide verification, but cannot support a consequential hardware, electrical, configuration, or integration decision. The audio rows explicitly retain their disputed status even though audio availability is an owner-approved milestone removal.
+The [reviewed triage registry](platform-enablement-triage.md) classifies the 80
+material disputed facts without changing their status: 0 platform blockers, 10
+platform constraints, 10 integration dependencies, 46 brewing-device
+dependencies, 9 non-blocking references, and 5 candidate removals pending owner
+decision. The other five disputed facts are the owner-removed audio records.
+
+Because no unresolved `before requirements` platform blocker exists,
+Linux-image requirements and independent design work may begin. Linux-image
+implementation and first powered bring-up remain inactive. The ten platform
+constraints require candidate SOM-MCU UART/reset, display-control, power-related
+GPIO, PB2, and `pwm-0` routes to remain unconfigured, undriven, preserved, or
+unused exactly as recorded in the registry.
+
+## All disputed facts and bounded decisions
+
+Every disputed record is retained here individually. A disputed candidate cannot
+support the consequential decision named in its atomic record, but the triage
+registry now distinguishes current platform constraints from later dependencies
+and references. The audio rows explicitly retain their disputed status even
+though audio availability is an owner-approved milestone removal.
 
 | Record | Disputed candidate or observation | Decision that remains blocked or bounded |
 | --- | --- | --- |

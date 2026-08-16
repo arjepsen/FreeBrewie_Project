@@ -186,4 +186,13 @@ and [milestone 001](../../milestones/001-hardware-baseline.md#current-completion
 
 ## Gate decision
 
-Pending complete classification and validation.
+**Linux-image requirements and independent design may begin.** There are no
+`platform blocker` rows and therefore no unresolved `before requirements`
+blockers. This gate does not activate or select a Linux implementation.
+
+First powered Linux bring-up remains prohibited until its plan enforces all ten
+`platform constraint` safe defaults. Candidate SOM-MCU UART/reset routes,
+display-control pins, power-related GPIOs, PB2, and `pwm-0` must remain
+unconfigured, undriven, preserved, or unused as their rows require. Display,
+touch, SOM-MCU communication, hardware control, and brewing-device behavior
+remain unavailable unless their named evidence dependencies are resolved.
