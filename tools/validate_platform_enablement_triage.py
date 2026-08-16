@@ -29,6 +29,10 @@ INTEGRATION_MILESTONES = {
     "display/touch integration",
     "hardware-control integration",
 }
+DEFERRED_MILESTONES = {
+    "hardware-control integration",
+    "brewing-device characterization",
+}
 UNFINISHED_VALUES = {"-", "todo", "tbd", "fixme", "placeholder", "unknown"}
 PLACEHOLDER = re.compile(r"<[^>]+>")
 
@@ -160,6 +164,8 @@ for record_id in sorted(rows):
         fail(f"{record_id}: invalid integration milestone {decision}")
     if disposition in {"brewing-device dependency", "non-blocking reference", "candidate removal"} and deadline != "deferred":
         fail(f"{record_id}: {disposition} requires deferred deadline")
+    if disposition == "brewing-device dependency" and decision not in DEFERRED_MILESTONES:
+        fail(f"{record_id}: invalid deferred milestone {decision}")
     if disposition == "candidate removal":
         if approval != "Pending owner decision":
             fail(f"{record_id}: candidate removal requires pending owner decision")
@@ -190,26 +196,59 @@ owner_section_match = re.search(
 if not owner_section_match:
     fail("owner-removal reconciliation section missing")
 owner_section = owner_section_match.group(1)
+owner_links = set(re.findall(r"\[(HW-[0-9]{3})\]\(facts/HW-[0-9]{3}\.md\)", owner_section))
+if owner_links != owner_removed:
+    fail("owner-removal IDs do not match configured set")
 for record_id in owner_removed:
     if owner_section.count(f"[{record_id}](facts/{record_id}.md)") != 1:
         fail(f"{record_id}: owner-removal reconciliation missing or duplicated")
-if "Authority:" not in owner_section and not OWNER_REMOVED_FIXTURE.exists():
-    fail("owner-removal authority missing")
+if OWNER_REMOVED_FIXTURE.exists():
+    if "Authority: fixture metadata." not in owner_section:
+        fail("owner-removal authority missing or invalid")
+else:
+    authority = (
+        "Authority: [verification register](verification-register.md#owner-approved-removals) "
+        "and [milestone 001](../../milestones/001-hardware-baseline.md#current-completion-review-status)."
+    )
+    if authority not in " ".join(owner_section.split()):
+        fail("owner-removal authority missing or invalid")
 
-coverage_match = re.search(
+coverage_matches = re.findall(
     r"^## Initial-gate coverage gaps\n(.*?)(?=^## Gate decision)",
     registry_text,
     re.MULTILINE | re.DOTALL,
 )
-if coverage_match and re.search(r"^- ", coverage_match.group(1), re.MULTILINE):
-    if "**Linux-image requirements and independent design remain blocked.**" not in registry_text:
-        fail("coverage gaps require a blocked gate outcome")
+gate_matches = re.findall(
+    r"^## Gate decision\n(.*?)(?=^## |\Z)",
+    registry_text,
+    re.MULTILINE | re.DOTALL,
+)
+if len(coverage_matches) != 1 or len(gate_matches) != 1:
+    fail("expected exactly one coverage and gate-decision section")
+has_coverage_gaps = bool(re.search(r"^- ", coverage_matches[0], re.MULTILINE))
+has_requirements_blocker = any(
+    row[2] == "platform blocker" and row[6] == "before requirements"
+    for row in rows.values()
+)
+gate_blocked = has_coverage_gaps or has_requirements_blocker
+blocked_statement = "**Linux-image requirements and independent design remain blocked.**"
+pass_statement = "**Linux-image requirements and independent design may begin.**"
+expected_statement = blocked_statement if gate_blocked else pass_statement
+opposite_statement = pass_statement if gate_blocked else blocked_statement
+if gate_matches[0].count(expected_statement) != 1 or opposite_statement in gate_matches[0]:
+    fail("gate decision does not match derived outcome")
 
 if not OWNER_REMOVED_FIXTURE.exists():
     derived = {
-        ROOT / "docs/evidence/hardware/baseline.md": "remain blocked",
-        ROOT / "docs/evidence/hardware/verification-register.md": "Requirements remain blocked",
-        ROOT / "docs/milestones/001-hardware-baseline.md": "requirements remain blocked",
+        ROOT / "docs/evidence/hardware/baseline.md": (
+            "remain blocked" if gate_blocked else "may begin"
+        ),
+        ROOT / "docs/evidence/hardware/verification-register.md": (
+            "Requirements remain blocked" if gate_blocked else "Requirements may begin"
+        ),
+        ROOT / "docs/milestones/001-hardware-baseline.md": (
+            "requirements remain blocked" if gate_blocked else "requirements may begin"
+        ),
     }
     count_fragment = (
         f"{counts['platform blocker']} platform blockers, "

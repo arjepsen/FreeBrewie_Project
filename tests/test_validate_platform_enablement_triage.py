@@ -33,7 +33,16 @@ class PlatformEnablementTriageValidatorTests(unittest.TestCase):
             "{check} | {evidence} | {approval} |"
         ).format(**values)
 
-    def run_fixture(self, rows, claims=None, summary=None):
+    def run_fixture(
+        self,
+        rows,
+        claims=None,
+        summary=None,
+        coverage_gaps=True,
+        gate_decision=None,
+        owner_extra="",
+        authority="Authority: fixture metadata.",
+    ):
         with tempfile.TemporaryDirectory() as directory:
             fixture = Path(directory)
             tools = fixture / "tools"
@@ -75,7 +84,20 @@ class PlatformEnablementTriageValidatorTests(unittest.TestCase):
                 + "\n".join(rows)
                 + f"\n\n{summary}\n\n"
                 "## Owner-removed non-material disputed facts\n\n"
-                "- [HW-068](facts/HW-068.md)\n"
+                f"- [HW-068](facts/HW-068.md){owner_extra}\n\n"
+                f"{authority}\n\n"
+                "## Initial-gate coverage gaps\n\n"
+                + ("- Fixture coverage gap.\n\n" if coverage_gaps else "None.\n\n")
+                + "## Gate decision\n\n"
+                + (
+                    gate_decision
+                    or (
+                        "**Linux-image requirements and independent design remain blocked.**"
+                        if coverage_gaps
+                        else "**Linux-image requirements and independent design may begin.**"
+                    )
+                )
+                + "\n"
             )
             return subprocess.run(
                 [sys.executable, str(tools / VALIDATOR.name)],
@@ -194,6 +216,49 @@ class PlatformEnablementTriageValidatorTests(unittest.TestCase):
         result = self.run_fixture(rows=rows)
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("HW-001: invalid integration milestone later work", result.stderr)
+
+    def test_rejects_brewing_dependency_without_named_milestone(self):
+        rows = [
+            self.complete_row(
+                "HW-001",
+                disposition="brewing-device dependency",
+                deadline="deferred",
+                decision="later work",
+            ),
+            self.complete_row("HW-002"),
+        ]
+        result = self.run_fixture(rows=rows)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("HW-001: invalid deferred milestone later work", result.stderr)
+
+    def test_rejects_extra_id_in_owner_removal_section(self):
+        rows = [self.complete_row("HW-001"), self.complete_row("HW-002")]
+        result = self.run_fixture(
+            rows=rows,
+            owner_extra=" and [HW-001](facts/HW-001.md)",
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("owner-removal IDs do not match configured set", result.stderr)
+
+    def test_rejects_invalid_owner_removal_authority(self):
+        rows = [self.complete_row("HW-001"), self.complete_row("HW-002")]
+        result = self.run_fixture(rows=rows, authority="Authority: trust me.")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("owner-removal authority missing or invalid", result.stderr)
+
+    def test_accepts_complete_coverage_with_no_requirements_blocker(self):
+        rows = [self.complete_row("HW-001"), self.complete_row("HW-002")]
+        result = self.run_fixture(rows=rows, coverage_gaps=False)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_rejects_gate_outcome_that_conflicts_with_coverage(self):
+        rows = [self.complete_row("HW-001"), self.complete_row("HW-002")]
+        result = self.run_fixture(
+            rows=rows,
+            gate_decision="**Linux-image requirements and independent design may begin.**",
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("gate decision does not match derived outcome", result.stderr)
 
 
 if __name__ == "__main__":
