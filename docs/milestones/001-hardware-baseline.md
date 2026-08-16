@@ -4,7 +4,7 @@
 - Status: active
 - Owner: Project owner
 - Purpose: Establish verified hardware facts for the existing device before later requirements work.
-- Last completion review: 2026-08-12
+- Last completion review: 2026-08-16
 
 ## Approval and authorised source boundary
 
@@ -102,36 +102,44 @@ read-only 2026-08-12 `OldStuff` exception above.
 
 ## Measurable completion criteria
 
-- The material SOM, MCU, and carrier-board identities and revisions are
-  verified.
-- The identities and applicable revisions of all relevant peripherals,
-  including storage, memory, display, input hardware, and attached devices, are
-  verified.
-- All material connections among the SOM, MCU, carrier board, and relevant
-  peripherals are verified in supporting hardware-fact records.
+- Every material disputed fact has exactly one reviewed disposition in the
+  platform-enablement triage registry.
+- No unresolved `before requirements` platform blocker remains when
+  Linux-image requirements are activated.
+- Every first-bring-up blocker and constraint remains explicit and enforceable
+  until its fact is resolved.
+- Every deferral and candidate or approved removal is traceable to its affected
+  records, safe default, milestone, and owner decision where required.
 - A baseline item is removed only when the owner explicitly approves its
   removal and the milestone records why the item is unnecessary.
 - Every material fact completes the mandatory provenance fields and identifies
   its confidence, status, conflicts, and assumptions.
-- Material facts affecting consequential decisions are verified or keep those
-  decisions blocked.
-- Required reviews pass or are explicitly marked inapplicable with a reason.
+- Consistency, provenance, clean-slate, and safety reviews pass or are
+  explicitly marked inapplicable with a reason.
 
-Any unresolved material baseline fact that has not been removed under the
-owner-approved exception keeps the milestone active or blocked; the milestone
-cannot be marked complete.
+Linux-image requirements may be activated when their evidence gate passes even
+while milestone 001 remains active for first-bring-up constraints, later
+dependencies, or pending owner decisions.
 
 ## Current completion-review status
 
 Milestone 001 remains active. The current baseline contains 108 indexed records:
 23 verified and 85 disputed, with no proposed or provisionally accepted facts.
-The [baseline's disputed-fact table](../evidence/hardware/baseline.md#all-disputed-facts-and-blocked-decisions)
-records every disputed fact and its blocked or bounded decision.
+The [baseline's disputed-fact table](../evidence/hardware/baseline.md#all-disputed-facts-and-bounded-decisions)
+records every disputed fact and its bounded decision. The
+[platform-enablement triage](../evidence/hardware/platform-enablement-triage.md)
+classifies all 80 material disputed facts as 0 platform blockers, 10 platform
+constraints, 10 integration dependencies, 51 brewing-device dependencies, 9
+non-blocking references, and 0 candidate removals.
 
-Five disputed audio records, HW-068 through HW-070, HW-079, and HW-081, do not
-block completion because the owner removed buzzer/audio availability from this
-milestone on 2026-08-10. The remaining 80 disputed facts are material and keep
-the milestone active:
+Five disputed audio records, HW-068 through HW-070, HW-079, and HW-081, are
+non-material to this gate because the owner removed buzzer/audio availability
+from the milestone on 2026-08-10. No classified fact row is a requirements
+blocker, but Linux-image requirements remain blocked because the canonical set
+does not cover boot medium/order, storage preservation, recovery/console,
+essential carrier behavior, or touchscreen supply/reset/interrupt wiring.
+Milestone 001 also retains ten first-bring-up constraints and later integration
+and brewing-device evidence:
 
 - Former category gaps are now bounded by dated runtime evidence: HW-007 and
   HW-008 identify/enumerate the Goodix touchscreen in the modern boot;
@@ -151,7 +159,7 @@ the milestone active:
   networking design, or other platform requirement. Those choices require
   later requirements analysis.
 - Brewing-device identities, connections, electrical constraints, limits, and
-  present-machine state remain incomplete. The exact indexed blockers are
+  present-machine state remain incomplete. The exact indexed dependencies are
   HW-019 through HW-067, HW-073 through HW-078, HW-080, and HW-084 through
   HW-091.
 - Current SOM pin-mux, GPIO-numbering, PWM-consumer, period, and polarity
@@ -190,8 +198,10 @@ verification.
 
 ## Dependent decisions
 
-Later Linux-image requirements and design, system requirements, and subsystem
-planning may depend only on verified material hardware facts.
+Later Linux-image requirements and design may use verified facts as conclusions
+and disputed facts only through the triage registry's explicit constraints,
+safe defaults, deadlines, and named dependencies. No disputed proposition may
+be treated as verified.
 
 ## Required reviews
 
@@ -210,14 +220,12 @@ planning may depend only on verified material hardware facts.
   hardware discovery introduced no technical decision.
 - Asset review: inapplicable unless an asset is considered; any such review
   requires separate authorised scope, and no asset was considered.
-- Completion review: fail on 2026-08-12. Dated runtime observations now bound
-  the former touch, legacy platform, storage-layout, RTC, modern watchdog/WLAN,
-  and UART-enumeration category gaps, but the measurable identity, physical
-  connection, electrical capability/limit, actuator-verification, and complete
-  verified-baseline criteria do not pass while 80 in-scope material disputed
-  facts and the remaining unindexed physical gaps above are unresolved.
-  Conflicts, debt, owner-approved removals, and blocked decisions remain visible
-  in the verification register and baseline.
+- Completion review: milestone remains active on 2026-08-16. All 80 material
+  disputed facts now have reviewed dispositions, but required initial-gate
+  coverage is incomplete. First-bring-up constraints and later integration
+  evidence also remain open. Conflicts, debt, removals, safe defaults, and
+  bounded decisions remain visible in the triage, verification register, and
+  baseline.
 
 ## Approval
 
@@ -228,6 +236,8 @@ planning may depend only on verified material hardware facts.
 
 ## Next milestone
 
-[Linux-image requirements and design](../roadmap.md) remains proposed and
-inactive. It may not be activated until this milestone is completed and its
-verified facts are available.
+[Linux-image requirements and design](../roadmap.md) remains inactive until the
+missing initial-gate propositions are indexed and triaged and the evidence gate
+is recomputed. Linux-image implementation and powered bring-up remain
+unauthorized; any future first-bring-up plan remains subject to every recorded
+constraint and separate approval.

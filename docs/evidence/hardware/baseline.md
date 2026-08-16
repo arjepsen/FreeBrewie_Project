@@ -18,6 +18,7 @@ Evidence and status records:
 - [Schematic readability](schematic-readability.md)
 - [Hardware fact index](fact-index.md)
 - [Verification register](verification-register.md)
+- [Platform-enablement evidence triage](platform-enablement-triage.md)
 
 Detailed status-preserving views:
 
@@ -50,13 +51,33 @@ These summaries are views over the linked fact records, not independent evidence
 
 The [fact index](fact-index.md) contains 108 records: 23 verified and 85 disputed. There are no proposed or provisionally accepted records. No disputed record below is accepted as a baseline conclusion.
 
-## All disputed facts and blocked decisions
+## Platform-enablement gate
 
-Every disputed record is retained here individually. “Blocked” means the candidate may guide verification, but cannot support a consequential hardware, electrical, configuration, or integration decision. The audio rows explicitly retain their disputed status even though audio availability is an owner-approved milestone removal.
+The [reviewed triage registry](platform-enablement-triage.md) classifies the 80
+material disputed facts without changing their status: 0 platform blockers, 10
+platform constraints, 10 integration dependencies, 51 brewing-device
+dependencies, 9 non-blocking references, and 0 candidate removals. The other
+five disputed facts are the owner-removed audio records.
+
+Linux-image requirements and independent design remain blocked because the
+canonical fact set does not cover boot medium/order, physical storage and
+retained-media boundaries, non-graphical recovery/console, essential carrier
+power/clock behavior, or touchscreen supply/reset/interrupt wiring. Zero
+classified-row blockers cannot establish complete gate coverage. Linux-image
+implementation and powered bring-up remain unauthorized; the ten platform
+constraints remain mandatory.
+
+## All disputed facts and bounded decisions
+
+Every disputed record is retained here individually. A disputed candidate cannot
+support the consequential decision named in its atomic record, but the triage
+registry now distinguishes current platform constraints from later dependencies
+and references. The audio rows explicitly retain their disputed status even
+though audio availability is an owner-approved milestone removal.
 
 | Record | Disputed candidate or observation | Decision that remains blocked or bounded |
 | --- | --- | --- |
-| [HW-004](facts/HW-004.md) | Candidate physical UART connection between SOM and MCU. | Consequential electrical-interface changes are blocked; only non-destructive observation is bounded as permissible. |
+| [HW-004](facts/HW-004.md) | Candidate physical UART connection between SOM and MCU. | Consequential electrical-interface changes are blocked; the record does not authorize observation or testing. |
 | [HW-005](facts/HW-005.md) | A13 PE9 as SOM-controlled MCU-reset candidate. | Automated use of this reset mapping is blocked. |
 | [HW-006](facts/HW-006.md) | Reported 480 by 272 RGB565 Linux scanout. | Hard-to-reverse display-mode, panel, or physical-bus decisions are blocked. |
 | [HW-009](facts/HW-009.md) | A13 PB3 legacy LCD-backlight candidate. | Automated backlight control is blocked. |
