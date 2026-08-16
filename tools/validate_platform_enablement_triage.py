@@ -99,7 +99,8 @@ for record_id in sorted(rows):
         if disposition == "platform blocker" and incomplete(isolation_reason):
             fail(f"{record_id}: blocker requires isolation rationale")
         fail(f"{record_id}: empty or unfinished triage value")
-    if claim != f"[{record_id}](facts/{record_id}.md)":
+    claim_prefix = f"[{record_id}](facts/{record_id}.md) — "
+    if not claim.startswith(claim_prefix) or incomplete(claim.removeprefix(claim_prefix)):
         fail(f"{record_id}: broken fact link")
     if disposition not in ALLOWED_DISPOSITIONS:
         fail(f"{record_id}: invalid disposition {disposition}")

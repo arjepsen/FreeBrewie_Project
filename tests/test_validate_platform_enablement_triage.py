@@ -14,7 +14,7 @@ class PlatformEnablementTriageValidatorTests(unittest.TestCase):
     def complete_row(self, record_id, disposition="platform constraint", **changes):
         values = {
             "record_id": record_id,
-            "claim": f"[{record_id}](facts/{record_id}.md)",
+            "claim": f"[{record_id}](facts/{record_id}.md) — Fixture claim.",
             "disposition": disposition,
             "decision": "first powered Linux bring-up",
             "consequence": "The interface could be configured incorrectly.",
