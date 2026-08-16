@@ -49,6 +49,7 @@ class PlatformEnablementTriageValidatorTests(unittest.TestCase):
                     "- Confidence: medium\n"
                     f"- Claim: {claims.get(record_id, 'Fixture claim.')}\n"
                 )
+            (facts.parent / "owner-removed-fixture.txt").write_text("HW-068\n")
             registry = facts.parent / "platform-enablement-triage.md"
             counts = Counter(
                 [column.strip() for column in row.strip("|").split("|")][2]
@@ -167,6 +168,32 @@ class PlatformEnablementTriageValidatorTests(unittest.TestCase):
         result = self.run_fixture(rows=rows, summary="Disposition totals: 80 rows — incorrect.")
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("disposition summary does not match rows", result.stderr)
+
+    def test_rejects_duplicate_disposition_summary(self):
+        rows = [self.complete_row("HW-001"), self.complete_row("HW-002")]
+        correct = (
+            "Disposition totals: 2 rows — 0 `platform blocker`, "
+            "2 `platform constraint`, 0 `integration dependency`, "
+            "0 `brewing-device dependency`, 0 `non-blocking reference`, and "
+            "0 `candidate removal`."
+        )
+        result = self.run_fixture(rows=rows, summary=f"{correct}\n\n{correct}")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("expected exactly one disposition summary", result.stderr)
+
+    def test_rejects_integration_dependency_without_named_milestone(self):
+        rows = [
+            self.complete_row(
+                "HW-001",
+                disposition="integration dependency",
+                deadline="before named integration",
+                decision="later work",
+            ),
+            self.complete_row("HW-002"),
+        ]
+        result = self.run_fixture(rows=rows)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("HW-001: invalid integration milestone later work", result.stderr)
 
 
 if __name__ == "__main__":
